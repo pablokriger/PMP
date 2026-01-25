@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>PMP Quiz Completo</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 800px; margin: 30px auto; }
+  h1 { text-align: center; }
+  .question { font-size: 1.2em; margin-bottom: 20px; }
+  .options button { display: block; margin: 10px 0; padding: 10px; width: 100%; font-size: 1em; cursor: pointer; }
+  .correct { background-color: #4CAF50; color: white; }
+  .wrong { background-color: #F44336; color: white; }
+  .info { margin-top: 10px; font-size: 0.9em; color: #555; }
+  .score { font-weight: bold; margin-bottom: 20px; }
+  #start-screen, #end-screen { text-align: center; margin-bottom: 20px; }
+  select, input { padding: 5px; font-size: 1em; margin: 5px; }
+  #timers { display: flex; justify-content: space-between; margin-top: 10px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>PMP Quiz Completo</h1>
+
+<!-- Pantalla de inicio -->
+<div id="start-screen">
+  <div>
+    <label for="area-filter">Área: </label>
+    <select id="area-filter">
+      <option value="all">Todas</option>
+    </select>
+  </div>
+  <div>
+    <label for="version-filter">Versión PMBOK: </label>
+    <select id="version-filter">
+      <option value="all">Todas</option>
+    </select>
+  </div>
+  <div>
+    <label for="quiz-size">Cantidad de preguntas: </label>
+    <select id="quiz-size">
+      <option value="10">10</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="400">400</option>
+      <option value="1000">1000</option>
+      <option value="2000">2000</option>
+      <option value="all">Todas</option>
+    </select>
+  </div>
+  <button onclick="startQuiz()">Comenzar Quiz</button>
+</div>
+
+<!-- Puntaje -->
+<div class="score" id="score-container" style="display:none;">
+  Puntaje: <span id="score">0</span> |
+  Pregunta: <span id="current-question">0</span>/<span id="total-questions">0</span>
+</div>
+
+<!-- Contenedor del quiz -->
+<div id="quiz-container" style="display:none;">
+  <div class="question" id="question"></div>
+  <div class="info" id="q-info"></div>
+  <div class="options" id="options"></div>
+
+  <div id="timers">
+    <div id="total-timer">Tiempo total restante: 0m 0s</div>
+    <div id="question-timer">Tiempo pregunta: 0m 0s</div>
+  </div>
+</div>
+
+<!-- Pantalla final -->
+<div id="end-screen" style="display:none;">
+  <h2>¡Quiz terminado!</h2>
+  <p>Puntaje final: <span id="final-score"></span> / <span id="final-total"></span></p>
+  <div id="stats"></div>
+  <button onclick="restartQuiz()">Reiniciar Quiz</button>
+</div>
+
+<script>
+// ==========================
+// Datos de ejemplo
+// ==========================
+let allQuestions = [
+  { number:1, question:"Pregunta 1", options:["A","B","C","D"], correct:0, version:"v6", area:"Área1" },
+  { number:2, question:"Pregunta 2", options:["A","B","C","D"], correct:1, version:"v6", area:"Área1" },
+  { number:3, question:"Pregunta 3", options:["A","B","C","D"], correct:2, version:"v7", area:"Área2" }
+];
+
+// ==========================
+// Variables globales
+// ==========================
+let questions = [];
+let current = 0;
+let score = 0;
+let history = [];
+let timePerQuestion = 30;
+let totalTimer = 0;
+let timerInterval = null;
+let examTimerInterval = null;
+let answered = false;
+let currentShuffled = [];
+
+// ==========================
+// Inicializar filtros
+// ==========================
+function populateFilters(){
+  const areaSelect = document.getElementById("area-filter");
+  const versionSelect = document.getElementById("version-filter");
+
+  const areas = [...new Set(allQuestions.map(q => q.area))].sort();
+  const versions = [...new Set(allQuestions.map(q => q.version))].sort();
+
+  areas.forEach(a => areaSelect.appendChild(new Option(a, a)));
+  versions.forEach(v => versionSelect.appendChild(new Option(v, v)));
+}
+populateFilters();
+
+// ==========================
+// Iniciar Quiz
+// ==========================
+function startQuiz(){
+  const area = document.getElementById("area-filter").value;
+  const version = document.getElementById("version-filter").value;
+  const size = document.getElementById("quiz-size").value;
+
+  questions = allQuestions.filter(q =>
+    (area === "all" || q.area === area) &&
+    (version === "all" || q.version === version)
+  );
+
+  if (questions.length === 0) {
+    alert("No hay preguntas para los filtros seleccionados.");
+    return;
+  }
+
+  questions = shuffleArray(questions);
+  if (size !== "all") questions = questions.slice(0, parseInt(size));
+
+  score = 0;
+  current = 0;
+  history = [];
+  totalTimer = questions.length * timePerQuestion;
+
+  document.getElementById("start-screen").style.display = "none";
+  document.getElementById("score-container").style.display = "block";
+  document.getElementById("quiz-container").style.display = "block";
+  document.getElementById("end-screen").style.display = "none";
+
+  document.getElementById("score").innerText = score;
+  document.getElementById("current-question").innerText = 1;
+  document.getElementById("total-questions").innerText = questions.length;
+
+  startExamTimer();
+  showQuestion();
+}
+
+// ==========================
+// Temporizador total
+// ==========================
+function startExamTimer(){
+  const totalDiv = document.getElementById("total-timer");
+  examTimerInterval = setInterval(()=>{
+    if (totalTimer <= 0) {
+      clearInterval(examTimerInterval);
+      finishQuiz();
+    } else {
+      totalTimer--;
+      totalDiv.innerText = `Tiempo total restante: ${formatTime(totalTimer)}`;
+    }
+  }, 1000);
+}
+
+// ==========================
+// Mostrar pregunta
+// ==========================
+function showQuestion(){
+  clearInterval(timerInterval);
+  answered = false;
+
+  const q = questions[current];
+  if (!q) {
+    finishQuiz();
+    return;
+  }
+
+  document.getElementById("question").innerText = `${current + 1}. ${q.question}`;
+  document.getElementById("q-info").innerText = `Área: ${q.area} | Versión: ${q.version}`;
+
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+
+  currentShuffled = shuffleArray(
+    Array.from({ length: q.options.length }, (_, i) => i)
+  );
+
+  currentShuffled.forEach((origIdx, pos) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.innerText = q.options[origIdx];
+    btn.onclick = () => checkAnswer(pos);
+    optionsDiv.appendChild(btn);
+  });
+
+  startQuestionTimer();
+}
+
+// ==========================
+// Temporizador por pregunta
+// ==========================
+function startQuestionTimer(){
+  let timeLeft = timePerQuestion;
+  const questionDiv = document.getElementById("question-timer");
+  questionDiv.innerText = `Tiempo pregunta: ${formatTime(timeLeft)}`;
+
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    questionDiv.innerText = `Tiempo pregunta: ${formatTime(timeLeft)}`;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      checkAnswer(-1);
+    }
+  }, 1000);
+}
+
+// ==========================
+// Verificar respuesta
+// ==========================
+function checkAnswer(selectedPos){
+  if (answered) return;
+  answered = true;
+  clearInterval(timerInterval);
+
+  const q = questions[current];
+  const buttons = document.getElementById("options").children;
+  const actualSelected = selectedPos >= 0 ? currentShuffled[selectedPos] : -1;
+
+  for (let i = 0; i < buttons.length; i++) {
+    const realIdx = currentShuffled[i];
+    buttons[i].disabled = true;
+    if (realIdx === q.correct) buttons[i].classList.add("correct");
+    if (realIdx === actualSelected && actualSelected !== q.correct) {
+      buttons[i].classList.add("wrong");
+    }
+  }
+
+  if (actualSelected === q.correct) score++;
+
+  history.push({
+    number: q.number,
+    question: q.question,
+    area: q.area,
+    version: q.version,
+    correct: actualSelected === q.correct
+  });
+
+  document.getElementById("score").innerText = score;
+
+  setTimeout(()=>{
+    current++;
+    if (current >= questions.length) {
+      finishQuiz();
+    } else {
+      document.getElementById("current-question").innerText = current + 1;
+      showQuestion();
+    }
+  }, 2000);
+}
+
+// ==========================
+// Finalizar quiz
+// ==========================
+function finishQuiz(){
+  clearInterval(timerInterval);
+  clearInterval(examTimerInterval);
+
+  document.getElementById("quiz-container").style.display = "none";
+  document.getElementById("score-container").style.display = "none";
+  document.getElementById("end-screen").style.display = "block";
+
+  document.getElementById("final-score").innerText = score;
+  document.getElementById("final-total").innerText = questions.length;
+
+  const areas = {};
+  const versions = {};
+  let html = "<h3>Estadísticas</h3>";
+
+  history.forEach(h => {
+    areas[h.area] = areas[h.area] || { c:0, t:0 };
+    versions[h.version] = versions[h.version] || { c:0, t:0 };
+    areas[h.area].t++;
+    versions[h.version].t++;
+    if (h.correct) {
+      areas[h.area].c++;
+      versions[h.version].c++;
+    }
+  });
+
+  html += "<b>Por área:</b><br>";
+  for (let a in areas) html += `${a}: ${areas[a].c}/${areas[a].t}<br>`;
+
+  html += "<b>Por versión:</b><br>";
+  for (let v in versions) html += `${v}: ${versions[v].c}/${versions[v].t}<br>`;
+
+  document.getElementById("stats").innerHTML = html;
+}
+
+// ==========================
+// Reiniciar
+// ==========================
+function restartQuiz(){
+  clearInterval(timerInterval);
+  clearInterval(examTimerInterval);
+  score = 0;
+  current = 0;
+  history = [];
+  document.getElementById("start-screen").style.display = "block";
+  document.getElementById("end-screen").style.display = "none";
+}
+
+// ==========================
+// Utils
+// ==========================
+function shuffleArray(arr){
+  for(let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function formatTime(sec){
+  sec = Math.max(0, Math.floor(sec));
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}m ${s}s`;
+}
+</script>
+
+</body>
+</html>
