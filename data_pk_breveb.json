@@ -1,0 +1,31 @@
+{
+  "questions": [
+    {
+      "number": 1,
+      "question": "A contract's communication must lean toward _________ communication.",
+      "options": [
+        "Informal verbal communication",
+        "Formal verbal communication",
+        "Informal written communication",
+        "Formal written communication"
+      ],
+      "correct": 3,
+      "explanation": "Everything involving the contract should be done in formally. Contract records are also crucial; thus, they should be in the manner of formal written communication (letter d).",
+      "version": "v6",
+      "area": "Communications & Stakeholder Management",
+      "notes": "-"
+    }
+  ],
+  "jokes": [
+    "— Oiga, ¿el otorrino va por número?— Van nombrando.— Qué gran actor, pero no me cambie de tema.",
+    "¿Por qué las mujeres de Lepe beben agua del mar? Para ser más saladas."
+  ],
+  "thoughts": [
+    "No hay que ir para atrás ni para darse impulso (Lao Tsé)",
+    "No hay caminos para la paz; la paz es el camino (Mahatma Gandhi)",
+    "Haz el amor y no la guerra (John Lennon)",
+    "Para trabajar basta estar convencido de una cosa: que trabajar es menos aburrido que divertirse (Charles Baudelaire)",
+    "Lo peor que hacen los malos es obligarnos a dudar de los buenos (Jacinto Benavente)",
+    "No podemos resolver los problemas con el mismo pensamiento que usamos al crearlos (Albert Einstein)"
+  ]
+}
