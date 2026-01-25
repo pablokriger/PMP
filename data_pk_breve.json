@@ -1,0 +1,1237 @@
+{
+  "questions": [
+    {
+    "number": 1,
+    "question": "A contract's communication must lean toward _________ communication.",
+    "options": [
+      "Informal verbal communication",
+      "Formal verbal communication",
+      "Informal written communication",
+      "Formal written communication"
+    ],
+    "correct": 3,
+    "explanation": "Everything involving the contract should be done in formally. Contract records are also crucial; thus, they should be in the manner of formal written communication (letter d).",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 2,
+    "question": "Which of the following modes of communication is best suited to a work breakdown structure?",
+    "options": [
+      "External and internal to the project",
+      "External with the client",
+      "Internal inside the firm",
+      "Internal inside the team"
+    ],
+    "correct": 0,
+    "explanation": "WBS will enable communication both horizontally and vertically inside the organization and outside of the project.",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 3,
+    "question": "The process of collecting and distributing performance information, including status reports, progress measurements, and forecasts, is known as:",
+    "options": [
+      "Performance reporting",
+      "Performance measurement",
+      "Performance control",
+      "Performance planning"
+    ],
+    "correct": 0,
+    "explanation": "Performance reporting is the process of collecting and distributing performance information. This includes status reports, progress measurements, and forecasts.",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 4,
+    "question": "You have just taken over a project in execution. During your first week, you determine that the project team members spend much time responding to unexpected information requests from different stakeholders. Because of these interruptions, the team cannot focus on their activities, so the project is behind schedule. What should you do first?",
+    "options": [
+      "Tell the team members to stop responding to unexpected requests since it is not the responsibility of the team",
+      "Push the team to respond to all the requests faster so that they can perform their assigned project activities on time",
+      "Ask the team to forward all stakeholder inquiries to you so that the team members can focus on their assigned tasks",
+      "Review the communications management plan to understand how stakeholder requests should be handled"
+    ],
+    "correct": 3,
+    "explanation": "The communications management plan outlines how project stakeholders should exchange information. By reviewing this plan, the project manager can understand how stakeholder requests should be handled and can then make necessary adjustments to ensure the team can focus on their project activities.",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 5,
+    "question": "A project manager communicates via email with team members, internal and external project stakeholders. The project manager incorporates specific techniques to reduce misunderstandings when composing his emails. Which of the following is not considered one of these techniques?",
+    "options": [
+      "Concise expression",
+      "Clear purpose directed to the needs of the reader",
+      "Controlled flow of words and ideas",
+      "Communications register"
+    ],
+    "correct": 3,
+    "explanation": "A communications register is not a technique used when composing emails. It is a document used to track and manage project communications, not a technique for reducing misunderstandings in email communication.",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 6,
+    "question": "A project is underway to install solar panels in a remote desert location. The project teams are to work in rotating shifts, and the project manager plans to use project management software to monitor progress and coordinate activities. Daily updates will be provided to the project sponsor. What is the most likely challenge the teams will face while executing the project?",
+    "options": [
+      "Reliable electricity supply",
+      "Adapting to the harsh weather conditions",
+      "Access to the internet",
+      "Transporting equipment to the site"
+    ],
+    "correct": 2,
+    "explanation": "Given that the project management software will coordinate activities and daily updates will be provided online, reliable internet access is the most likely challenge in a remote desert location.",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 7,
+    "question": "What is the primary purpose of the Communications Management Plan?",
+    "options": [
+      "To define the project scope",
+      "To establish the approach and plan for project communications",
+      "To allocate project resources",
+      "To identify project risks"
+    ],
+    "correct": 1,
+    "explanation": "The Communications Management Plan outlines how communications will be planned, managed, and monitored.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 8,
+    "question": "What is included in the Communications Management Plan?",
+    "options": [
+      "Project budget",
+      "Description of how project communications will be planned, managed, and monitored",
+      "Stakeholder register",
+      "Risk management plan"
+    ],
+    "correct": 1,
+    "explanation": "The Communications Management Plan includes details on how communications will be managed.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 9,
+    "question": "Who is typically responsible for developing the Communications Management Plan?",
+    "options": [
+      "Project sponsor",
+      "Project manager",
+      "Team members",
+      "Stakeholders"
+    ],
+    "correct": 1,
+    "explanation": "The project manager is responsible for developing the Communications Management Plan with input from the team and stakeholders.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 10,
+    "question": "Which document provides the basis for developing the Communications Management Plan?",
+    "options": [
+      "Project charter",
+      "Stakeholder register",
+      "Quality management plan",
+      "Communications requirements analysis"
+    ],
+    "correct": 3,
+    "explanation": "The communications requirements analysis identifies the information needs of stakeholders.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "Dudosa"
+  },
+  {
+    "number": 11,
+    "question": "What are communication requirements analysis?",
+    "options": [
+      "Tools used to control project costs",
+      "Techniques to determine the information needs of the project stakeholders",
+      "Documents outlining project risks",
+      "Guidelines for managing project resources"
+    ],
+    "correct": 1,
+    "explanation": "Communication requirements analysis helps identify what information stakeholders need and when.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 12,
+    "question": "What is the role of the stakeholder register in Communications Management?",
+    "options": [
+      "To define the project scope",
+      "To outline the project schedule",
+      "To identify and analyze project stakeholders",
+      "To allocate project resources"
+    ],
+    "correct": 2,
+    "explanation": "The stakeholder register helps identify stakeholders and their communication needs.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 13,
+    "question": "What is the purpose of project communications?",
+    "options": [
+      "To identify and document project risks",
+      "To ensure that project information is appropriately generated, collected, distributed, stored, retrieved, and ultimately disposed of",
+      "To create the project schedule",
+      "To allocate project resources"
+    ],
+    "correct": 1,
+    "explanation": "Project communications ensure that information flows effectively throughout the project.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 14,
+    "question": "Which document includes detailed information about how project communications will be planned, managed, and monitored?",
+    "options": [
+      "Activity list",
+      "Communications management plan",
+      "Stakeholder register",
+      "Risk register"
+    ],
+    "correct": 1,
+    "explanation": "The Communications Management Plan provides details on managing project communications.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 15,
+    "question": "Which document provides detailed information on project communications and stakeholder information needs?",
+    "options": [
+      "Communications management plan",
+      "Quality metrics",
+      "Resource calendar",
+      "Project scope statement"
+    ],
+    "correct": 0,
+    "explanation": "The communications management plan outlines communication requirements and strategies.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 16,
+    "question": "What is the purpose of work performance information in Communications Management?",
+    "options": [
+      "To identify and document project risks",
+      "To review project performance and ensure compliance with quality standards",
+      "To provide information on project performance and progress",
+      "To create the project schedule"
+    ],
+    "correct": 2,
+    "explanation": "Work performance information helps assess communication effectiveness.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 17,
+    "question": "Which document includes detailed information on project performance and stakeholder information needs?",
+    "options": [
+      "Project charter",
+      "Communications management plan",
+      "Quality management plan",
+      "Risk register"
+    ],
+    "correct": 1,
+    "explanation": "The communications management plan outlines how performance information is managed.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 18,
+    "question": "Which document provides a basis for identifying and managing stakeholder information needs?",
+    "options": [
+      "Communications management plan",
+      "Project charter",
+      "Risk register",
+      "Stakeholder register"
+    ],
+    "correct": 0,
+    "explanation": "The communications management plan outlines communication requirements.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 19,
+    "question": "During a project review, it is found that a critical stakeholder is not receiving project updates as planned. What should the project manager do first?",
+    "options": [
+      "Update the project charter",
+      "Implement corrective actions to ensure the stakeholder receives updates",
+      "Evaluate the impact of the issue on the project",
+      "Request additional resources"
+    ],
+    "correct": 1,
+    "explanation": "Corrective actions ensure that communication issues are resolved.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "Defendible"
+  },
+  {
+    "number": 20,
+    "question": "How can a project manager ensure that the project team is effectively communicating?",
+    "options": [
+      "By developing a detailed project schedule",
+      "By using communication skills and monitoring communication channels",
+      "By creating a risk management plan",
+      "By increasing stakeholder communication"
+    ],
+    "correct": 1,
+    "explanation": "Effective communication skills and monitoring ensure that the team communicates well.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 21,
+    "question": "What should a project manager do if they discover that project communications are not being stored appropriately?",
+    "options": [
+      "Request a change to the project scope",
+      "Update the project scope statement",
+      "Implement corrective actions to ensure proper storage of communications",
+      "Inform the project sponsor and stakeholders"
+    ],
+    "correct": 2,
+    "explanation": "Corrective actions ensure that communications are stored correctly.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 22,
+    "question": "Which document outlines the project's communication requirements and stakeholder information needs?",
+    "options": [
+      "Project charter",
+      "Communications management plan",
+      "Risk register",
+      "Resource calendar"
+    ],
+    "correct": 1,
+    "explanation": "The communications management plan includes communication requirements and stakeholder needs.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 23,
+    "question": "What role does the communications management plan play in Communications Management?",
+    "options": [
+      "It identifies the total cost of the project",
+      "It serves as the basis for managing and controlling project communications",
+      "It defines the project scope",
+      "It manages project risks"
+    ],
+    "correct": 1,
+    "explanation": "The communications management plan provides guidelines for managing communications.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 24,
+    "question": "How does communication technology help in managing project communications?",
+    "options": [
+      "By identifying additional funding sources",
+      "By providing tools and platforms for generating, distributing, and storing project information",
+      "By increasing the project budget",
+      "By reducing stakeholder communication"
+    ],
+    "correct": 1,
+    "explanation": "Communication technology facilitates effective information management.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 25,
+    "question": "What is the relationship between the communications management plan and project communications?",
+    "options": [
+      "The communications management plan is the approved version of project communications",
+      "Project communications are derived from the communications management plan",
+      "The communications management plan and project communications are the same",
+      "There is no relationship between them"
+    ],
+    "correct": 1,
+    "explanation": "The communications management plan guides the creation and distribution of project communications.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 26,
+    "question": "Why is it important to manage project communications?",
+    "options": [
+      "To create the project budget",
+      "To ensure that project information is appropriately generated, collected, distributed, stored, retrieved, and ultimately disposed of",
+      "To define the project scope",
+      "To identify project stakeholders"
+    ],
+    "correct": 1,
+    "explanation": "Effective communication management ensures that information flows smoothly.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 27,
+    "question": "What is a common pitfall in Communications Management that project managers should avoid?",
+    "options": [
+      "Over-communicating with stakeholders",
+      "Ignoring communication risks",
+      "Underestimating project costs",
+      "Overestimating project scope"
+    ],
+    "correct": 1,
+    "explanation": "Ignoring communication risks can lead to information gaps and misunderstandings.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 28,
+    "question": "How does effective Communications Management benefit project stakeholders?",
+    "options": [
+      "By reducing project costs",
+      "By ensuring that the project meets stakeholder information needs and requirements",
+      "By eliminating all project risks",
+      "By increasing project scope"
+    ],
+    "correct": 1,
+    "explanation": "Effective communications management ensures that stakeholders are informed and engaged.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 29,
+    "question": "Which document helps track project communications and manage changes to the communications plan?",
+    "options": [
+      "Project charter",
+      "Communications management plan",
+      "Stakeholder register",
+      "Risk register"
+    ],
+    "correct": 1,
+    "explanation": "The communications management plan provides guidelines for managing changes to communications.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "Discutible"
+  },
+  {
+    "number": 30,
+    "question": "What should a project manager do if they identify a communication issue within the team?",
+    "options": [
+      "Add more resources to the project immediately",
+      "Submit a change request and implement corrective actions",
+      "Address and resolve the communication issue within the team",
+      "Update the project charter"
+    ],
+    "correct": 2,
+    "explanation": "Resolving communication issues promptly ensures team cohesion.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 31,
+    "question": "What is the main purpose of communication technology in project management?",
+    "options": [
+      "To increase the project budget",
+      "To provide tools and platforms for generating, distributing, and storing project information",
+      "To reduce project costs",
+      "To identify project risks"
+    ],
+    "correct": 1,
+    "explanation": "Communication technology facilitates effective information management.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 32,
+    "question": "What is included in a communications management plan?",
+    "options": [
+      "High-level project timeline",
+      "Detailed information on how project communications will be planned, managed, and monitored",
+      "List of project stakeholders",
+      "Project risk assessment"
+    ],
+    "correct": 1,
+    "explanation": "The communications management plan outlines communication strategies.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 33,
+    "question": "Which document describes the specific communication requirements for project stakeholders?",
+    "options": [
+      "Project charter",
+      "Communications management plan",
+      "Requirements documentation",
+      "Stakeholder register"
+    ],
+    "correct": 1,
+    "explanation": "The communications management plan includes stakeholder communication requirements.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 34,
+    "question": "How can communication variance be managed?",
+    "options": [
+      "By having a strict project schedule",
+      "By using a robust change control process to evaluate and approve communication changes",
+      "By reducing stakeholder communication",
+      "By increasing the project scope"
+    ],
+    "correct": 1,
+    "explanation": "A strong change control process helps manage communication variances.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 35,
+    "question": "A stakeholder identifies a potential communication issue in a critical project update. What should the project manager do?",
+    "options": [
+      "Ignore the communication issue and continue with the project",
+      "Evaluate the impact of the communication issue and take corrective actions if necessary",
+      "Update the project schedule",
+      "Request additional resources"
+    ],
+    "correct": 1,
+    "explanation": "Addressing potential communication issues ensures that information needs are met.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 36,
+    "question": "What is the role of communication technology in Communications Management?",
+    "options": [
+      "To identify project stakeholders",
+      "To establish a basis for managing and controlling project communications",
+      "To provide tools and platforms for generating, distributing, and storing project information",
+      "To define project risks"
+    ],
+    "correct": 2,
+    "explanation": "Communication technology facilitates effective information management.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 37,
+    "question": "How should a project manager handle conflicting communication requirements from different stakeholders?",
+    "options": [
+      "Implement the requirements of the most influential stakeholder",
+      "Negotiate and prioritize requirements based on project objectives and constraints",
+      "Reject all conflicting requirements",
+      "Escalate the conflict to the project sponsor"
+    ],
+    "correct": 1,
+    "explanation": "Negotiating and prioritizing ensures that the most critical requirements are addressed.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 38,
+    "question": "During project execution, a critical communication is found to be incomplete. What should the project manager do?",
+    "options": [
+      "Ignore the issue and continue with the project",
+      "Document the issue and take corrective actions if necessary",
+      "Inform the project sponsor and stakeholders",
+      "Request additional resources"
+    ],
+    "correct": 1,
+    "explanation": "Addressing incomplete communications ensures that information needs are met.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 39,
+    "question": "A project is nearing completion, but a key stakeholder is not satisfied with the communication received. What should the project manager do?",
+    "options": [
+      "Ignore the stakeholder's concern and continue with the project",
+      "Address the stakeholder's concern by implementing corrective actions and updating the communications management plan",
+      "Update the project charter",
+      "Request additional resources"
+    ],
+    "correct": 1,
+    "explanation": "Addressing stakeholder concerns ensures satisfaction and engagement.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 40,
+    "question": "A team member identifies a potential improvement for project communication. What should the project manager do?",
+    "options": [
+      "Implement the communication improvement immediately",
+      "Evaluate the improvement and process it through the change control system if it is beneficial",
+      "Reject the improvement to avoid changes",
+      "Update the project schedule"
+    ],
+    "correct": 1,
+    "explanation": "Evaluating and processing improvements ensures that they are beneficial and manageable.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 41,
+    "question": "How can a project manager ensure that all project communications meet stakeholder information needs?",
+    "options": [
+      "By developing a detailed project schedule and monitoring communication performance regularly",
+      "By increasing the project budget",
+      "By reducing stakeholder communication",
+      "By updating the project charter"
+    ],
+    "correct": 0,
+    "explanation": "Regular monitoring ensures that communications meet stakeholder needs.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "Débil"
+  },
+  {
+    "number": 42,
+    "question": "What should a project manager do if they discover that additional communications are needed to meet project objectives?",
+    "options": [
+      "Add the communications to the communications management plan immediately",
+      "Submit a change request through the Perform Integrated Change Control process",
+      "Reject the additional communications to avoid changes",
+      "Update the project charter"
+    ],
+    "correct": 1,
+    "explanation": "Additional communications should be formally evaluated and approved through change control.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 43,
+    "question": "A project manager needs to ensure that the project communications management plan is well-defined and includes all required communications. What should they do?",
+    "options": [
+      "Develop a detailed project schedule",
+      "Create a comprehensive communications management plan and stakeholder register",
+      "Allocate project resources",
+      "Identify project stakeholders"
+    ],
+    "correct": 1,
+    "explanation": "A comprehensive plan and stakeholder register ensure that all communication needs are identified and managed.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 44,
+    "question": "A project manager discovers additional communication requirements that were not included in the project plan. What should they do?",
+    "options": [
+      "Add the requirements to the communications management plan immediately",
+      "Submit a change request for approval through the Perform Integrated Change Control process",
+      "Reject the additional requirements to avoid changes",
+      "Update the project charter"
+    ],
+    "correct": 1,
+    "explanation": "Additional communication requirements should be formally evaluated and approved through change control.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 45,
+    "question": "How does the communications management plan help in managing project communications?",
+    "options": [
+      "By allocating project resources",
+      "By providing a basis for generating, collecting, distributing, storing, retrieving, and disposing of project information",
+      "By identifying project stakeholders",
+      "By defining project risks"
+    ],
+    "correct": 1,
+    "explanation": "The communications management plan outlines strategies for managing project information.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 46,
+    "question": "What is included in the communications requirements analysis?",
+    "options": [
+      "Detailed project budget",
+      "Techniques to determine the information needs of the project stakeholders",
+      "Stakeholder register",
+      "Risk register"
+    ],
+    "correct": 1,
+    "explanation": "Communications requirements analysis helps identify what information stakeholders need and when.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 47,
+    "question": "Why is it important to monitor project communications?",
+    "options": [
+      "To create the project budget",
+      "To ensure that project communications meet stakeholder information needs and requirements",
+      "To define the project scope",
+      "To identify project stakeholders"
+    ],
+    "correct": 1,
+    "explanation": "Monitoring communications ensures that stakeholder needs are met.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 48,
+    "question": "During a project review, it is found that a critical communication is not meeting stakeholder expectations. What should the project manager do first?",
+    "options": [
+      "Update the project charter",
+      "Implement corrective actions to ensure the communication meets expectations",
+      "Evaluate the impact of the communication issue on the project",
+      "Request additional resources"
+    ],
+    "correct": 1,
+    "explanation": "Corrective actions ensure that communication issues are resolved.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 49,
+    "question": "How can a project manager ensure that the project meets communication standards?",
+    "options": [
+      "By developing a detailed project schedule",
+      "By using communication skills and monitoring communication performance regularly",
+      "By creating a risk management plan",
+      "By increasing stakeholder communication"
+    ],
+    "correct": 1,
+    "explanation": "Effective communication skills and monitoring ensure that communication standards are met.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 50,
+    "question": "What should a project manager do if they discover that the project communications do not meet stakeholder expectations?",
+    "options": [
+      "Request a change to the project scope",
+      "Update the project scope statement",
+      "Implement corrective actions to meet stakeholder expectations",
+      "Inform the project sponsor and stakeholders"
+    ],
+    "correct": 2,
+    "explanation": "Corrective actions ensure that communications meet stakeholder needs.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 51,
+    "question": "During a project review, a stakeholder requests additional communication updates for a specific activity. What should the project manager do?",
+    "options": [
+      "Implement the additional updates immediately",
+      "Evaluate the impact of the additional updates and process the request through the change control system",
+      "Reject the additional updates to avoid changes",
+      "Update the project schedule"
+    ],
+    "correct": 1,
+    "explanation": "Evaluating and processing the request ensures it is managed properly.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 52,
+    "question": "How can a project manager maintain control over the project communications throughout the project lifecycle?",
+    "options": [
+      "By developing a detailed project schedule",
+      "By implementing a robust change control process to manage communication changes",
+      "By increasing the project budget",
+      "By reducing stakeholder communication"
+    ],
+    "correct": 1,
+    "explanation": "A strong change control process helps maintain control over communications.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 53,
+    "question": "What is the best approach for handling communication changes during a project?",
+    "options": [
+      "Reject all communication changes to avoid delays",
+      "Evaluate the impact of the changes and process them through the change control system",
+      "Implement the changes immediately to keep stakeholders happy",
+      "Ignore the changes and continue with the project"
+    ],
+    "correct": 1,
+    "explanation": "Proper evaluation and formal processing ensure that changes are managed effectively.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 54,
+    "question": "A project manager is preparing the final project report. What should be included to address communications management?",
+    "options": [
+      "Detailed project schedule",
+      "Summary of communication changes and how they were managed",
+      "List of project stakeholders",
+      "Project risk assessment"
+    ],
+    "correct": 1,
+    "explanation": "Including communication changes and their management provides a complete picture of communication control.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 55,
+    "question": "Why is it important to have a well-defined communications management plan?",
+    "options": [
+      "To ensure that the project is completed on time",
+      "To ensure that all project communication requirements are identified and managed appropriately",
+      "To reduce project costs",
+      "To increase stakeholder satisfaction"
+    ],
+    "correct": 1,
+    "explanation": "A well-defined plan helps identify and manage communication requirements.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 56,
+    "question": "A project deliverable is completed but requires additional communication to meet stakeholder expectations. What should the project manager do?",
+    "options": [
+      "Ignore the issue and continue with the project",
+      "Document the issue and take corrective actions if necessary",
+      "Inform the project sponsor and stakeholders",
+      "Request additional resources"
+    ],
+    "correct": 1,
+    "explanation": "Addressing communication issues ensures that stakeholder expectations are met.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 57,
+    "question": "How can a project manager ensure that communication changes are effectively managed?",
+    "options": [
+      "By developing a detailed project schedule",
+      "By using a robust change control process to evaluate and approve all communication changes",
+      "By increasing the project budget",
+      "By reducing stakeholder communication"
+    ],
+    "correct": 1,
+    "explanation": "A strong change control process helps manage communication changes effectively.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 58,
+    "question": "What should a project manager do if they identify a discrepancy between the project communication plan and actual communications?",
+    "options": [
+      "Ignore the discrepancy",
+      "Address the discrepancy and take corrective actions if necessary",
+      "Update the communications management plan",
+      "Reject the communication plan"
+    ],
+    "correct": 1,
+    "explanation": "Corrective actions help align communications with the plan.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 59,
+    "question": "A project manager discovers additional communication requirements that were not included in the project plan. What should they do?",
+    "options": [
+      "Add the requirements to the communications management plan immediately",
+      "Submit a change request for approval through the Perform Integrated Change Control process",
+      "Reject the additional requirements to avoid changes",
+      "Update the project charter"
+    ],
+    "correct": 1,
+    "explanation": "Additional communication requirements should be formally evaluated and approved through change control.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 60,
+    "question": "Which of the following is a primary motivator for project communication?",
+    "options": [
+      "Differentiation",
+      "Integration",
+      "Integrity",
+      "Optimization"
+    ],
+    "correct": 1,
+    "explanation": "You should consider yourself an integrator as a project manager. This item focuses on your function as a communicator as well as an integrator.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 61,
+    "question": "Which of the following outcomes is the MOST LIKELY to result from communication blockers?",
+    "options": [
+      "Senior management is unhappy",
+      "Conflict occurs",
+      "Increased trust level",
+      "Delayed project"
+    ],
+    "correct": 1,
+    "explanation": "Miscommunication and communication blockages can result in conflict.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 62,
+    "question": "If the sender __________ the receiver, communication is more likely to improve.",
+    "options": [
+      "Demonstrates regard for the viewpoint of",
+      "Slowly speaks to",
+      "Employs greater body language while talking with",
+      "Speaks up to"
+    ],
+    "correct": 0,
+    "explanation": "Knowing the receiver's point of view will allow you to direct communication in a way that fulfills his demands.",
+    "version": "v7",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 63,
+    "question": "Which of the following is an input to the Plan Communications Management process?",
+    "options": [
+      "Project schedule",
+      "Project charter",
+      "Risk register",
+      "Quality management plan"
+    ],
+    "correct": 1,
+    "explanation": "The project charter provides high-level project information and authorizes the project.",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 64,
+    "question": "Which of the following is a key output of the Plan Communications Management process?",
+    "options": [
+      "Communications management plan",
+      "Project scope statement",
+      "Resource calendar",
+      "Stakeholder register"
+    ],
+    "correct": 0,
+    "explanation": "The Communications Management Plan is the primary output of this process.",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+  {
+    "number": 65,
+    "question": "Which technique is commonly used in the Plan Communications Management process?",
+    "options": [
+      "Monte Carlo analysis",
+      "Communication technology",
+      "Critical path method",
+      "Earned value analysis"
+    ],
+    "correct": 1,
+    "explanation": "Communication technology helps in determining the tools and platforms for managing project information.",
+    "version": "v6",
+    "area": "Communications & Stakeholder Management",
+    "notes": "-"
+  },
+],
+  "jokes": [
+  "— Oiga, ¿el otorrino va por número?— Van nombrando.— Qué gran actor, pero no me cambie de tema.",
+  "¿Por qué las mujeres de Lepe beben agua del mar? Para ser más saladas.",
+  "¿Qué le dice un jardinero a otro? Nos vemos cuando podamos.",
+  "La mayor exportación de Australia son los boomerangs. También son la mayor importación.",
+  "¿Y cómo se llama un boomerang que no vuelve? Palo.",
+  "Intenté organizar un torneo profesional de escondite, pero fue un completo fracaso. Los buenos jugadores son difíciles de encontrar.",
+  "El otro día vendí mi aspiradora. Lo único que hacía era acumular polvo.",
+  "¿Qué es rojo y tiene forma de cubo? Un cubo azul pintado de rojo.",
+  "Van dos ciegos y le dice uno al otro:— Ojalá lloviera.— Ojalá yo también.",
+  "— Mira, tronco, una piedra preciosa.— Pero si es un ladrillo...— Pues a mí me gusta.",
+  "Había un tipo que era tan borrachín que le llamaban \"genio\" porque cada vez que destapaban una botella aparecía.",
+  "Dos vascos a la salida de un examen de matemáticas.— Oye, Iñaki, ¿a ti que te dio el segundo problema?— ¿A mí? Infinito.— ¿Solo?",
+  "— Ramón, si supieras que voy a morir mañana, ¿qué me dirías hoy?— ¿Me prestas mil euros y mañana te los devuelvo?",
+  "Un chiste comunista no tiene gracia si no lo entiende todo el mundo.",
+  "¿Qué le dijo Batman a Robin antes de subir al coche? \"Robin, sube al coche\".",
+  "Tengo un amigo otaku que estaba triste, así que lo animé.",
+  "Van dos fantasmas y se cae el del médium.",
+  "— Oye, ¿sabes cómo se llaman los habitantes de Nueva York?— Hombre, pues todos no.",
+  "— Hola, ¿tienen libros para el cansancio?— Sí, pero están agotados.",
+  "¿Qué es rojo y malo para tus dientes? Un ladrillo.",
+  "¿Has oído hablar del astronauta claustrofóbico? Solo necesitaba un poco de espacio.",
+  "— ¿Te gusta el rock progresivo?— Cada vez más.",
+  "— Hola, soy paraguayo y quiero pedirle la mano de su hija para casarme con ella.— ¿Para qué?— Paraguayo.",
+  "¿Cómo se despiden los químicos? Ácido un placer.",
+  "— ¿Cuánto cuesta alquilar este coche?— Depende del tiempo.— Vale, pongamos que llueve...",
+  "¿Cómo se llama el campeón de buceo japonés? Tokofondo.",
+  "— A mí me gustaría vivir en una isla desierta.— A mí también.— ¡Caray! ¡Ya empezamos a llenarla!",
+  "Iba a contar un chiste sobre sodio... pero Na.",
+  "Conocí a mi novia en un ascensor. Dice que soy el amor de subida.",
+  "¿Qué pasa si se va la luz en una escuela privada? Que no se ve ni un pijo.",
+  "— Perdone, ¿dónde está la sección de libros sobre el sentido del gusto?— Lo siento, sobre gustos no hay nada escrito.",
+  "— Ha cometido usted un crimen matemático.— Pues lo asumo.— Pues lo arresto.",
+  "— Ramón, ¿dónde has estado?— En una clínica donde te quitan las ganas de fumar.— ¡Pero si estás fumando!— Ya… pero sin ganas.",
+  "— Doctor, sin rodeos, dígame la verdad, ¿tengo problemas de memoria?— ¡Que sí!",
+  "¿Por qué los chistes de rubias son tan cortos? Para que los hombres puedan recordarlos. — ¿Te sabes el chiste del electricista? — No. — Pues tiene mucha chispa.",
+  "— Hombre, Pepe, cómo has cambiado. — Yo no soy Pepe. — Pues más a mi favor.",
+  "— ¡Capitán, capitán! Están a punto de atacarnos 40 carabelas. — ¿Una flota? — No, flotan todas.",
+  "— ¿Sabes? Hoy me he comprado una paloma que cuesta diez mil euros. — ¿Mensajera? — No no, no te exagero nada.",
+  "¿Qué hay peor que encontrarse un gusano en una manzana? Encontrarse medio.",
+  "¿De dónde sale la porcelana? De las porceovejas.",
+  "Me gustan los elefantes. Todo lo demás me parece irrelefante.",
+  "¿Por qué no pueden hablar los dinosaurios? Porque están muertos.",
+  "¿Cuál es el animal más tonto de la selva? El oso polar.",
+  "— ¿Qué pasa si tiras un pato al agua? — Nada.",
+  "¿Qué le dice un gusano a otro? Me voy a dar la vuelta a la manzana.",
+  "¿Cuáles eran los personajes de dibujos animados favoritos del capitán del Titanic? Timón y Pumba.",
+  "— Hola, ¿Conchita? — No, con Tarzán.",
+  "¿Qué hace una abeja en un gimnasio? Zumba.",
+  "— ¡Me acaba de picar una serpiente! — ¿Cobra? — No, gratis.",
+  "¿Qué le dice un ganso a una gansa? ¡Vengansa!",
+  "Si se muere una pulga, ¿dónde va? Al pulgatorio.",
+  "¿Qué es un pez en un cine? Un mero espectador.",
+  "¿Por qué la gallina cuida tanto a sus pollitos? Porque le costó un huevo tenerlos.",
+  "¿Qué hace un pez mago? Nada por aquí, nada por allá.",
+  "¿Qué le dice la foca a su madre? I love you, mother foca.",
+  "¿Cuál es el colmo de un carnicero? Tener un perro salchicha y un hijo chuleta.",
+  "— Jaimito, ¿cuánto es 2 x 2? — Empate. — ¿Y 2 x 1? — ¡Oferta!",
+  "— Jaimito, sal del coche y mira si funciona el intermitente. — Ahora sí, ahora no, ahora sí, ahora no…",
+  "— ¿Dónde vas, Jaimito? — A por estiércol para las fresas. — ¿Pero por qué no te las comes con nata, como todo el mundo?",
+  "– Jaimito, ¿cuál es la definición de telepatía? – Un aparato de televisión para la hermana de mi mamá.",
+  "– Jaimito, ¿qué has aprendido hoy en clase? – Pues no lo suficiente mamá, ya que tengo que volver a ir mañana.",
+  "– Papá, ¿regañarías a un niño que no haya hecho nada? – Por supuesto que no, Jaimito. – ¡Menos mal! ¡Porque hoy no he hecho los deberes!",
+  "¿Qué le dice un techo a otro techo? Techo de menos.",
+  "¿Qué está al final de todo? La letra o.",
+  "Dos amigos van por la calle: — ¿Qué hora es? — Son las doce. — Ufff, qué tarde. — Pues haberme preguntado antes.",
+  "¿Cuál es el colmo de un libro? Que en otoño se caigan sus hojas.",
+  "¿Qué le dice una taza a otra? ¿Qué taza ciendo?",
+  "Un niño entra en una tienda y le dice al vendedor: — Por favor, quería unas gafas de sol. — ¿Para el sol? — No, no, para mí.",
+  "¿Qué se necesita para encender una vela? Que esté apagada.",
+  "¿Cuál es el animal que tiene más dientes? El ratoncito Pérez.",
+  "¿Qué le dice un pez a otro pez? ¡Nada!",
+  "¿Qué le dice una pulga a otra pulga? ¿Caminamos o esperamos al perro?",
+  "¿Qué le dice una iguana a otra? Somos iguanitas.",
+  "¿Cómo se dice veterinario en inglés? Dog-tor.",
+  "¿Qué le dijo un semáforo a otro? No me mires que me estoy cambiando.",
+  "¿Cómo se llama donde viven los minions? Condominions.",
+  "¿Qué le dice una banana a otra al despedirse? Hasta banana.",
+  "Estás obsesionado con la comida, de verdad. ¿Qué dices croquetamente?",
+  "Camarero, ese filete tiene muchos nervios. Pues normal, es la primera vez que se lo comen.",
+  "\"Me han despedido\". \"¿Y qué vas a hacer?\". \"Croquetas\". \"Digo con tu vida\". \"Pues comerme unas croquetas\".",
+  "\"¿Me da un café con leche corto?\". \"Se ha roto la máquina, cambio\".",
+  "¿Cómo se llama el primo vegano de Bruce Lee? Broco Lee.",
+  "Me he sacado el carnet de manipulador de alimentos. Ya tengo a los plátanos y a las mandarinas totalmente en contra de las fresas.",
+  "¿Cuál es la fruta más divertida? La naranja ja ja ja ja.",
+  "¿Qué le dice un espagueti a otro? ¡Oye, mi cuerpo pide salsa!",
+  "Una pera esperando el autobús. Llega una manzana y le pregunta: \"¿Hace mucho que espera?\". \"Uy sí, desde que era pequeñita\".",
+  "¿Te cuento un chiste verde rápido? Una lechuga en una moto.",
+  "Hay un montón de manzanas en un árbol y de repente una se cae. Todas se ríen y la caída dice: \"No os riais, ¡inmaduras!\".",
+  "Camarero, para mí una tortilla de patatas, para mi mujer una pizza con mozzarella, jamón al horno italiano, champiñones, alcachofas y tomate cortado en daditos. — ¿Una capricciosa? — Hasta los huevos, me tiene, oiga.",
+  "¿Sabes cómo se queda un mago después de comer? Magordito.",
+  "Mamá, el abuelo está malo. — Pues apártalo y cómete solo las patatas.",
+  "¿Cuál es el baile favorito del tomate? ¡La salsa!",
+  "Oye, ¿cuál es tu plato favorito? — Pues el hondo, porque cabe más comida.",
+  "Se abre el telón y se ve un tetrabrik de Don Simón. ¿Cómo se llama la película? Es tinto básico.",
+  "¿Cuál es el café más peligroso del mundo? El ex-preso.",
+  "¿Qué le dice una barra de pan a otra? Te presento a una miga.",
+  "¿Qué le dice un huevo a una sartén? Me tienes frito.",
+  "Estaba una pizza llorando en el cementerio. Llega otra y le dice: ¿Era familiar? — No, mediana.",
+  "El vino mejora con la edad. Yo mejoro con el vino.",
+  "¿Por qué el tomate se puso rojo? Porque vio la ensalada desnuda.",
+  "Están dos borrachos y uno le dice al otro: \"No sigas bebiendo que te estás poniendo borroso\".",
+  "Si me tomo un vino a las 6 de la mañana… ¿es tempranillo?",
+  "Ayer fui al McDonald's con cuatro amigos. Tres eran de Sagitario. Y el cuarto de Libra.",
+  "¿Qué dice una cereza mirándose al espejo? ¿Ceré eza?",
+  "Mamá, mamá, ¡los espaguetis se están pegando! — Déjalos que se maten.",
+  "Esto es un hombre que entra en un bar de pinchos y dice: Ay, ay, ay, ay.",
+  "¿Por qué las focas miran siempre hacia arriba? Porque ahí están los focos.",
+  "Un gato empieza a ladrar y otro le dice: ¿por qué ladras? — ¿Acaso no puedo aprender otro idioma?",
+  "Un pez le pregunta a otro: ¿qué hace tu mamá? — Nada.",
+  "¿Qué hace una vaca con los ojos cerrados? Leche concentrada.",
+  "Un león se comió un jabón. Ahora es puma.",
+  "¡Me acaba de picar una serpiente! — ¿Cobra? — No, gratis.",
+  "¿Cómo se dice disparo en árabe? Ahí-va-la-bala.",
+  "¿Cómo se dice pañuelo en japonés? Saka-moko.",
+  "¿Cómo se dice psicoanalista en japonés? Sakudo Tukoko.",
+  "Doctor, creo que necesito gafas. — De acuerdo, pero esto es un banco.",
+  "¿Por qué los diabéticos no pueden vengarse? Porque la venganza es dulce.",
+  "¿Por qué el libro de matemáticas fue al psicólogo? Porque tenía muchos problemas.",
+  "Pepito, si tengo 8 naranjas en una mano y 6 en la otra, ¿qué tengo? — Unas manos enormes.",
+  "Mamá, en el cole me llaman despistado. — Niño, que esta no es tu casa.",
+  "¿Cómo se llama el que tiene miedo a Santa Claus? Claustrofóbico.",
+  "¿Qué tipo de coche lleva Santa Claus? Un Renol.",
+  "¿Dónde cuelga Superman su capa? En superchero.",
+  "¿Qué le regaló Batman a Dora la exploradora? Una BatiDora.",
+  "¿Por qué Bob Esponja no va al gimnasio? Porque ya está cuadrado.",
+  "¿Qué le dice una impresora a otra? ¿Esta hoja es tuya o es impresión mía?",
+  "Conocí a mi novia en un ascensor. Dice que soy el amor de subida.",
+  "¿Por qué hablas con tus zapatos? Porque dicen que converse."
+  ],
+  "thoughts": [
+  "No hay que ir para atrás ni para darse impulso (Lao Tsé)",
+  "No hay caminos para la paz; la paz es el camino (Mahatma Gandhi)",
+  "Haz el amor y no la guerra (John Lennon)",
+  "Para trabajar basta estar convencido de una cosa: que trabajar es menos aburrido que divertirse (Charles Baudelaire)",
+  "Lo peor que hacen los malos es obligarnos a dudar de los buenos (Jacinto Benavente)",
+  "Las guerras seguirán mientras el color de la piel siga siendo más importante que el de los ojos (Bob Marley)",
+  "Aprende a vivir y sabrás morir bien (Confucio)",
+  "Cada día sabemos más y entendemos menos (Albert Einstein)",
+  "El mundo no está en peligro por las malas personas sino por aquellas que permiten la maldad (Albert Einstein)",
+  "La medida del amor es amar sin medida (San Agustín)",
+  "No hay nada que un hombre no sea capaz de hacer cuando una mujer le mira (Casanova)",
+  "Dar el ejemplo no es la principal manera de influir sobre los demás; es la única manera (Albert Einstein)",
+  "El dinero no puede comprar la vida (Bob Marley)",
+  "Si es bueno vivir, todavía es mejor soñar, y lo mejor de todo, despertar (Antonio Machado)",
+  "La mayor declaración de amor es la que no se hace; el hombre que siente mucho, habla poco (Platón)",
+  "Si das pescado a un hombre hambriento lo nutres durante una jornada. Si le enseñas a pescar, le nutrirás toda su vida (Lao Tsé)",
+  "El poder no cambia a las personas, solo revela quiénes son realmente (Meryl Streep)",
+  "Ningún hombre es lo bastante bueno para gobernar a otros sin su consentimiento (Abraham Lincoln)",
+  "Todo lo que se come sin necesidad se roba al estómago de los pobres (Mahatma Gandhi)",
+  "Vivir sola es como estar en una fiesta donde nadie te hace caso (Marilyn Monroe)",
+  "El cuerpo humano es el carruaje; el yo, el hombre que lo conduce; el pensamiento son las riendas, y los sentimientos, los caballos (Platón)",
+  "Estar preparado es importante, saber esperarlo es aún más, pero aprovechar el momento adecuado es la clave de la vida (Arthur Schnitzler)",
+  "No estoy tan enamorado de mis propias opiniones que ignore lo que los demás puedan pensar acerca de ellas (Copérnico)",
+  "La más estricta justicia no creo que sea siempre la mejor política (Abraham Lincoln)",
+  "El sabio no dice nunca todo lo que piensa, pero siempre piensa todo lo que dice (Aristóteles)",
+  "Hay dos cosas que son infinitas: el universo y la estupidez humana; de la primera no estoy muy seguro (Albert Einstein)",
+  "El nacimiento y la muerte no son dos estados distintos, sino dos aspectos del mismo estado (Mahatma Gandhi)",
+  "Lo que importa verdaderamente en la vida no son los objetivos que nos marcamos, sino los caminos que seguimos para lograrlo (Peter Bamm)",
+  "El mundo es bello, pero tiene un defecto llamado hombre (Friedrich Nietzsche)",
+  "La pereza viaja tan despacio que la pobreza no tarda en alcanzarla (Benjamin Franklin)",
+  "Una velada en que todos los presentes estén absolutamente de acuerdo es una velada perdida (Albert Einstein)",
+  "Pienso, luego existo (René Descartes)",
+  "Lo que no te mata, te hace más fuerte (Friedrich Nietzsche)",
+  "No abras los labios si no estás seguro de que lo que vas a decir es más hermoso que el silencio (Proverbio árabe)",
+  "De todos los animales de la creación el hombre es el único que bebe sin tener sed, come sin tener hambre y habla sin tener nada que decir (John Steinbeck)",
+  "La esperanza es un estimulante vital muy superior a la suerte (Friedrich Nietzsche)",
+  "Un hermano puede no ser un amigo, pero un amigo será siempre un hermano (Benjamin Franklin)",
+  "Sólo puede ser feliz siempre el que sepa ser feliz con todo (Confucio)",
+  "Ninguna persona merece tus lágrimas, y quien se las merezca no te hará llorar (Gabriel García Márquez)",
+  "De humanos es errar y de necios permanecer en el error (Marco Tulio Cicerón)",
+  "Algunas personas son tan falsas que ya no distinguen que lo que piensan es justamente lo contrario de lo que dicen (Marcel Aymé)",
+  "La verdadera sabiduría está en reconocer la propia ignorancia (Sócrates)",
+  "La peor experiencia es la mejor maestra (Kovo)",
+  "La Educación es el pasaporte hacia el futuro, el mañana pertenece a aquellos que se preparan para él en el día de hoy (Malcolm X)",
+  "Los amigos se convierten con frecuencia en ladrones de nuestro tiempo (Platón)",
+  "No permitas que ningún ser humano te haga caer tan bajo como para odiarle (Martin Luther King)",
+  "No puedo esperar a hacerlo, quiero hacerlo ahora, quiero que ocurra si va a ocurrir (Georgia O'Keeffe)",
+  "Un amigo de todos es un amigo de nadie (Aristóteles)",
+  "Hace falta toda una vida para aprender a vivir (Séneca)",
+  "No pain no gain (Benjamín Franklin)",
+  "Estos son mis principios y si no te gustan, tengo otros (Groucho Marx)",
+  "La política es el arte de buscar problemas, encontrarlos, realizar un diagnóstico falso y aplicar después remedios equivocados (Groucho Marx)",
+  "Los verdaderos líderes deben estar dispuestos a sacrificarlo todo por la libertad de su pueblo (Nelson Mandela)",
+  "Es mejor permanecer callado y parecer tonto que hablar y despejar las dudas definitivamente (Groucho Marx)",
+  "Aquel que más posee, más miedo tiene de perderlo (Leonardo Da Vinci)",
+  "La inspiración existe, pero tiene que encontrarte trabajando (Picasso)",
+  "Incluso la gente que afirma que no podemos hacer nada para cambiar nuestro destino, mira antes de cruzar la calle (Stephen Hawking)",
+  "Ojo por ojo y el mundo acabará ciego (Mahatma Gandhi)",
+  "Vive como si fueras a morir mañana; aprende como si el mundo fuera a durar para siempre (Mahatma Gandhi)",
+  "Solo sé que no sé nada (Sócrates)",
+  "Nunca rompas el silencio si no es para mejorarlo (Beethoven)",
+  "Puedes engañar a todo el mundo algún tiempo. Puedes engañar a algunos todo el tiempo. Pero no puedes engañar a todo el mundo todo el tiempo (Abraham Lincoln)",
+  "La mejor manera de librarse de la tentación es caer en ella (Oscar Wilde)",
+  "La duda es la madre de la invención (Galileo Galilei)",
+  "Podrán cortar todas las flores, pero no podrán detener la primavera (Pablo Neruda)",
+  "Es tan corto el amor y tan largo el olvido (Pablo Neruda)",
+  "Uno llega a ser grande por lo que lee y no por lo que escribe (Borges)",
+  "Uno es dueño de lo que calla y esclavo de lo que habla (Sigmund Freud)",
+  "El único hombre que no se equivoca es el que nunca hace nada (Goethe)",
+  "Vale más hacer y arrepentirse, que no hacer y arrepentirse (Maquiavelo)",
+  "Si quieres cambiar al mundo, cámbiate a ti mismo (Mahatma Gandhi)",
+  "Un amigo fiel es un alma en dos cuerpos (Aristóteles)",
+  "La vida no es sino una continua sucesión de oportunidades para sobrevivir (Gabriel García Márquez)",
+  "Se necesita poco para hacer las cosas bien, pero menos aún para hacerlas mal (Paul Bocuse)",
+  "Con veinte años todos tienen el rostro que Dios les ha dado; con cuarenta el rostro que les ha dado la vida y con sesenta el que se merecen (Albert Schweitzer)",
+  "El amor no tiene cura, pero es la única medicina para todos los males (Konrad Adenauer)",
+  "No hay camino para la verdad, la verdad es el camino (Mahatma Gandhi)",
+  "El éxito tiene muchos padres, pero el fracaso es huérfano (John Fitzgerald Kennedy)",
+  "Quien no haya sufrido lo que yo, que no me dé consejos (Sófocles)",
+  "La vida es un diez por ciento como la hacemos y un noventa por ciento como la tomamos (Irving Berlín)",
+  "El hombre que más ha vivido no es aquél que más años ha cumplido, sino aquel que más ha experimentado la vida (Jean Jacques Rousseau)",
+  "En los momentos de crisis, solo la imaginación es más importante que el conocimiento (Albert Einstein)",
+  "Nuestros hijos no tendrán tiempo para discutir sobre el cambio climático. Solo podrán convivir con sus efectos (Barack Obama)",
+  "Yo traeré de regreso el sueño americano: más grande, mejor y más fuerte que nunca. Volveremos hacer de EE.UU una nación poderosa (Donald Trump)",
+  "Si quieres cambiar el mundo, toma tu pluma y escribe (Martín Lutero)",
+  "Hay verdades que no son para todos los hombres, ni para todos los tiempos (Voltaire)",
+  "Sé el cambio que quieres ver en el mundo (Mahatma Gandhi)",
+  "La raíz del sufrimiento es el apego (Buda)",
+  "Todo lo que decimos es 'Dale una oportunidad a la paz' (John Lennon)",
+  "La religión es el opio del pueblo (Karl Marx)",
+  "Hay dos clases de hombres: quienes hacen la historia y quienes la padecen (Camilo José Cela)",
+  "Si Hitler invadiera el infierno, yo haría un discurso en la Cámara de los Comunes con referencias favorables al diablo (Winston Churchill)",
+  "Todo lo que necesitas es amor (John Lennon)",
+  "La verdad es siempre revolucionaria (Lenin)",
+  "La peor lucha es la que no se hace (Karl Marx)",
+  "Vence la ira con serenidad. Vence la maldad con bondad. Vence el egoísmo con generosidad. Vence la deshonestidad con verdad (Buda)",
+  "La historia me absolverá (Fidel Castro)",
+  "Hay dos maneras de vivir su vida: una como si nada es un milagro, la otra es como si todo es un milagro (Albert Einstein)",
+  "Veni, Vidi, Vici (Julio César)",
+  "No sé con qué armas se peleará la tercera guerra mundial, pero la cuarta será con palos y piedras (Albert Einstein)",
+  "Los seres humanos hacen su propia historia, aunque bajo circunstancias influidas por el pasado (Karl Marx)",
+  "Si quieres ser feliz, sé feliz (León Tolstoi)",
+  "Aprende a dejar ir. Esa es la clave de la felicidad (Buda)",
+  "La historia se repite, ese es uno de los errores de la historia (Charles Darwin)",
+  "La felicidad se alcanza cuando lo que uno piensa, lo que uno dice y lo que uno hace están en armonía (Mahatma Gandhi)",
+  "Los pecados escriben la historia, el bien es silencioso (Goethe)",
+  "No deseo que las mujeres tengan poder sobre los hombres, sino sobre ellas mismas (Mary Wollstonecraft)",
+  "Vale más actuar exponiéndose a arrepentirse de ello, que arrepentirse de no haber hecho nada (Giovanni Boccaccio)",
+  "No he venido a complacer a nadie, mi misión es crear (Frida Kahlo)",
+  "El pesimista se queja del viento; el optimista espera que cambie; el realista ajusta las velas (William George Ward)",
+  "No se puede encontrar la paz evitando la vida (Virginia Woolf)",
+  "La libertad no consiste en tener un buen amo, sino en no tener ninguno (Cicerón)",
+  "Una nación que gasta más en armamento militar que en programas sociales se acerca a la muerte espiritual (Martin Luther King)",
+  "Donde hay amor, hay vida (Mahatma Gandhi)",
+  "Si no recuerdas la más ligera locura en que el amor te hizo caer, no has amado (William Shakespeare)",
+  "La juventud no es un tiempo de la vida, es un estado del espíritu (Mateo Alemán)",
+  "El alma que hablar puede con los ojos, también puede besar con la mirada (Gustavo Adolfo Bécquer)",
+  "La injusticia, en cualquier parte, es una amenaza a la justicia en todas partes (Martin Luther King)",
+  "Una mentira puede dar la vuelta al mundo antes de que la verdad tenga tiempo de ponerse los zapatos (Mark Twain)",
+  "El arte de vencer se aprende en las derrotas (Simón Bolívar)",
+  "Cuanto más grande es el caos, más próxima está la solución (Carl Jung)",
+  "El secreto de la existencia humana no solo está en vivir, sino también en saber para qué se vive (Fiódor Dostoyevski)",
+  "El que tiene un porqué para vivir puede soportar casi cualquier cómo (Friedrich Nietzsche)",
+  "La libertad es el derecho de hacer lo que no perjudica a los demás (Voltaire)",
+  "El amor es la única cosa que crece cuando se reparte (Antoine de Saint-Exupéry)",
+  "No podemos resolver los problemas con el mismo pensamiento que usamos al crearlos (Albert Einstein)"
+  ]
+}
