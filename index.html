@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PMP - Exam Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Firebase SDKs MODULAR (v12.8.0) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import {
+    getAuth,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    signInWithPopup,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    orderBy,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBWctc8V2t30ZX6B88xcfeljfaLfuK8ohM",
+    authDomain: "cmp-exam-prep.firebaseapp.com",
+    projectId: "cmp-exam-prep",
+    storageBucket: "cmp-exam-prep.firebasestorage.app",
+    messagingSenderId: "777953288024",
+    appId: "1:777953288024:web:13f1413295d3f828340f2d"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const googleProvider = new GoogleAuthProvider();
+
+  // Hacer disponibles globalmente para el resto del código
+  window.auth = auth;
+  window.db = db;
+  window.googleProvider = googleProvider;
+  window.onAuthStateChanged = onAuthStateChanged;
+  window.signInWithPopup = signInWithPopup;
+  window.signOut = signOut;
+  window.getDocs = getDocs;
+  window.collection = collection;
+  window.query = query;
+  window.orderBy = orderBy;
+  window.addDoc = addDoc;
+  window.serverTimestamp = serverTimestamp;
+</script>
+<style>
+:root{--bg-1:#E9F2FF;--card:#FFF;--accent:#4D89FF;--primary:#3b82f6;--muted:#9aa7bf;--success:#4CAF50;--danger:#F44336}
+*{box-sizing:border-box;font-family:'Lato',sans-serif}
+body{margin:0;background:linear-gradient(180deg,var(--bg-1),#F6FBFF);color:#10233b;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.container{width:100%;max-width:980px;padding:15px}
+/* Header styles actualizados */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.brand .lead {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  max-width: 620px;
+  line-height: 1.4;
+}
+
+.header-buttons{display:flex;gap:8px;align-items:center}
+.fullscreen-btn,.hambtn,.auth-btn,.lang-btn,.home-header-btn{background:transparent;border:none;cursor:pointer;padding:8px;border-radius:6px}
+.auth-btn{background:var(--accent);color:white;font-weight:600;font-size:0.85rem;padding:6px 12px;display:flex;align-items:center;gap:4px}
+.auth-btn:hover{opacity:0.9}
+.auth-btn .user-icon{width:16px;height:16px}
+.user-info{display:flex;align-items:center;gap:6px;background:#f0f4ff;padding:4px 10px;border-radius:6px;font-size:0.8rem;color:#27456e;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.user-info img{border-radius:50%;width:20px;height:20px}
+/* Estilos para el menú dropdown */
+.menu-dropdown {
+    position: absolute;
+    right: 15px;
+    top: 54px;
+    background: var(--card);
+    box-shadow: 0 10px 30px rgba(20,40,80,0.08);
+    border-radius: 8px;
+    padding: 0;
+    display: none;
+    min-width: 240px;
+    z-index: 70;
+    overflow: hidden;
+}
+
+.menu-dropdown.hidden {
+    display: none;
+}
+
+.menu-section {
+    padding: 12px;
+}
+
+.menu-section.user-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafd;
+    border-bottom: 1px solid #f0f4fa;
+}
+
+.menu-section.user-section img {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+.menu-section.user-section > div {
+    flex: 1;
+}
+
+.menu-section.user-section #userName {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #27456e;
+    margin-bottom: 4px;
+}
+
+.menu-section.user-section button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.menu-section.user-section button:hover {
+    opacity: 0.9;
+}
+
+.menu-section.user-section #logoutBtn {
+    background: #f0f4ff;
+    color: #27456e;
+    border: 1px solid rgba(77,137,255,0.2);
+}
+
+.menu-section hr {
+    margin: 0;
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.menu-link {
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #27456e;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+.menu-link:hover {
+    background: #f4f7ff;
+}
+
+.menu-link.tips-option {
+    padding-left: 24px;
+    font-size: 0.85rem;
+}
+
+.menu-section.about-section {
+    background: #f8fafd;
+    border-top: 1px solid #f0f4fa;
+}
+
+.lang-menu-list{position:absolute;right:15px;top:54px;background:var(--card);box-shadow:0 10px 30px rgba(20,40,80,0.08);border-radius:8px;padding:6px 0;display:none;min-width:120px;z-index:65}
+.lang-menu-list button{width:100%;text-align:left;padding:10px 14px;border:none;background:transparent;cursor:pointer}
+.lang-menu-list button:hover{background:#f4f7ff}
+.start-card{display:flex;flex-direction:column;gap:8px;align-items:center;background:linear-gradient(90deg,rgba(255,255,255,0.85),rgba(255,255,255,0.6));padding:12px;border-radius:10px;box-shadow:0 8px 20px rgba(79,111,173,0.06);margin-top:10px}
+.hero{width:100%}
+.hero img{width:100%;height:210px;object-fit:cover;border-radius:8px}
+.controls{width:100%;display:flex;flex-direction:column;gap:6px}
+.controls label{font-weight:700;color:#27456e;font-size:0.95rem}
+select,input{padding:6px;border-radius:6px;border:1px solid rgba(39,69,110,0.08)}
+.primary{background:var(--accent);color:#fff;border:none;padding:8px;border-radius:8px;cursor:pointer;font-weight:700;transition:transform 0.1s, opacity 0.1s}
+.primary:active{transform:translateY(2px);opacity:0.9}
+.secondary{background:transparent;border:1px solid rgba(77,137,255,0.18);padding:6px;border-radius:8px;cursor:pointer;transition:transform 0.1s, opacity 0.1s}
+.secondary:active{transform:translateY(2px);opacity:0.9}
+.danger-btn{background:var(--danger);color:#fff;border:none;padding:8px;border-radius:8px;cursor:pointer;font-weight:700;transition:transform 0.1s, opacity 0.1s}
+.danger-btn:active{transform:translateY(2px);opacity:0.9}
+.version-buttons{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}
+.version-btn{padding:6px 10px;border-radius:6px;border:1px solid rgba(77,137,255,0.3);background:#fff;color:#27456e;cursor:pointer;font-weight:600;transition:all 0.2s;font-size:0.9rem}
+.version-btn:hover{background:#f4f7ff}
+.version-btn.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
+.areas-container{width:100%;max-height:180px;overflow:auto;border:1px solid rgba(39,69,110,0.04);padding:6px;border-radius:6px;background:#fff;margin-top:4px}
+.areas-container label{display:inline-flex;align-items:center;gap:6px;margin:4px 6px;white-space:nowrap;font-size:0.9rem}
+.areas-actions{display:flex;gap:6px;margin-top:4px;flex-wrap:wrap}
+.score{font-weight:700;margin-top:10px;color:#12233b;font-size:0.9rem}
+.quiz-card{display:none;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(50,70,100,0.06);margin-top:12px;width:100%;overflow:hidden;position:relative}
+.quiz-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+.home-btn{background:transparent;border:none;cursor:default;padding:6px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center}
+.home-btn.warning svg{animation:blink 1s steps(2) infinite}
+.home-btn.warning svg path,.home-btn.warning svg circle{stroke:var(--danger)!important;fill:none!important}
+@keyframes blink{0%{opacity:1}50%{opacity:0.15}100%{opacity:1}}
+.timers{display:flex;gap:10px;align-items:center;color:#27456e;font-weight:700;flex-wrap:wrap}
+.time-box{display:flex;flex-direction:column;align-items:center;font-size:0.85rem;min-width:90px;padding:6px;border-radius:6px;background:rgba(255,255,255,0.95);box-shadow:0 3px 8px rgba(0,0,0,0.04);text-align:center}
+.time-box small{color:var(--muted);font-weight:600;font-size:0.75rem}
+.question{font-size:1rem;margin-bottom:8px;color:#12233b;animation:fadeIn .34s ease}
+.info{color:var(--muted);margin-bottom:6px;font-size:0.85rem}
+.options{display:flex;flex-direction:column}
+.option-btn{padding:10px;border-radius:8px;border:none;background:#f6f9ff;box-shadow:0 4px 0 rgba(0,0,0,0.06);margin:6px 0;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,border-radius .12s ease;text-align:left;font-size:0.95rem}
+.option-btn:disabled{opacity:.85;cursor:default}
+.correct{background:var(--success)!important;color:white!important;box-shadow:none!important;transform:none!important}
+.wrong{background:var(--danger)!important;color:white!important;box-shadow:none!important;transform:none!important}
+.option-btn.pressed{border-radius:24px;transform:translateY(2px) scale(.99);box-shadow:inset 0 3px 8px rgba(0,0,0,0.06)}
+.option-btn.selected{outline:2px solid rgba(77,137,255,0.12);box-shadow:0 6px 0 rgba(0,0,0,0.04)}
+#explanation{display:none;margin-top:10px;padding:10px;background:#f4f7ff;border-radius:6px;color:#6b7280;font-size:0.85rem;font-style:italic}
+#question-area{display:none;margin-top:10px;color:var(--muted);font-size:0.85rem}
+.nav-buttons{display:flex;justify-content:space-between;gap:6px;margin-top:10px}
+.nav-btn{padding:8px 12px;border-radius:6px;border:none;background:var(--primary);color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-width:90px;font-size:0.9rem}
+.nav-btn svg{width:16px;height:16px}
+.nav-btn:active{opacity:0.85;transform:translateY(2px)}
+.nav-btn.finalize{background:var(--danger)}
+.nav-btn:disabled{background:#9aa7bf!important;cursor:not-allowed;opacity:0.7}
+.icon-btn{background:var(--accent);border:none;color:#fff;padding:6px;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.icon-btn:active{opacity:0.85;transform:translateY(2px)}
+.end-actions{gap:20px!important}
+#restart-btn{transform:scale(1.4);transform-origin:center}
+.charts-grid{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.chart-card{background:linear-gradient(180deg,#fff,#fbfdff);padding:10px;border-radius:8px;box-shadow:0 6px 16px rgba(15,30,60,0.06);display:flex;flex-direction:column;align-items:center;min-height:180px}
+.chart-card canvas{width:100%!important;height:180px!important;display:block}
+.results-group{background:var(--card);border-radius:10px;padding:12px;margin-bottom:10px;box-shadow:0 6px 16px rgba(15,30,60,0.06);border:1px solid rgba(15,30,60,0.04)}
+.results-group h4,.results-group h3{margin:4px 0 8px 0;color:var(--accent)}
+.stats-box{margin-top:10px;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 4px 12px rgba(0,0,0,0.04);background:#fcfcff}
+.stats-box h5{margin:0 0 4px 0;color:#27456e}
+.stats-box div{margin-bottom:6px}
+.stats-box ul{margin:3px 0 6px 15px;padding:0}
+.stats-box ul li{list-style-type:none;position:relative;padding-left:10px;font-size:0.9rem}
+.stats-box ul li::before{content:"-";position:absolute;left:0}
+.history p{position:relative;padding-left:18px;margin:6px 0;font-size:0.9rem}
+.history p::before{content:'➜';position:absolute;left:0;top:0;color:var(--accent)}
+.end-screen{display:none;margin-top:12px;background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(50,70,100,0.06);width:100%;position:relative}
+.results-title{text-align:center;font-size:1.1rem;margin:4px 0 8px 0;color:var(--accent);font-weight:800}
+.end-actions{position:absolute;top:12px;right:12px;display:flex;gap:6px}
+footer{margin-top:16px;padding:10px 0;color:#55677a;text-align:center;width:100%;font-size:0.85rem}
+.modal-backdrop,.timeup-backdrop,.about-backdrop,.pmp-tips-backdrop,.progress-backdrop,.finish-backdrop,.home-exit-backdrop{position:fixed;inset:0;background:rgba(10,20,40,0.35);align-items:center;justify-content:center;z-index:220;display:none}
+.modal-backdrop.visible,.timeup-backdrop.visible,.about-backdrop.visible,.pmp-tips-backdrop.visible,.progress-backdrop.visible,.finish-backdrop.visible,.home-exit-backdrop.visible{display:flex}
+.modal,.timeup-box,.about-box,.pmp-tips-box,.progress-box,.finish-box,.home-exit-box{background:var(--card);padding:15px;border-radius:8px;box-shadow:0 8px 24px rgba(15,30,60,0.18);width:90%;max-width:500px;text-align:center;max-height:85vh;overflow-y:auto}
+.pmp-tips-box,.progress-box{min-height:250px;display:flex;flex-direction:column}
+.pmp-tabs{display:flex;justify-content:center;gap:10px;margin-bottom:15px}
+.pmp-tab{padding:8px 16px;border-radius:6px;border:1px solid rgba(77,137,255,0.3);background:#fff;color:#27456e;cursor:pointer;font-weight:600}
+.pmp-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pmp-content{flex:1;display:flex;flex-direction:column;justify-content:center;margin:10px 0;font-style:italic;font-size:1rem;text-align:left;padding:10px;background:#f8fafd;border-radius:6px}
+.pmp-actions{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.progress-content{flex:1;display:flex;flex-direction:column;justify-content:flex-start;margin:10px 0;font-size:0.9rem;text-align:left}
+.progress-stats{background:#f8fafd;padding:15px;border-radius:6px;margin-top:10px}
+.progress-stats h4{margin-top:0;color:var(--accent)}
+.progress-stats p{margin:8px 0}
+.tooltip{position:fixed;background:#22334a;color:#fff;padding:5px 7px;border-radius:5px;font-size:0.8rem;pointer-events:none;opacity:0;transform:translateY(5px);transition:opacity .18s ease,transform .18s ease;z-index:1000}
+.tooltip.fixed{display:none!important}
+.option-group{background:#fff;border-radius:8px;border:1px solid rgba(39,69,110,0.1);box-shadow:0 3px 10px rgba(0,0,0,0.05);padding:10px;margin-bottom:12px}
+.option-group label{font-weight:700;color:#27456e;margin-bottom:6px;display:block;font-size:0.95rem}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* Estilos para el modal "Acerca de" actualizado */
+.about-card{
+    max-width:420px;
+    background:#ffffff;
+    border-radius:12px;
+    padding:16px 18px;
+    box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+    border: 1px solid rgba(15,23,42,0.04);
+    color: #0f172a;
+    margin: 12px 0;
+}
+
+.about-card h3{
+    margin:0 0 10px 0;
+    font-size:15px;
+    letter-spacing:0.2px;
+    color:#0b1140;
+}
+
+.about-body{ display:flex; flex-direction:column; gap:12px; }
+
+.about-main {
+    text-align: center;
+}
+
+.about-main .app-title{
+    font-weight:700;
+    font-size:16px;
+    margin-bottom:4px;
+}
+
+.about-main .app-meta{
+    font-size:13px;
+    color:#4b5563;
+    margin-bottom:6px;
+}
+
+.about-main .copyright{
+    font-size:13px;
+    color:#374151;
+}
+
+.disclaimer{
+    margin:0;
+    font-size:12px;
+    color:#6b7280;
+    line-height:1.35;
+    background: linear-gradient(180deg, rgba(11,94,215,0.02), transparent);
+    padding:10px;
+    border-radius:8px;
+    border:1px solid rgba(99,102,241,0.04);
+}
+
+/* Responsive small screens */
+@media (max-width:480px){
+    .about-card{ padding:14px; max-width:100%; border-radius:10px; }
+    .about-card h3{ font-size:14px; }
+    .about-main .app-title{ font-size:15px; }
+    .modal, .timeup-box, .about-box, .pmp-tips-box, .progress-box, .finish-box, .home-exit-box {
+        max-height: 90vh;
+        margin: 10px;
+    }
+}
+
+@media(max-width:820px){.hero img{height:160px}.charts-grid{gap:6px}.container{padding:10px}.start-card{padding:10px;gap:6px}.version-buttons{gap:4px}.version-btn{padding:5px 8px;font-size:0.85rem}.areas-container label{font-size:0.85rem}.timers{gap:8px}.time-box{min-width:80px;padding:5px;font-size:0.8rem}.time-box small{font-size:0.7rem}.nav-btn{min-width:80px;padding:7px 10px}.chart-card{min-height:160px}.chart-card canvas{height:160px!important}#restart-btn{transform:scale(1.2)}}
+@media(max-width:480px){
+    .container{padding:8px}
+    .hero img{height:140px}
+    .start-card{padding:8px;gap:4px;margin-top:5px}
+    .controls{gap:4px}
+    .option-group{padding:8px;margin-bottom:8px}
+    .version-buttons{justify-content:center}
+    .version-btn{padding:4px 6px;font-size:0.8rem;flex:1;min-width:70px}
+    .areas-actions{justify-content:center}
+    .areas-actions button{flex:1;min-width:120px;padding:5px}
+    .areas-container{max-height:150px}
+    #custom-controls .option-group>div{flex-direction:column;align-items:stretch}
+    #custom-controls .option-group>div>div{margin-bottom:8px;width:100%}
+    #custom-count,#custom-time{width:100%!important}
+    .nav-buttons{flex-wrap:wrap;justify-content:center}
+    .nav-btn{min-width:70px;padding:6px 8px;font-size:0.85rem}
+    .timers{justify-content:center}
+    .time-box{min-width:70px;flex:1}
+    .quiz-toolbar{flex-direction:column;align-items:stretch;gap:8px}
+    .quiz-toolbar>div:last-child{justify-content:center}
+    .option-btn{padding:8px;font-size:0.9rem}
+    .results-group{padding:10px}
+    .end-screen{padding:12px}
+    .end-actions{top:8px;right:8px}
+    #restart-btn{transform:scale(1.1)}
+    .results-title{font-size:1rem}
+    /* Header responsive */
+    .brand h1 {
+        font-size: 1.1rem;
+    }
+    .brand .lead {
+        font-size: 0.85rem;
+    }
+}
+@media(max-width:360px){.hero img{height:120px}.version-btn{font-size:0.75rem;padding:3px 5px}.areas-actions button{font-size:0.8rem}.time-box{min-width:60px;font-size:0.75rem}.time-box small{font-size:0.65rem}.nav-btn{min-width:60px;font-size:0.8rem}.question{font-size:0.95rem}}
+</style>
+</head>
+<body>
+<div class="container">
+<header class="app-header">
+  <div class="brand">
+    <h1>Simulador de Examen PMP®</h1>
+    <p class="lead">
+      Preparación profesional alineada al PMBOK® 7 — práctica por dominios,
+      examen completo y repaso.
+    </p>
+  </div>
+  <div style="position:relative">
+    <div class="header-buttons">
+      <button class="fullscreen-btn" id="fullscreen-btn" aria-label="Pantalla completa" data-tooltip="Pantalla completa">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" id="fullscreen-icon"><path d="M7 7h4V5H5v6h2V7zm10 0h-4V5h6v6h-2V7zm-10 10v-4H5v6h6v-2H7zm10 0h-4v2h6v-6h-2v4z" fill="#27456e"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" id="exit-fullscreen-icon" style="display:none"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z" fill="#27456e"/></svg>
+      </button>
+      <!-- Botón de idioma (globo terráqueo) -->
+      <button class="lang-btn" id="lang-btn" aria-label="Idioma" data-tooltip="Idioma">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="#27456e" stroke-width="1.2" fill="none"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z" stroke="#27456e" stroke-width="1.2" fill="none"/>
+        </svg>
+      </button>
+      <!-- Botón de inicio (casita) -->
+      <button class="home-header-btn" id="home-header-btn" aria-label="Volver al inicio" data-tooltip="Inicio">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="#27456e" stroke-width="1.2" fill="none"/>
+          <path d="M9 22V12h6v10" stroke="#27456e" stroke-width="1.2" fill="none"/>
+        </svg>
+      </button>
+      <!-- Botón del menú principal -->
+      <div class="top-menu">
+        <button id="menuBtn" class="hambtn" aria-label="Menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="2" rx="1" fill="#27456e"/><rect x="3" y="11" width="18" height="2" rx="1" fill="#27456e"/><rect x="3" y="17" width="18" height="2" rx="1" fill="#27456e"/></svg>
+        </button>
+        <div id="menuDropdown" class="menu-dropdown hidden">
+          <!-- Usuario -->
+          <div class="menu-section user-section">
+            <img id="userAvatar" src="https://via.placeholder.com/48" alt="Usuario">
+            <div>
+              <div id="userName">Invitado</div>
+              <button id="loginBtnMenu">Iniciar sesión</button>
+              <button id="logoutBtnMenu" class="hidden">Cerrar sesión</button>
+            </div>
+          </div>
+          <hr>
+          <!-- Mi progreso -->
+          <div class="menu-section">
+            <button class="menu-link" id="progressMenuBtn">Mi progreso</button>
+          </div>
+          <hr>
+          <!-- Consejos -->
+          <div class="menu-section">
+            <button class="menu-link" id="consejosMenuBtn">Consejos</button>
+            <div id="consejosSubmenu" style="display: none;">
+              <button class="menu-link tips-option" data-tip-type="consejos_PMP">Certificación PMP</button>
+              <button class="menu-link tips-option" data-tip-type="pmbok7_caracteristicas">Sobre el PMBOK7</button>
+            </div>
+          </div>
+          <hr>
+          <!-- Acerca de -->
+          <div class="menu-section about-section">
+            <button class="menu-link" id="aboutMenuBtn">Acerca de</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Menú de idioma -->
+    <div class="lang-menu-list" id="lang-menu-list" role="menu" aria-hidden="true">
+      <button data-lang="es">Español</button>
+      <button data-lang="en">English</button>
+    </div>
+  </div>
+</header>
+<div id="start-screen">
+<div class="start-card">
+<div class="hero"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Estudio PMP"></div>
+<div class="controls" aria-hidden="false">
+<div><label style="font-weight:800;display:block;margin-bottom:4px;font-size:1rem;">Modalidad:</label>
+<label><input type="radio" name="mode" value="exam" checked> Simulador Examen PMP (180q - 250')</label><br>
+<label><input type="radio" name="mode" value="custom"> Personalizar examen</label>
+<p id="exam-note" style="margin:6px 0 0 0;color:#27456e;font-size:0.85rem;">Se simula un examen real de 180 preguntas en 250 minutos (se incluyen dos posibles descansos de 10 minutos en el total).</p></div>
+<div id="exam-controls" style="margin-top:6px"><div class="option-group"><label for="version-filter">Versión (solo para Exam PMP):</label><br>
+<div class="version-buttons" id="exam-version-buttons"><button class="version-btn" data-value="v6">v6</button><button class="version-btn selected" data-value="v7">v7</button></div><input type="hidden" id="version-filter-exam" value="v7"></div></div>
+<div id="custom-controls" style="margin-top:6px;display:none;border-top:1px dashed rgba(0,0,0,0.04);padding-top:6px">
+<div class="option-group"><label style="font-weight:700;">Versión del examen:</label><br>
+<div class="version-buttons" id="custom-version-buttons"><button class="version-btn selected" data-value="both">Ambas</button><button class="version-btn" data-value="v6">v6</button><button class="version-btn" data-value="v7">v7</button></div><input type="hidden" id="custom-version" value="both"></div>
+<div class="option-group" style="margin-top:12px"><label style="font-weight:700;">Áreas (marcar):</label>
+<div class="areas-actions"><button id="select-all-areas" class="secondary">Seleccionar todo</button><button id="deselect-all-areas" class="secondary">Deseleccionar todo</button></div>
+<div class="areas-container" id="areas-list"></div></div>
+<div class="option-group" style="margin-top:12px"><label style="font-weight:700;">Configuración del examen:</label>
+<div style="margin-top:4px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+<div style="flex:1;min-width:150px"><label for="custom-count">Cantidad de preguntas:</label><br>
+<input id="custom-count" type="number" min="1" max="2000" value="50" style="padding:6px;border-radius:6px;border:1px solid rgba(0,0,0,0.08);width:100%;max-width:140px">
+<div style="margin-top:4px"><label><input type="checkbox" id="custom-all-questions"> Todas</label></div></div>
+<div style="flex:1;min-width:150px"><label for="custom-time">Tiempo total (minutos):</label><br>
+<input id="custom-time" type="number" min="1" value="60" style="padding:6px;border-radius:6px;border:1px solid rgba(0,0,0,0.08);width:100%;max-width:140px">
+<div style="margin-top:4px"><label><input type="checkbox" id="custom-no-time"> Sin límite de tiempo</label></div></div></div></div></div>
+<div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+<button class="primary" id="start-btn" data-tooltip="Comenzar" style="flex:1;min-width:120px">Comenzar Quiz</button>
+<button class="secondary" id="about-btn" data-tooltip="Acerca de" style="flex:1;min-width:120px">Acerca de</button></div></div></div></div>
+<div class="score" id="score-container" style="display:none">Puntaje: <span id="score">0</span> | Pregunta: <span id="current-question">0</span>/<span id="total-questions">0</span></div>
+<div class="quiz-card" id="quiz-container" aria-live="polite">
+<div class="quiz-toolbar">
+<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+<button class="home-btn" id="home-button" title="Reloj (sin acción)" data-tooltip="Reloj" aria-label="Reloj de examen">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#27456e" stroke-width="1.2"/><path d="M12 7v6l4 2" stroke="#27456e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<div class="timers"><div class="time-box"><small>Initial total</small><div id="initial-total">0m</div></div><div class="time-box"><small>Remaining</small><div id="total-timer">0m 0s</div></div><div class="time-box"><small>Question elapsed</small><div id="question-timer">0m 0s</div></div></div></div>
+<div style="color:#27456e;font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+<span id="progress-display"></span><button id="finish-btn" class="secondary" style="padding:6px 8px;border-radius:6px;font-weight:700" data-tooltip="Finalizar">Finalizar cuestionario</button></div></div>
+<div class="question" id="question"></div><div class="info" id="q-info"></div><div class="options" id="options" role="list"></div>
+<div class="nav-buttons"><button id="prev-btn" class="nav-btn" aria-label="Anterior" data-tooltip="Retroceder"><svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<button id="next-btn" class="nav-btn" aria-label="Siguiente" data-tooltip="Avanzar"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+<div id="explanation" aria-live="polite"></div>
+<div id="question-area"></div>
+</div>
+<div class="end-screen" id="end-screen">
+<div class="end-actions">
+<button id="restart-btn" class="icon-btn" title="Reiniciar quiz" data-tooltip="Reiniciar quiz" aria-label="Reiniciar quiz">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 4v5h-5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12a8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8 8 8 0 0 1-8-8z" stroke="#fff" stroke-width="2.5" fill="none"/></svg>
+</button>
+</div>
+<h3 class="results-title">Resultados y estadísticas</h3>
+<div class="results-group" id="result-general" style="display:none"><h4>Performance</h4><div class="performance-summary" id="performance-summary"></div></div>
+<div class="results-group" id="group-charts" style="display:none"><h4>Gráficos</h4><div class="charts-grid" id="charts-grid"><div class="chart-card"><h4>Desempeño general</h4><canvas id="pieChart"></canvas></div><div class="chart-card"><h4>Exactitud por área</h4><canvas id="barChart"></canvas></div></div></div>
+<div class="results-group" id="group-performance" style="display:none"><h4>Estadísticas del intento</h4><div class="stats-box" id="final-stats" style="display:none"></div></div>
+<div class="results-group" id="group-history" style="display:none"><h4>Historial</h4><div class="history" id="history-list"></div></div>
+<!-- Sección para el historial del usuario -->
+<div class="results-group" id="user-history-section" style="display:none">
+<h4>Tu Historial Personal</h4>
+<div id="user-history-list" class="history">
+<p>Inicia sesión para ver tu historial personalizado</p>
+</div>
+</div>
+</div>
+<footer>© Pablo Kriger 2026 (Todos los Derechos Reservados)</footer></div>
+<!-- Modal para confirmar salida -->
+<div class="modal-backdrop" id="exit-backdrop" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="exit-title"><h3 id="exit-title">¿Desea salir?</h3><p>Se borrará el avance actual del quiz. ¿Desea continuar?</p><div class="actions" style="display:flex;gap:12px;justify-content:center;margin-top:16px"><button id="exit-no" class="secondary" style="min-width:100px">NO</button><button id="exit-yes" class="danger-btn" style="min-width:100px">SI</button></div></div></div>
+<!-- Modal para confirmar salida desde el botón de inicio -->
+<div class="home-exit-backdrop" id="home-exit-backdrop" aria-hidden="true">
+  <div class="home-exit-box" role="dialog" aria-modal="true" aria-labelledby="home-exit-title">
+    <h3 id="home-exit-title">¿Desea salir?</h3>
+    <p>Se borrará el avance actual del quiz. ¿Desea continuar?</p>
+    <div class="actions" style="display:flex;gap:12px;justify-content:center;margin-top:16px">
+      <button id="home-exit-no" class="secondary" style="min-width:100px">NO</button>
+      <button id="home-exit-yes" class="danger-btn" style="min-width:100px">SI</button>
+    </div>
+  </div>
+</div>
+<!-- Modal para "Acerca de" actualizado -->
+<div class="about-backdrop" id="about-backdrop" aria-hidden="true">
+<div class="about-card" role="dialog" aria-modal="true" aria-labelledby="about-title">
+  <h3 id="about-title">Acerca de</h3>
+  <div class="about-body">
+    <div class="about-main">
+      <div class="app-title">PMP — Exam Prep</div>
+      <div class="app-meta">Versión 1.3</div>
+      <div class="copyright">© Pablo Kriger 2026. All rights reserved.</div>
+    </div>
+    <p class="disclaimer">
+      Disclaimer: PMP® y PMBOK® son marcas registradas del Project Management Institute, Inc.
+      Este simulador no está afiliado ni avalado por el PMI.
+    </p>
+  </div>
+  <div style="margin-top:16px; text-align:center;"><button id="about-close" class="primary" style="min-width:100px">Cerrar</button></div>
+</div>
+</div>
+<!-- Modal para Consejos PMP -->
+<div class="pmp-tips-backdrop" id="pmp-tips-backdrop" aria-hidden="true"><div class="pmp-tips-box" role="dialog" aria-modal="true" aria-labelledby="pmp-tips-title"><h3 id="pmp-tips-title">Consejos PMP</h3>
+<div class="pmp-tabs">
+<button class="pmp-tab active" data-tab="consejos_PMP">Certificación PMP</button>
+<button class="pmp-tab" data-tab="pmbok7_caracteristicas">Sobre el PMBOK7</button>
+</div>
+<div class="pmp-content" id="pmp-content">Selecciona una categoría para ver contenido</div>
+<div class="pmp-actions"><button id="pmp-another" class="secondary">Otro consejo</button><button id="pmp-close" class="primary">Cerrar</button></div></div></div>
+<!-- Modal para Mi Progreso -->
+<div class="progress-backdrop" id="progress-backdrop" aria-hidden="true"><div class="progress-box" role="dialog" aria-modal="true" aria-labelledby="progress-title"><h3 id="progress-title">Mi Progreso</h3>
+<div class="progress-content">
+<p>Aquí puedes ver tu progreso en el entrenamiento PMP:</p>
+<div class="progress-stats">
+<h4>Estadísticas Generales</h4>
+<p><strong>Total de quizzes completados:</strong> <span id="total-quizzes">0</span></p>
+<p><strong>Promedio de puntaje:</strong> <span id="avg-score">0%</span></p>
+<p><strong>Mejor puntaje:</strong> <span id="best-score">0%</span></p>
+<p><strong>Tiempo total de estudio:</strong> <span id="total-study-time">0h 0m</span></p>
+</div>
+<div class="progress-stats">
+<h4>Progreso por Áreas</h4>
+<p><strong>Áreas dominadas:</strong> <span id="mastered-areas">0</span></p>
+<p><strong>Áreas por mejorar:</strong> <span id="improve-areas">0</span></p>
+</div>
+</div>
+<div class="pmp-actions"><button id="progress-close" class="primary">Cerrar</button></div></div></div>
+<!-- Modal para confirmar finalización del cuestionario -->
+<div class="finish-backdrop" id="finish-backdrop" aria-hidden="true"><div class="finish-box" role="dialog" aria-modal="true" aria-labelledby="finish-title"><h3 id="finish-title">¿Está seguro de que desea finalizar el cuestionario?</h3><div class="actions" style="display:flex;gap:12px;justify-content:center;margin-top:16px"><button id="finish-no" class="secondary" style="min-width:100px">NO</button><button id="finish-yes" class="danger-btn" style="min-width:100px">SI</button></div></div></div>
+<div class="timeup-backdrop" id="timeup-backdrop" aria-hidden="true"><div class="timeup-box"><h4>Tiempo finalizado</h4><p>El tiempo del examen ha finalizado. Presione Aceptar para ver las estadísticas.</p><div style="display:flex;justify-content:center;margin-top:12px"><button id="timeup-accept" class="primary">Aceptar</button></div></div></div>
+<div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+<script>
+// ==================== VARIABLES GLOBALES ====================
+let allQuestions = [];
+let tipsData = { consejos_PMP: [], pmbok7_caracteristicas: [] };
+let currentTipsIndex = -1;
+let currentPmbok7Index = -1;
+let questions=[],current=0,score=0,history={},totalTimerSeconds=0,initialTotalSeconds=0,examTimerInterval=null,questionElapsedSeconds=0,questionTimerInterval=null,answered=false,noTimeLimit=false,sessionElapsedSeconds=0,sessionElapsedInterval=null,pieChart=null,barChart=null,isFullscreen=false;
+
+// Referencias a elementos DOM
+const loginBtnMenu = document.getElementById('loginBtnMenu');
+const logoutBtnMenu = document.getElementById('logoutBtnMenu');
+const userAvatar = document.getElementById('userAvatar');
+const userName = document.getElementById('userName');
+const userHistorySection = document.getElementById('user-history-section');
+const userHistoryList = document.getElementById('user-history-list');
+const langBtn = document.getElementById('lang-btn');
+const langMenuList = document.getElementById('lang-menu-list');
+const questionAreaEl = document.getElementById('question-area');
+const finishBackdrop = document.getElementById('finish-backdrop');
+const finishYes = document.getElementById('finish-yes');
+const finishNo = document.getElementById('finish-no');
+const menuBtn = document.getElementById('menuBtn');
+const menuDropdown = document.getElementById('menuDropdown');
+const progressMenuBtn = document.getElementById('progressMenuBtn');
+const aboutMenuBtn = document.getElementById('aboutMenuBtn');
+const consejosMenuBtn = document.getElementById('consejosMenuBtn');
+const consejosSubmenu = document.getElementById('consejosSubmenu');
+const pmpTipsBackdrop = document.getElementById('pmp-tips-backdrop');
+const pmpContent = document.getElementById('pmp-content');
+const pmpAnotherBtn = document.getElementById('pmp-another');
+const pmpCloseBtn = document.getElementById('pmp-close');
+const pmpTabs = document.querySelectorAll('.pmp-tab');
+const progressBackdrop = document.getElementById('progress-backdrop');
+const progressCloseBtn = document.getElementById('progress-close');
+const homeHeaderBtn = document.getElementById('home-header-btn'); // Nuevo botón de inicio
+const homeExitBackdrop = document.getElementById('home-exit-backdrop');
+const homeExitNo = document.getElementById('home-exit-no');
+const homeExitYes = document.getElementById('home-exit-yes');
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+const aboutBackdrop = document.getElementById('about-backdrop');
+const aboutCloseBtn = document.getElementById('about-close');
+
+// ==================== MANEJO DEL BOTÓN DE INICIO ====================
+homeHeaderBtn.addEventListener('click', () => {
+    const isQuizActive = document.getElementById('quiz-container').style.display === 'block';
+    
+    if (isQuizActive) {
+        // Si hay un quiz en progreso, mostrar modal de confirmación
+        showBackdrop('home-exit-backdrop');
+    } else {
+        // Si no hay quiz activo, ir directamente al inicio
+        goHome();
+    }
+});
+
+// Manejar el modal de confirmación para salir
+homeExitNo.addEventListener('click', () => {
+    hideBackdrop('home-exit-backdrop');
+});
+
+homeExitYes.addEventListener('click', () => {
+    hideBackdrop('home-exit-backdrop');
+    goHome();
+});
+
+// ==================== CIERRE DE MODALES AL HACER CLIC AFUERA ====================
+function setupModalCloseOnClickOutside(backdropId) {
+    const backdrop = document.getElementById(backdropId);
+    if (backdrop) {
+        backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) {
+                hideBackdrop(backdropId);
+            }
+        });
+    }
+}
+
+// Configurar cierre al hacer clic fuera para todos los modales
+setupModalCloseOnClickOutside('about-backdrop');
+setupModalCloseOnClickOutside('pmp-tips-backdrop');
+setupModalCloseOnClickOutside('progress-backdrop');
+setupModalCloseOnClickOutside('finish-backdrop');
+setupModalCloseOnClickOutside('home-exit-backdrop');
+setupModalCloseOnClickOutside('exit-backdrop');
+setupModalCloseOnClickOutside('timeup-backdrop');
+
+// ==================== MANEJO DE PANTALLA COMPLETA ====================
+fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+function toggleFullscreen() {
+    if (!isFullscreen) {
+        // Entrar en pantalla completa
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+            elem.msRequestFullscreen();
+        }
+    } else {
+        // Salir de pantalla completa
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+            document.msExitFullscreen();
+        }
+    }
+}
+
+function updateFullscreenButton() {
+    const fullscreenIcon = document.getElementById('fullscreen-icon');
+    const exitFullscreenIcon = document.getElementById('exit-fullscreen-icon');
+    
+    if (isFullscreen) {
+        fullscreenIcon.style.display = 'none';
+        exitFullscreenIcon.style.display = 'block';
+        fullscreenBtn.setAttribute('data-tooltip', 'Salir de pantalla completa');
+        fullscreenBtn.setAttribute('aria-label', 'Salir de pantalla completa');
+    } else {
+        fullscreenIcon.style.display = 'block';
+        exitFullscreenIcon.style.display = 'none';
+        fullscreenBtn.setAttribute('data-tooltip', 'Pantalla completa');
+        fullscreenBtn.setAttribute('aria-label', 'Pantalla completa');
+    }
+}
+
+function handleFullscreenChange() {
+    isFullscreen = !!(document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement);
+    updateFullscreenButton();
+}
+
+// Escuchar eventos de cambio de pantalla completa
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+// ==================== MANEJO DEL MENÚ DROPDOWN ====================
+let isMenuOpen = false;
+
+menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+        menuDropdown.style.display = 'block';
+        // Cerrar otros menús si están abiertos
+        langMenuList.style.display = 'none';
+        langMenuList.setAttribute('aria-hidden', 'true');
+    } else {
+        menuDropdown.style.display = 'none';
+        // Cerrar también el submenú de consejos
+        consejosSubmenu.style.display = 'none';
+    }
+});
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+    if (!menuDropdown.contains(e.target) && e.target !== menuBtn) {
+        menuDropdown.style.display = 'none';
+        isMenuOpen = false;
+        // Cerrar también el submenú de consejos
+        consejosSubmenu.style.display = 'none';
+    }
+});
+
+// Manejar el botón de consejos (submenú)
+consejosMenuBtn.addEventListener('click', () => {
+    const isSubmenuVisible = consejosSubmenu.style.display === 'block';
+    consejosSubmenu.style.display = isSubmenuVisible ? 'none' : 'block';
+});
+
+// Manejar las opciones de consejos
+document.querySelectorAll('.tips-option').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const tipType = e.target.dataset.tipType;
+        showBackdrop('pmp-tips-backdrop');
+        // Establecer la pestaña activa según el tipo
+        pmpTabs.forEach(tab => {
+            if (tab.dataset.tab === tipType) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+        showRandomTip(tipType);
+        // Cerrar el menú
+        menuDropdown.style.display = 'none';
+        isMenuOpen = false;
+        consejosSubmenu.style.display = 'none';
+    });
+});
+
+// ==================== SISTEMA DE AUTENTICACIÓN ====================
+function initAuth() {
+    console.log("Inicializando autenticación...");
+    
+    // Escuchar cambios en el estado de autenticación
+    onAuthStateChanged(auth, (user) => {
+        console.log("Estado de autenticación cambiado:", user);
+        
+        if (user) {
+            // Usuario logueado
+            console.log("Usuario autenticado:", user.email);
+            loginBtnMenu.style.display = 'none';
+            logoutBtnMenu.style.display = 'block';
+            logoutBtnMenu.classList.remove('hidden');
+            userAvatar.src = user.photoURL || 'https://via.placeholder.com/48';
+            userName.textContent = user.displayName || user.email || 'Usuario';
+            
+            // Mostrar sección de historial personal
+            userHistorySection.style.display = 'block';
+            userHistoryList.innerHTML = '<p>Cargando tu historial...</p>';
+            
+            // Cargar el historial del usuario
+            loadUserHistory(user.uid);
+            // Cargar estadísticas de progreso
+            loadProgressData(user.uid);
+        } else {
+            // Usuario no logueado
+            console.log("Usuario no autenticado");
+            loginBtnMenu.style.display = 'block';
+            logoutBtnMenu.style.display = 'none';
+            logoutBtnMenu.classList.add('hidden');
+            // Ícono de persona gris para invitados
+            userAvatar.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzlhYTdiZiI+PHBhdGggZD0iTTEyIDEyYzIuMjEgMCA0LTEuNzkgNC00cy0xLjc5LTQtNC00LTQgMS43OS00IDQgMS43OSA0IDQgNHptMCAyYy0yLjY3IDAtOCAxLjM0LTggNHYyaDE2di0yYzAtMi42Ni01LjMzLTQtOC00eiIvPjwvc3ZnPg==';
+            userName.textContent = 'Invitado';
+            userHistorySection.style.display = 'none';
+        }
+    });
+}
+
+// Función para iniciar sesión con Google
+loginBtnMenu.addEventListener('click', () => {
+    console.log("Iniciando sesión...");
+    
+    signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            console.log('Usuario autenticado:', result.user.email);
+            // Cerrar el menú después de iniciar sesión
+            menuDropdown.style.display = 'none';
+            isMenuOpen = false;
+        })
+        .catch((error) => {
+            console.error('Error en autenticación:', error);
+            alert('Error al iniciar sesión: ' + error.message);
+        });
+});
+
+// Función para cerrar sesión
+logoutBtnMenu.addEventListener('click', () => {
+    console.log("Cerrando sesión...");
+    signOut(auth)
+        .then(() => {
+            console.log('Sesión cerrada exitosamente');
+            // Cerrar el menú después de cerrar sesión
+            menuDropdown.style.display = 'none';
+            isMenuOpen = false;
+        })
+        .catch((error) => {
+            console.error('Error al cerrar sesión:', error);
+        });
+});
+
+// ==================== CARGA DE PREGUNTAS DESDE FIRESTORE ====================
+async function cargarPreguntas() {
+  console.log("Cargando preguntas desde Firestore...");
+  
+  const q = query(
+    collection(db, "questions"),
+    orderBy("number")
+  );
+
+  const snapshot = await getDocs(q);
+
+  const preguntas = [];
+  snapshot.forEach(doc => {
+    preguntas.push(doc.data());
+  });
+
+  console.log(`Se cargaron ${preguntas.length} preguntas desde Firestore`);
+  return preguntas;
+}
+
+// Función para cargar el historial del usuario
+function loadUserHistory(userId) {
+    console.log("Cargando historial para usuario:", userId);
+    
+    const userHistoryRef = collection(db, 'users', userId, 'history');
+    const q = query(userHistoryRef, orderBy('timestamp', 'desc'), limit(5));
+    
+    getDocs(q)
+        .then((querySnapshot) => {
+            if (querySnapshot.empty) {
+                userHistoryList.innerHTML = '<p>Aún no tienes historial. ¡Completa tu primer quiz!</p>';
+                return;
+            }
+            
+            let html = '';
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const date = data.timestamp ? data.timestamp.toDate() : new Date();
+                html += `<p>${date.toLocaleDateString()} - ${data.score || 0}% - ${data.totalQuestions || 0} preguntas</p>`;
+            });
+            userHistoryList.innerHTML = html;
+        })
+        .catch((error) => {
+            console.error('Error cargando historial:', error);
+            userHistoryList.innerHTML = '<p>Error cargando historial</p>';
+        });
+}
+
+// Función para cargar datos de progreso
+function loadProgressData(userId) {
+    console.log("Cargando datos de progreso para usuario:", userId);
+    
+    const userHistoryRef = collection(db, 'users', userId, 'history');
+    
+    getDocs(userHistoryRef)
+        .then((querySnapshot) => {
+            if (querySnapshot.empty) {
+                document.getElementById('total-quizzes').textContent = '0';
+                document.getElementById('avg-score').textContent = '0%';
+                document.getElementById('best-score').textContent = '0%';
+                document.getElementById('total-study-time').textContent = '0h 0m';
+                document.getElementById('mastered-areas').textContent = '0';
+                document.getElementById('improve-areas').textContent = '0';
+                return;
+            }
+            
+            let totalQuizzes = 0;
+            let totalScore = 0;
+            let bestScore = 0;
+            let totalTime = 0;
+            let areasStats = {};
+            
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                totalQuizzes++;
+                totalScore += data.score || 0;
+                bestScore = Math.max(bestScore, data.score || 0);
+                totalTime += data.timeSpent || 0;
+                
+                // Analizar áreas
+                if (data.areas) {
+                    Object.keys(data.areas).forEach(area => {
+                        if (!areasStats[area]) {
+                            areasStats[area] = { correct: 0, total: 0 };
+                        }
+                        areasStats[area].correct += data.areas[area].correct || 0;
+                        areasStats[area].total += data.areas[area].total || 0;
+                    });
+                }
+            });
+            
+            const avgScore = totalQuizzes > 0 ? Math.round(totalScore / totalQuizzes) : 0;
+            const totalHours = Math.floor(totalTime / 3600);
+            const totalMinutes = Math.floor((totalTime % 3600) / 60);
+            
+            let masteredAreas = 0;
+            let improveAreas = 0;
+            
+            Object.keys(areasStats).forEach(area => {
+                const percentage = areasStats[area].total > 0 ? 
+                    Math.round((areasStats[area].correct / areasStats[area].total) * 100) : 0;
+                if (percentage >= 70) masteredAreas++;
+                else improveAreas++;
+            });
+            
+            document.getElementById('total-quizzes').textContent = totalQuizzes;
+            document.getElementById('avg-score').textContent = avgScore + '%';
+            document.getElementById('best-score').textContent = bestScore + '%';
+            document.getElementById('total-study-time').textContent = totalHours + 'h ' + totalMinutes + 'm';
+            document.getElementById('mastered-areas').textContent = masteredAreas;
+            document.getElementById('improve-areas').textContent = improveAreas;
+        })
+        .catch((error) => {
+            console.error('Error cargando datos de progreso:', error);
+        });
+}
+
+// Función para guardar resultados del quiz
+function saveQuizResults(userId, results) {
+    console.log("Guardando resultados para usuario:", userId);
+    
+    const historyRef = collection(db, 'users', userId, 'history');
+    
+    return addDoc(historyRef, {
+        timestamp: serverTimestamp(),
+        score: results.percent,
+        totalQuestions: results.total,
+        correct: results.correct,
+        timeSpent: results.timeSpent,
+        areas: results.areas || {}
+    });
+}
+
+// ==================== MANEJO DEL BOTÓN DE IDIOMA ====================
+langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isVisible = langMenuList.style.display === 'block';
+    langMenuList.style.display = isVisible ? 'none' : 'block';
+    langMenuList.setAttribute('aria-hidden', isVisible ? 'true' : 'false');
+    // Cerrar otros menús si están abiertos
+    menuDropdown.style.display = 'none';
+    isMenuOpen = false;
+    consejosSubmenu.style.display = 'none';
+});
+
+// Cerrar menú de idioma al hacer clic fuera
+document.addEventListener('click', (e) => {
+    if (!langMenuList.contains(e.target) && e.target !== langBtn) {
+        langMenuList.style.display = 'none';
+        langMenuList.setAttribute('aria-hidden', 'true');
+    }
+});
+
+// ==================== CONSEJOS PMP ====================
+async function loadTipsData() {
+    try {
+        const response = await fetch('https://raw.githubusercontent.com/pablokriger/PMP/main/data_cmp.json');
+        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+        tipsData = await response.json();
+        console.log('Datos de consejos cargados:', tipsData);
+    } catch (error) {
+        console.error('Error cargando consejos:', error);
+        tipsData = { 
+            consejos_PMP: ['Error cargando consejos de rendimiento PMP'], 
+            pmbok7_caracteristicas: ['Error cargando información PMBOK7'] 
+        };
+    }
+}
+
+function showRandomTip(category) {
+    const contentEl = document.getElementById('pmp-content');
+    if (category === 'consejos_PMP') {
+        if (tipsData.consejos_PMP.length === 0) {
+            contentEl.textContent = 'Cargando consejos de rendimiento PMP...';
+            return;
+        }
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * tipsData.consejos_PMP.length);
+        } while (newIndex === currentTipsIndex && tipsData.consejos_PMP.length > 1);
+        currentTipsIndex = newIndex;
+        contentEl.textContent = tipsData.consejos_PMP[currentTipsIndex];
+    } else if (category === 'pmbok7_caracteristicas') {
+        if (tipsData.pmbok7_caracteristicas.length === 0) {
+            contentEl.textContent = 'Cargando información de PMBOK7...';
+            return;
+        }
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * tipsData.pmbok7_caracteristicas.length);
+        } while (newIndex === currentPmbok7Index && tipsData.pmbok7_caracteristicas.length > 1);
+        currentPmbok7Index = newIndex;
+        contentEl.textContent = tipsData.pmbok7_caracteristicas[currentPmbok7Index];
+    } else {
+        contentEl.textContent = 'Selecciona una categoría para ver contenido';
+    }
+}
+
+// Event listeners para el modal de Consejos PMP
+pmpAnotherBtn.addEventListener('click', () => {
+    const activeTab = document.querySelector('.pmp-tab.active');
+    const category = activeTab.dataset.tab;
+    showRandomTip(category);
+});
+
+pmpCloseBtn.addEventListener('click', () => {
+    hideBackdrop('pmp-tips-backdrop');
+});
+
+// Manejar cambio de pestañas en el modal
+pmpTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Quitar active de todas
+        pmpTabs.forEach(t => t.classList.remove('active'));
+        // Añadir active a la seleccionada
+        tab.classList.add('active');
+        const category = tab.dataset.tab;
+        showRandomTip(category);
+    });
+});
+
+// ==================== MI PROGRESO ====================
+progressMenuBtn.addEventListener('click', () => {
+    showBackdrop('progress-backdrop');
+    const user = auth.currentUser;
+    if (user) {
+        loadProgressData(user.uid);
+    }
+    // Cerrar el menú
+    menuDropdown.style.display = 'none';
+    isMenuOpen = false;
+    consejosSubmenu.style.display = 'none';
+});
+
+progressCloseBtn.addEventListener('click', () => {
+    hideBackdrop('progress-backdrop');
+});
+
+// ==================== ACERCA DE ====================
+aboutMenuBtn.addEventListener('click', () => {
+    showBackdrop('about-backdrop');
+    // Cerrar el menú
+    menuDropdown.style.display = 'none';
+    isMenuOpen = false;
+    consejosSubmenu.style.display = 'none';
+});
+
+aboutCloseBtn.addEventListener('click', () => {
+    hideBackdrop('about-backdrop');
+});
+
+// ==================== FUNCIONES EXISTENTES DEL QUIZ ====================
+const versionSelectExam=document.getElementById('version-filter-exam'),startBtn=document.getElementById('start-btn'),aboutBtn=document.getElementById('about-btn'),startScreen=document.getElementById('start-screen'),quizContainer=document.getElementById('quiz-container'),endScreen=document.getElementById('end-screen'),scoreContainer=document.getElementById('score-container'),questionEl=document.getElementById('question'),qInfoEl=document.getElementById('q-info'),optionsEl=document.getElementById('options'),explanationEl=document.getElementById('explanation'),nextBtn=document.getElementById('next-btn'),prevBtn=document.getElementById('prev-btn'),restartBtn=document.getElementById('restart-btn'),homeBtn=document.getElementById('home-button'),exitBackdrop=document.getElementById('exit-backdrop'),exitYes=document.getElementById('exit-yes'),exitNo=document.getElementById('exit-no'),totalTimerEl=document.getElementById('total-timer'),initialTotalEl=document.getElementById('initial-total'),questionTimerEl=document.getElementById('question-timer'),progressDisplay=document.getElementById('progress-display'),finishBtn=document.getElementById('finish-btn'),timeupBackdrop=document.getElementById('timeup-backdrop'),timeupAccept=document.getElementById('timeup-accept'),chartsGrid=document.getElementById('charts-grid'),tooltipEl=document.getElementById('tooltip'),areasListEl=document.getElementById('areas-list'),selectAllAreasBtn=document.getElementById('select-all-areas'),deselectAllAreasBtn=document.getElementById('deselect-all-areas'),customCountInput=document.getElementById('custom-count'),customTimeInput=document.getElementById('custom-time'),customAllQuestions=document.getElementById('custom-all-questions'),customNoTime=document.getElementById('custom-no-time'),groupChartsEl=document.getElementById('group-charts'),groupPerformanceEl=document.getElementById('group-performance'),groupHistoryEl=document.getElementById('group-history'),finalStatsEl=document.getElementById('final-stats'),performanceSummaryEl=document.getElementById('performance-summary'),historyListEl=document.getElementById('history-list'),resultGeneralEl=document.getElementById('result-general'),examVersionButtons=document.getElementById('exam-version-buttons'),customVersionButtons=document.getElementById('custom-version-buttons'),fullscreenIcon=document.getElementById('fullscreen-icon'),exitFullscreenIcon=document.getElementById('exit-fullscreen-icon');
+
+function populateAreas(){if(allQuestions.length===0){areasListEl.innerHTML='<div style="color:#9aa7bf;text-align:center;padding:10px;">Cargando áreas...</div>';return;}const areas=Array.from(new Set(allQuestions.map(q=>q.area))).sort();areasListEl.innerHTML='';areas.forEach(a=>{const id='area_'+a.replace(/\s+/g,'_');const wrapper=document.createElement('label');wrapper.innerHTML=`<input type="checkbox" value="${a}" id="${id}" checked> <span>${a}</span>`;areasListEl.appendChild(wrapper);});}
+function showBackdrop(id){const el=document.getElementById(id);if(el){el.classList.add('visible');el.style.display='flex';el.setAttribute('aria-hidden','false');}}
+function hideBackdrop(id){const el=document.getElementById(id);if(el){el.classList.remove('visible');el.style.display='none';el.setAttribute('aria-hidden','true');}}
+function setupVersionButtons(container,hiddenInputId){const buttons=container.querySelectorAll('.version-btn');const hiddenInput=document.getElementById(hiddenInputId);buttons.forEach(btn=>{btn.addEventListener('click',()=>{buttons.forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');hiddenInput.value=btn.dataset.value;});});const selectedBtn=container.querySelector('.version-btn.selected');if(selectedBtn&&hiddenInput){hiddenInput.value=selectedBtn.dataset.value;}}
+selectAllAreasBtn.addEventListener('click',()=>{Array.from(areasListEl.querySelectorAll('input[type=checkbox]')).forEach(c=>c.checked=true);});
+deselectAllAreasBtn.addEventListener('click',()=>{Array.from(areasListEl.querySelectorAll('input[type=checkbox]')).forEach(c=>c.checked=false);});
+const modeRadios=Array.from(document.querySelectorAll('input[name="mode"]'));
+modeRadios.forEach(r=>r.addEventListener('change',onModeChange));
+function onModeChange(){const mode=document.querySelector('input[name="mode"]:checked').value;if(mode==='exam'){document.getElementById('exam-controls').style.display='block';document.getElementById('custom-controls').style.display='none';document.getElementById('exam-note').style.display='block';}else{document.getElementById('exam-controls').style.display='none';document.getElementById('custom-controls').style.display='block';document.getElementById('exam-note').style.display='none';}}
+if(customAllQuestions){customAllQuestions.addEventListener('change',()=>{customCountInput.disabled=customAllQuestions.checked;});}
+if(customNoTime){customNoTime.addEventListener('change',()=>{customTimeInput.disabled=customNoTime.checked;});}
+let tooltipTimer=null;
+document.body.addEventListener('mouseover',(e)=>{const t=e.target.closest('[data-tooltip]');if(!t)return;const text=t.getAttribute('data-tooltip');clearTimeout(tooltipTimer);tooltipTimer=setTimeout(()=>{tooltipEl.textContent=text;tooltipEl.style.display='block';const rect=t.getBoundingClientRect();const left=Math.max(8,rect.left+rect.width/2-60);tooltipEl.style.left=left+'px';tooltipEl.style.top=(rect.top-40)+'px';tooltipEl.style.opacity='1';tooltipEl.setAttribute('aria-hidden','false');},500);});
+document.body.addEventListener('mouseout',(e)=>{const t=e.target.closest('[data-tooltip]');if(!t)return;clearTimeout(tooltipTimer);tooltipEl.style.opacity='0';tooltipEl.setAttribute('aria-hidden','true');setTimeout(()=>{if(tooltipEl.style.opacity==='0'){tooltipEl.style.display='none';tooltipEl.textContent='';}},200);});
+startBtn.addEventListener('click',()=>{if(allQuestions.length===0){alert('Los datos aún no se han cargado. Por favor, espera un momento.');return;}startQuiz();});
+aboutBtn.addEventListener('click',()=>showBackdrop('about-backdrop'));
+finishBtn.addEventListener('click',()=>{showBackdrop('finish-backdrop');});
+finishNo.addEventListener('click',()=>{hideBackdrop('finish-backdrop');});
+finishYes.addEventListener('click',()=>{hideBackdrop('finish-backdrop');finishQuiz();});
+
+function startQuiz(){const mode=document.querySelector('input[name="mode"]:checked').value;questions=[];current=0;score=0;history={};answered=false;noTimeLimit=false;clearAllIntervals();sessionElapsedSeconds=0;sessionElapsedInterval=setInterval(()=>{sessionElapsedSeconds++;},1000);if(mode==='exam'){const version=document.getElementById('version-filter-exam').value;if(!version){alert('Selecciona la versión (v6 o v7) para Exam PMP.');return;}let pool=allQuestions.filter(q=>q.version===version);if(pool.length===0){alert(`No hay preguntas para la versión ${version}.`);return;}pool=shuffleArray(pool);const desired=180;if(pool.length<desired){if(!confirm(`Solo hay ${pool.length} preguntas disponibles en ${version}. Se usará ese total.`))return;}questions=pool.slice(0,Math.min(desired,pool.length));initialTotalSeconds=250*60;totalTimerSeconds=initialTotalSeconds;noTimeLimit=false;}else{const checkedAreas=Array.from(areasListEl.querySelectorAll('input[type=checkbox]:checked')).map(i=>i.value);let pool=allQuestions.filter(q=>checkedAreas.length===0?true:checkedAreas.includes(q.area));const verChoice=document.getElementById('custom-version').value;if(verChoice&&verChoice!=='both')pool=pool.filter(q=>q.version===verChoice);if(pool.length===0){alert('No hay preguntas para las áreas/versión seleccionadas.');return;}pool=shuffleArray(pool);let count;if(customAllQuestions&&customAllQuestions.checked){count=pool.length;}else{count=parseInt(customCountInput.value||'0',10);if(isNaN(count)||count<=0){alert('Cantidad inválida de preguntas');return;}}if(pool.length<count){if(!confirm(`Solo hay ${pool.length} preguntas disponibles. Se usará ese total.`))return;}questions=pool.slice(0,Math.min(count,pool.length));if(customNoTime&&customNoTime.checked){noTimeLimit=true;initialTotalSeconds=0;totalTimerSeconds=0;}else{noTimeLimit=false;initialTotalSeconds=parseInt(customTimeInput.value||'0',10)*60;totalTimerSeconds=initialTotalSeconds;}}document.getElementById('score').innerText=score;document.getElementById('current-question').innerText=current+1;document.getElementById('total-questions').innerText=questions.length;initialTotalEl.textContent=noTimeLimit?'Sin límite':formatTime(initialTotalSeconds);startScreen.style.display='none';quizContainer.style.display='block';endScreen.style.display='none';scoreContainer.style.display='block';if(!noTimeLimit&&initialTotalSeconds>0){startTotalTimer();}else{totalTimerEl.textContent='Sin límite';homeBtn.classList.remove('warning');}showQuestion();}
+function clearAllIntervals(){clearInterval(examTimerInterval);clearInterval(questionTimerInterval);clearInterval(sessionElapsedInterval);examTimerInterval=null;questionTimerInterval=null;sessionElapsedInterval=null;}
+function startTotalTimer(){clearInterval(examTimerInterval);totalTimerEl.textContent=formatTime(totalTimerSeconds);examTimerInterval=setInterval(()=>{if(totalTimerSeconds>0){totalTimerSeconds--;totalTimerEl.textContent=formatTime(totalTimerSeconds);if(totalTimerSeconds<=60){homeBtn.classList.add('warning');}else{homeBtn.classList.remove('warning');}if(totalTimerSeconds<=0){clearInterval(examTimerInterval);homeBtn.classList.remove('warning');showBackdrop('timeup-backdrop');}}else{clearInterval(examTimerInterval);}},1000);}
+function startQuestionTimer(){clearInterval(questionTimerInterval);questionElapsedSeconds=0;questionTimerEl.textContent=formatElapsed(questionElapsedSeconds);questionTimerInterval=setInterval(()=>{questionElapsedSeconds++;questionTimerEl.textContent=formatElapsed(questionElapsedSeconds);},1000);}
+
+function showQuestion(){
+    answered=false;
+    const q=questions[current];
+    if(!q){finishQuiz();return;}
+    questionEl.textContent=`${current+1}. ${q.question}`;
+    // Solo mostrar versión en q-info
+    qInfoEl.textContent=`Versión: ${q.version||'N/A'}`;
+    // Mostrar área en el nuevo elemento question-area
+    questionAreaEl.textContent = `Área: ${q.area||'N/A'}`;
+    questionAreaEl.style.display = 'block';
+    
+    progressDisplay.textContent=`Pregunta ${current+1} de ${questions.length}`;
+    if(current===questions.length-1){
+        nextBtn.innerHTML='Finalizar cuestionario';
+        nextBtn.classList.add('finalize');
+    }else{
+        nextBtn.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        nextBtn.classList.remove('finalize');
+    }
+    optionsEl.innerHTML='';
+    let shuffledOrder=[];
+    const hist=history[q.number];
+    if(hist&&hist.shuffledOrder){
+        shuffledOrder=hist.shuffledOrder;
+    }else{
+        shuffledOrder=shuffleArray(Array.from({length:q.options.length},(_,i)=>i));
+        if(!history[q.number]){
+            history[q.number]={};
+        }
+        history[q.number].shuffledOrder=shuffledOrder;
+    }
+    for(let pos=0;pos<shuffledOrder.length;pos++){
+        const origIdx=shuffledOrder[pos];
+        const btn=document.createElement('button');
+        btn.type='button';
+        btn.className='option-btn';
+        btn.textContent=q.options[origIdx]||'';
+        btn.dataset.pos=pos;
+        btn.addEventListener('pointerdown',(ev)=>{ev.preventDefault();btn.classList.add('pressed');try{btn.setPointerCapture(ev.pointerId);}catch(e){}});
+        btn.addEventListener('pointerup',(ev)=>{ev.preventDefault();try{btn.releasePointerCapture(ev.pointerId);}catch(e){}const rect=btn.getBoundingClientRect();const inside=ev.clientX>=rect.left&&ev.clientX<=rect.right&&ev.clientY>=rect.top&&ev.clientY<=rect.bottom;btn.classList.remove('pressed');if(!inside||answered){return;}const prev=history[q.number];if(prev&&typeof prev.selected==='number')return;const selectedPos=parseInt(btn.dataset.pos,10);try{Array.from(optionsEl.children).forEach(b=>b.classList.remove('selected'));}catch(e){}btn.classList.add('selected');handleAnswer(selectedPos,shuffledOrder);});
+        btn.addEventListener('pointerleave',()=>btn.classList.remove('pressed'));
+        optionsEl.appendChild(btn);
+    }
+    if(hist&&typeof hist.selected!=='undefined'){
+        const buttons=Array.from(optionsEl.children);
+        for(let i=0;i<buttons.length;i++){
+            const realIdx=shuffledOrder[i];
+            buttons[i].disabled=true;
+            if(realIdx===q.correct)buttons[i].classList.add('correct');
+            if(hist.selected===realIdx&&hist.selected!==q.correct)buttons[i].classList.add('wrong');
+            if(hist.selected===realIdx)buttons[i].classList.add('selected');
+        }
+        if(q.explanation&&q.explanation.trim()!==''){
+            explanationEl.textContent=q.explanation;
+            explanationEl.style.display='block';
+        }else{
+            explanationEl.style.display='none';
+        }
+        nextBtn.disabled=false;
+        nextBtn.style.display='inline-flex';
+    }else{
+        explanationEl.style.display='none';
+        explanationEl.textContent='';
+        nextBtn.disabled=false;
+        nextBtn.style.display='inline-flex';
+    }
+    prevBtn.disabled=(current<=0);
+    startQuestionTimer();
+}
+
+function handleAnswer(selectedPos,shuffledOrder){if(answered)return;answered=true;const q=questions[current];const actualSelected=(selectedPos>=0)?shuffledOrder[selectedPos]:-1;const buttons=Array.from(optionsEl.children);for(let i=0;i<buttons.length;i++){const realIdx=shuffledOrder[i];buttons[i].disabled=true;if(realIdx===q.correct)buttons[i].classList.add('correct');if(realIdx===actualSelected&&actualSelected!==q.correct)buttons[i].classList.add('wrong');}if(actualSelected===q.correct)score++;history[q.number]={number:q.number,selected:actualSelected===-1?null:actualSelected,correctIndex:q.correct,correct:actualSelected===q.correct,timeTakenForQuestion:questionElapsedSeconds,shuffledOrder:shuffledOrder};if(q.explanation&&q.explanation.trim()!==''){explanationEl.textContent=q.explanation;explanationEl.style.display='block';}else{explanationEl.style.display='none';}document.getElementById('score').innerText=score;document.getElementById('current-question').innerText=current+1;}
+prevBtn.addEventListener('pointerdown',e=>{e.preventDefault();prevBtn.classList.add('pressing');});
+prevBtn.addEventListener('pointerup',e=>{prevBtn.classList.remove('pressing');if(current>0){current--;showQuestion();}});
+prevBtn.addEventListener('pointerleave',()=>prevBtn.classList.remove('pressing'));
+nextBtn.addEventListener('pointerdown',e=>{e.preventDefault();nextBtn.classList.add('pressing');});
+nextBtn.addEventListener('pointerup',e=>{nextBtn.classList.remove('pressing');const q=questions[current];if(!history[q.number]){history[q.number]={number:q.number,selected:null,correctIndex:q.correct,correct:false,timeTakenForQuestion:questionElapsedSeconds,shuffledOrder:history[q.number]?.shuffledOrder||shuffleArray(Array.from({length:q.options.length},(_,i)=>i))};}if(current<questions.length-1){current++;showQuestion();}else{finishQuiz();}});
+nextBtn.addEventListener('pointerleave',()=>nextBtn.classList.remove('pressing'));
+function finishQuiz(){clearAllIntervals();hideBackdrop('timeup-backdrop');quizContainer.style.display='none';scoreContainer.style.display='none';endScreen.style.display='block';const areas={};const versions={};let answeredCount=0;let unansweredCount=0;let totalTimeTakenForQuestions=0;let correctByArea={};let totalByArea={};questions.forEach(q=>{const a=q.area||'N/A';const v=q.version||'N/A';if(!areas[a])areas[a]={correct:0,total:0};if(!versions[v])versions[v]={correct:0,total:0};areas[a].total++;versions[v].total++;if(!correctByArea[a])correctByArea[a]=0;if(!totalByArea[a])totalByArea[a]=0;totalByArea[a]++;});Object.values(history).forEach(h=>{const q=questions.find(x=>x.number===h.number);if(!q)return;const a=q.area||'N/A';const v=q.version||'N/A';if(h.correct){correctByArea[a]=(correctByArea[a]||0)+1;versions[v].correct=(versions[v].correct||0)+1;}if(h.selected===null){unansweredCount++;}else{answeredCount++;}if(h.timeTakenForQuestion){totalTimeTakenForQuestions+=h.timeTakenForQuestion;}});for(const a in areas){areas[a].correct=correctByArea[a]||0;}const totalCorrect=score;const percentOverall=questions.length>0?Math.round(totalCorrect/questions.length*100):0;performanceSummaryEl.innerHTML=`<div style="font-size:1rem;margin-bottom:10px;"><strong>Puntaje:</strong> ${percentOverall}%<br><strong>Correctas:</strong> ${totalCorrect} de ${questions.length}</div>`;resultGeneralEl.style.display='block';let finalStatsHtml='';finalStatsHtml+='<div style="margin-bottom:10px;">';finalStatsHtml+=`<strong>Preguntas totales:</strong> ${questions.length}<br>`;finalStatsHtml+=`<strong>Respondidas:</strong> ${answeredCount}<br>`;finalStatsHtml+=`<strong>Correctas:</strong> ${score}<br>`;finalStatsHtml+=`<strong>Porcentaje final:</strong> ${percentOverall}%`;finalStatsHtml+='</div>';finalStatsHtml+='<div style="margin-bottom:6px;"><strong>Tiempos:</strong><br>';let tiempoEmpleadostr='N/A';let tiempoRestantestr='N/A';if(initialTotalSeconds>0){const tiempoRestante=Math.max(0,totalTimerSeconds);const tiempoEmpleadosec=initialTotalSeconds-tiempoRestante;tiempoEmpleadostr=formatTime(tiempoEmpleadosec);tiempoRestantestr=formatTime(tiempoRestante);}else{tiempoEmpleadostr=formatTime(sessionElapsedSeconds);tiempoRestantestr='Sin límite';}finalStatsHtml+=`<div style="margin-left:10px;"><strong>Tiempo empleado:</strong> ${tiempoEmpleadostr}<br><strong>Tiempo restante:</strong> ${tiempoRestantestr}<br>`;const avgTimePerQ=answeredCount>0?Math.round((totalTimeTakenForQuestions/answeredCount)):0;finalStatsHtml+=`<strong>Tiempo promedio por pregunta respondida:</strong> ${formatElapsed(avgTimePerQ)}`;finalStatsHtml+='</div></div>';if(Object.keys(areas).length>0){finalStatsHtml+='<div style="margin-top:10px;border-top:1px solid rgba(0,0,0,0.1);padding-top:6px;">';finalStatsHtml+='<h5>Por áreas:</h5>';finalStatsHtml+='<div style="margin-bottom:6px;"><ul style="margin:3px 0 6px 15px;">';for(const a in areas){const pct=areas[a].total?Math.round((areas[a].correct/areas[a].total)*100):0;finalStatsHtml+=`<li>${a}: ${areas[a].correct}/${areas[a].total} (${pct}%)</li>`;}finalStatsHtml+='</ul></div></div>';}finalStatsEl.innerHTML=finalStatsHtml;historyListEl.innerHTML='';Object.values(history).forEach(h=>{const q=questions.find(x=>x.number===h.number);if(!q)return;const qText=q.question.substring(0,70)+(q.question.length>70?'...':'');const status=h.correct?'Correcta':(h.selected===null?'No respondida':'Incorrecta');const t=h.timeTakenForQuestion?` - ${h.timeTakenForQuestion}s`:'';const p=document.createElement('p');p.textContent=`Pregunta ${q.number}: ${qText} - ${status}${t}`;historyListEl.appendChild(p);});if(Object.keys(areas).length>0||Object.keys(versions).length>0){groupPerformanceEl.style.display='block';finalStatsEl.style.display='block';}else{groupPerformanceEl.style.display='none';}if(Object.values(history).length>0){groupHistoryEl.style.display='block';}else{groupHistoryEl.style.display='none';}try{renderCharts(score,questions.length,areas);groupChartsEl.style.display='block';}catch(e){console.error('Error al renderizar gráficos:',e);groupChartsEl.style.display='none';}
+    
+    // Guardar resultados si el usuario está logueado
+    const user = auth.currentUser;
+    if (user) {
+        const results = {
+            percent: percentOverall,
+            total: questions.length,
+            correct: score,
+            timeSpent: sessionElapsedSeconds,
+            areas: areas
+        };
+        
+        saveQuizResults(user.uid, results)
+            .then(() => {
+                console.log('Resultados guardados en Firestore');
+                // Recargar el historial del usuario
+                loadUserHistory(user.uid);
+                // Actualizar datos de progreso
+                loadProgressData(user.uid);
+            })
+            .catch(error => {
+                console.error('Error guardando resultados:', error);
+            });
+    }
+}
+restartBtn&&restartBtn.addEventListener('click',()=>{clearAllIntervals();history={};score=0;current=0;answered=false;if(pieChart){pieChart.destroy();pieChart=null;}if(barChart){barChart.destroy();barChart=null;}groupChartsEl.style.display='none';groupPerformanceEl.style.display='none';groupHistoryEl.style.display='none';resultGeneralEl.style.display='none';startQuiz();});
+exitNo.addEventListener('click',()=>hideBackdrop('exit-backdrop'));
+exitYes.addEventListener('click',()=>{hideBackdrop('exit-backdrop');goHome();});
+timeupAccept&&timeupAccept.addEventListener('click',()=>{hideBackdrop('timeup-backdrop');finishQuiz();});
+function renderCharts(correctCount,totalCount,areasObj){const incorrect=totalCount-correctCount;const pieCtx=document.getElementById('pieChart').getContext('2d');if(pieChart)pieChart.destroy();pieChart=new Chart(pieCtx,{type:'pie',data:{labels:['Correctas','Incorrectas'],datasets:[{data:[correctCount,incorrect],backgroundColor:[getComputedStyle(document.documentElement).getPropertyValue('--success').trim()||'#4CAF50',getComputedStyle(document.documentElement).getPropertyValue('--danger').trim()||'#F44336']}]},options:{plugins:{legend:{position:'bottom'}},responsive:true,maintainAspectRatio:false}});const labels=Object.keys(areasObj);const data=labels.map(l=>{const a=areasObj[l];return a.total?Math.round((a.correct/a.total)*100):0;});const barCtx=document.getElementById('barChart').getContext('2d');if(barChart)barChart.destroy();barChart=new Chart(barCtx,{type:'bar',data:{labels,datasets:[{label:'% exactitud',data,backgroundColor:labels.map(()=>getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#4D89FF')}]},options:{indexAxis:'y',scales:{x:{beginAtZero:true,max:100}},plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false}});}
+function shuffleArray(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function formatTime(sec){if(sec===0)return'0m 0s';if(!sec||sec<=0)return'0m 0s';const m=Math.floor(sec/60);const s=sec%60;return`${m}m ${s}s`;}
+function formatElapsed(sec){const m=Math.floor(sec/60);const s=sec%60;return`${m}m ${s}s`;}
+function goHome() {
+    current=0;score=0;history={};clearAllIntervals();
+    if(pieChart){pieChart.destroy();pieChart=null;}
+    if(barChart){barChart.destroy();barChart=null;}
+    groupChartsEl.style.display='none';groupPerformanceEl.style.display='none';
+    groupHistoryEl.style.display='none';resultGeneralEl.style.display='none';
+    endScreen.style.display='none';startScreen.style.display='block';
+    scoreContainer.style.display='none';quizContainer.style.display='none';
+    totalTimerSeconds=0;initialTotalSeconds=0;sessionElapsedSeconds=0;
+    hideBackdrop('progress-backdrop');
+    hideBackdrop('pmp-tips-backdrop');
+    hideBackdrop('about-backdrop');
+    hideBackdrop('home-exit-backdrop');
+}
+
+async function init(){
+    console.log("Inicializando aplicación...");
+    
+    // Inicializar autenticación primero
+    initAuth();
+    
+    // Cargar datos de consejos
+    await loadTipsData();
+    
+    // Inicializar elementos que no dependen de los datos
+    onModeChange();
+    if(customAllQuestions)customCountInput.disabled=customAllQuestions.checked;
+    if(customNoTime)customTimeInput.disabled=customNoTime.checked;
+    setupVersionButtons(examVersionButtons,'version-filter-exam');
+    setupVersionButtons(customVersionButtons,'custom-version');
+    hideBackdrop('exit-backdrop');
+    hideBackdrop('timeup-backdrop');
+    hideBackdrop('about-backdrop');
+    hideBackdrop('pmp-tips-backdrop');
+    hideBackdrop('progress-backdrop');
+    hideBackdrop('finish-backdrop');
+    hideBackdrop('home-exit-backdrop');
+    menuDropdown.style.display = 'none';
+    isMenuOpen = false;
+    consejosSubmenu.style.display = 'none';
+    langMenuList.setAttribute('aria-hidden','true');
+    
+    // Cargar datos desde Firestore
+    console.log('Iniciando carga de datos desde Firestore...');
+    startBtn.disabled = true;
+    startBtn.textContent = "Cargando datos...";
+    
+    try {
+        allQuestions = await cargarPreguntas();
+        console.log('Datos cargados correctamente desde Firestore:', { 
+            questions: allQuestions.length
+        });
+        
+        startBtn.disabled = false;
+        startBtn.textContent = "Comenzar Quiz";
+        populateAreas();
+        console.log('Aplicación inicializada correctamente');
+    } catch (error) {
+        console.error('ERROR cargando datos desde Firestore:', error);
+        
+        const errorMsg = document.createElement('div');
+        errorMsg.style.cssText = 'background:#ffebee;color:#c62828;padding:10px;border-radius:6px;margin-top:10px;text-align:center;';
+        errorMsg.innerHTML = `
+            <strong>Error cargando datos</strong><br>
+            <small>No se pudieron cargar las preguntas desde Firestore.</small><br>
+            <small>Error: ${error.message}</small>
+        `;
+        
+        startBtn.parentNode.appendChild(errorMsg);
+        
+        startBtn.disabled = true;
+        startBtn.textContent = "Error cargando datos";
+    }
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
