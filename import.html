@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Importar preguntas ES a Firestore</title>
+</head>
+<body>
+
+<h3>Importar preguntas en Español a Firestore</h3>
+<button id="importar">Importar</button>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    doc,
+    setDoc
+  } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+  // 🔹 Configuración de Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyBWctc8V2t30ZX6B88xcfeljfaLfuK8ohM",
+    authDomain: "cmp-exam-prep.firebaseapp.com",
+    projectId: "cmp-exam-prep",
+    storageBucket: "cmp-exam-prep.firebasestorage.app",
+    messagingSenderId: "777953288024",
+    appId: "1:777953288024:web:13f1413295d3f828340f2d"
+  };
+
+  // 🔹 Inicializar Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // 🔹 Colección destino (ES)
+  const COLLECTION_NAME = "questions_es";
+
+  // 🔹 Importación
+  document.getElementById("importar").onclick = async () => {
+    try {
+      // 🔹 JSON en español
+      const res = await fetch("questions_es.json");
+      const data = await res.json();
+
+      if (!Array.isArray(data)) {
+        alert("El JSON no tiene el formato esperado (array).");
+        return;
+      }
+
+      for (const q of data) {
+        // Usamos el número de pregunta como ID (evita duplicados)
+        await setDoc(
+          doc(db, COLLECTION_NAME, String(q.number)),
+          q
+        );
+      }
+
+      alert("Preguntas en español importadas correctamente.");
+    } catch (error) {
+      console.error(error);
+      alert("Error al importar las preguntas. Revisa la consola.");
+    }
+  };
+</script>
+
+</body>
+</html>
