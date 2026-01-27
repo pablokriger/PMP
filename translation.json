@@ -1,1 +1,443 @@
-.
+{
+  "es": {
+    "header": {
+      "title": "Simulador de Examen PMP®",
+      "subtitle": "Preparación profesional alineada al PMBOK® 7 — práctica por dominios, examen completo y repaso.",
+      "user": {
+        "guest": "Invitado",
+        "login": "Iniciar sesión",
+        "logout": "Cerrar sesión"
+      },
+      "menu": {
+        "progress": "Mi progreso",
+        "tips": "Consejos",
+        "about": "Acerca de",
+        "pmpTips": "Certificación PMP",
+        "pmbok7Tips": "Sobre el PMBOK7"
+      },
+      "tooltips": {
+        "fullscreen": "Pantalla completa",
+        "language": "Idioma",
+        "home": "Inicio",
+        "menu": "Menú"
+      }
+    },
+    "main": {
+      "authRequired": {
+        "title": "🔐 Acceso Requerido",
+        "message1": "Para acceder a las preguntas del simulador PMP, debes iniciar sesión con tu cuenta de Google.",
+        "message2": "Esto nos permite ofrecerte una experiencia personalizada y guardar tu progreso.",
+        "loginButton": "Iniciar sesión con Google"
+      },
+      "controls": {
+        "mode": "Modalidad:",
+        "examMode": "Simulador Examen PMP",
+        "customMode": "Personalizar examen",
+        "examNote": "Se simula un examen real de 180 preguntas en 250 minutos (se incluyen dos posibles descansos de 10 minutos en el total).",
+        "versionLabel": "Versión (solo para Exam PMP):",
+        "customVersionLabel": "Versión del examen:",
+        "bothVersions": "Ambas",
+        "v6": "v6",
+        "v7": "v7",
+        "areasLabel": "Áreas (marcar):",
+        "selectAll": "Seleccionar todo",
+        "deselectAll": "Deseleccionar todo",
+        "settingsLabel": "Configuración del examen:",
+        "countLabel": "Cantidad de preguntas:",
+        "allQuestions": "Todas",
+        "timeLabel": "Tiempo total (minutos):",
+        "noTime": "Sin límite de tiempo",
+        "startButton": "Comenzar Quiz",
+        "aboutButton": "Acerca de"
+      }
+    },
+    "quiz": {
+      "score": "Puntaje:",
+      "question": "Pregunta:",
+      "timers": {
+        "initial": "Initial total",
+        "remaining": "Remaining",
+        "question": "Question elapsed"
+      },
+      "finishButton": "Finalizar cuestionario",
+      "navButtons": {
+        "prev": "Anterior",
+        "next": "Siguiente"
+      },
+      "restartTooltip": "Reiniciar quiz"
+    },
+    "results": {
+      "title": "Resultados y estadísticas",
+      "performance": "Performance",
+      "charts": "Gráficos",
+      "generalPerformance": "Desempeño general",
+      "accuracyByArea": "Exactitud por área",
+      "attemptStats": "Estadísticas del intento",
+      "history": "Historial",
+      "personalHistory": "Tu Historial Personal",
+      "historyEmpty": "Inicia sesión para ver tu historial personalizado"
+    },
+    "footer": {
+      "copyright": "© Pablo Kriger 2026 (Todos los Derechos Reservados)",
+      "privacy": "Política de Privacidad"
+    },
+    "modals": {
+      "exit": {
+        "title": "¿Desea salir?",
+        "message": "Se borrará el avance actual del quiz. ¿Desea continuar?",
+        "no": "NO",
+        "yes": "SI"
+      },
+      "finish": {
+        "title": "¿Está seguro de que desea finalizar el cuestionario?",
+        "no": "NO",
+        "yes": "SI"
+      },
+      "timeup": {
+        "title": "Tiempo finalizado",
+        "message": "El tiempo del examen ha finalizado. Presione Aceptar para ver las estadísticas.",
+        "accept": "Aceptar"
+      },
+      "validation": {
+        "title": "Entrada inválida"
+      },
+      "about": {
+        "title": "Acerca de",
+        "appTitle": "PMP — Exam Prep",
+        "version": "Versión 1.3",
+        "copyright": "© Pablo Kriger 2026. All rights reserved.",
+        "disclaimer": "PMP® y PMBOK® son marcas registradas del Project Management Institute, Inc. Este simulador no está afiliado ni avalado por el PMI.",
+        "disclaimer2": "Al usar esta plataforma, acepta nuestra",
+        "close": "Cerrar"
+      },
+      "tips": {
+        "title": "Consejos PMP",
+        "another": "Otro consejo",
+        "close": "Cerrar"
+      },
+      "progress": {
+        "title": "Mi Progreso",
+        "content": "Aquí puedes ver tu progreso en el entrenamiento PMP:",
+        "generalStats": "Estadísticas Generales",
+        "totalQuizzes": "Total de quizzes completados:",
+        "averageScore": "Promedio de puntaje:",
+        "bestScore": "Mejor puntaje:",
+        "totalStudy": "Tiempo total de estudio:",
+        "areasMastered": "Áreas dominadas:",
+        "areasImprove": "Áreas por mejorar:"
+      },
+      "politics": {
+        "title": "Política de Privacidad",
+        "choose": "Consulte las políticas en su idioma:",
+        "close": "Cerrar"
+      },
+      "acceptance": {
+        "title": "Aviso Importante",
+        "message": "Al usar esta plataforma y sus servicios, usted da por entendido y acepta el uso de nuestras políticas de privacidad y términos de uso.",
+        "review": "Por favor, revise las",
+        "accept": "He leído y acepto las políticas de privacidad",
+        "cancel": "Cancelar",
+        "continue": "Continuar"
+      }
+    },
+    "loading": {
+      "questions": "Cargando preguntas...",
+      "error": "Error cargando datos"
+    }
+  },
+  "en": {
+    "header": {
+      "title": "PMP Exam Simulator",
+      "subtitle": "Professional preparation aligned with PMBOK® 7 — practice by domains, full exam, and review.",
+      "user": {
+        "guest": "Guest",
+        "login": "Sign in",
+        "logout": "Sign out"
+      },
+      "menu": {
+        "progress": "My progress",
+        "tips": "Tips",
+        "about": "About",
+        "pmpTips": "PMP Certification",
+        "pmbok7Tips": "About PMBOK7"
+      },
+      "tooltips": {
+        "fullscreen": "Full screen",
+        "language": "Language",
+        "home": "Home",
+        "menu": "Menu"
+      }
+    },
+    "main": {
+      "authRequired": {
+        "title": "🔐 Access Required",
+        "message1": "To access the PMP simulator questions, you must sign in with your Google account.",
+        "message2": "This allows us to offer you a personalized experience and save your progress.",
+        "loginButton": "Sign in with Google"
+      },
+      "controls": {
+        "mode": "Mode:",
+        "examMode": "PMP Exam Simulator",
+        "customMode": "Customize exam",
+        "examNote": "A real exam of 180 questions in 250 minutes is simulated (two possible 10-minute breaks are included in the total).",
+        "versionLabel": "Version (only for Exam PMP):",
+        "customVersionLabel": "Exam version:",
+        "bothVersions": "Both",
+        "v6": "v6",
+        "v7": "v7",
+        "areasLabel": "Areas (check):",
+        "selectAll": "Select all",
+        "deselectAll": "Deselect all",
+        "settingsLabel": "Exam settings:",
+        "countLabel": "Number of questions:",
+        "allQuestions": "All",
+        "timeLabel": "Total time (minutes):",
+        "noTime": "No time limit",
+        "startButton": "Start Quiz",
+        "aboutButton": "About"
+      }
+    },
+    "quiz": {
+      "score": "Score:",
+      "question": "Question:",
+      "timers": {
+        "initial": "Initial total",
+        "remaining": "Remaining",
+        "question": "Question elapsed"
+      },
+      "finishButton": "Finish questionnaire",
+      "navButtons": {
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "restartTooltip": "Restart quiz"
+    },
+    "results": {
+      "title": "Results and statistics",
+      "performance": "Performance",
+      "charts": "Charts",
+      "generalPerformance": "Overall performance",
+      "accuracyByArea": "Accuracy by area",
+      "attemptStats": "Attempt statistics",
+      "history": "History",
+      "personalHistory": "Your Personal History",
+      "historyEmpty": "Sign in to see your personalized history"
+    },
+    "footer": {
+      "copyright": "© Pablo Kriger 2026 (All Rights Reserved)",
+      "privacy": "Privacy Policy"
+    },
+    "modals": {
+      "exit": {
+        "title": "Do you want to exit?",
+        "message": "Current quiz progress will be lost. Do you wish to continue?",
+        "no": "NO",
+        "yes": "YES"
+      },
+      "finish": {
+        "title": "Are you sure you want to finish the questionnaire?",
+        "no": "NO",
+        "yes": "SI"
+      },
+      "timeup": {
+        "title": "Time finished",
+        "message": "Exam time has ended. Press Accept to see statistics.",
+        "accept": "Accept"
+      },
+      "validation": {
+        "title": "Invalid entry"
+      },
+      "about": {
+        "title": "About",
+        "appTitle": "PMP — Exam Prep",
+        "version": "Version 1.3",
+        "copyright": "© Pablo Kriger 2026. All rights reserved.",
+        "disclaimer": "PMP® and PMBOK® are registered trademarks of the Project Management Institute, Inc. This simulator is not affiliated with or endorsed by PMI.",
+        "disclaimer2": "By using this platform, you accept our",
+        "close": "Close"
+      },
+      "tips": {
+        "title": "PMP Tips",
+        "another": "Another tip",
+        "close": "Close"
+      },
+      "progress": {
+        "title": "My Progress",
+        "content": "Here you can see your progress in PMP training:",
+        "generalStats": "General Statistics",
+        "totalQuizzes": "Total quizzes completed:",
+        "averageScore": "Average score:",
+        "bestScore": "Best score:",
+        "totalStudy": "Total study time:",
+        "areasMastered": "Mastered areas:",
+        "areasImprove": "Areas to improve:"
+      },
+      "politics": {
+        "title": "Privacy Policy",
+        "choose": "Check policies in your language:",
+        "close": "Close"
+      },
+      "acceptance": {
+        "title": "Important Notice",
+        "message": "By using this platform and its services, you understand and accept the use of our privacy policies and terms of use.",
+        "review": "Please review the",
+        "accept": "I have read and accept the privacy policies",
+        "cancel": "Cancel",
+        "continue": "Continue"
+      }
+    },
+    "loading": {
+      "questions": "Loading questions...",
+      "error": "Error loading data"
+    }
+  },
+  "pt": {
+    "header": {
+      "title": "Simulador de Exame PMP®",
+      "subtitle": "Preparação profissional alinhada ao PMBOK® 7 — prática por domínios, exame completo e revisão.",
+      "user": {
+        "guest": "Convidado",
+        "login": "Entrar",
+        "logout": "Sair"
+      },
+      "menu": {
+        "progress": "Meu progresso",
+        "tips": "Dicas",
+        "about": "Sobre",
+        "pmpTips": "Certificação PMP",
+        "pmbok7Tips": "Sobre o PMBOK7"
+      },
+      "tooltips": {
+        "fullscreen": "Tela cheia",
+        "language": "Idioma",
+        "home": "Início",
+        "menu": "Menu"
+      }
+    },
+    "main": {
+      "controls": {
+        "mode": "Modalidade:",
+        "examMode": "Simulador de Exame PMP",
+        "customMode": "Personalizar exame",
+        "versionLabel": "Versão (somente para Exame PMP):",
+        "customVersionLabel": "Versão do exame:",
+        "bothVersions": "Ambas",
+        "v6": "v6",
+        "v7": "v7",
+        "areasLabel": "Áreas (marcar):",
+        "selectAll": "Selecionar tudo",
+        "deselectAll": "Desmarcar tudo",
+        "settingsLabel": "Configurações do exame:",
+        "countLabel": "Número de perguntas:",
+        "allQuestions": "Todas",
+        "timeLabel": "Tempo total (minutos):",
+        "noTime": "Sem limite de tempo",
+        "startButton": "Iniciar Quiz",
+        "aboutButton": "Sobre"
+      }
+    },
+    "quiz": {
+      "score": "Pontuação:",
+      "question": "Pergunta:",
+      "timers": {
+        "initial": "Total inicial",
+        "remaining": "Restante",
+        "question": "Tempo da pergunta"
+      },
+      "finishButton": "Finalizar questionário",
+      "navButtons": {
+        "prev": "Anterior",
+        "next": "Próximo"
+      },
+      "restartTooltip": "Reiniciar quiz"
+    },
+    "footer": {
+      "copyright": "© Pablo Kriger 2026 (Todos os Direitos Reservados)",
+      "privacy": "Política de Privacidade"
+    },
+    "modals": {
+      "exit": {
+        "title": "Deseja sair?",
+        "message": "O progresso atual do quiz será perdido. Deseja continuar?",
+        "no": "NÃO",
+        "yes": "SIM"
+      },
+      "about": {
+        "title": "Sobre",
+        "close": "Fechar"
+      },
+      "politics": {
+        "title": "Política de Privacidade",
+        "choose": "Consulte as políticas no seu idioma:",
+        "close": "Fechar"
+      }
+    }
+  },
+  "de": {
+    "header": {
+      "title": "PMP-Prüfungssimulator",
+      "subtitle": "Professionelle Vorbereitung nach PMBOK® 7 — Übung nach Bereichen, vollständige Prüfung und Wiederholung.",
+      "user": {
+        "guest": "Gast",
+        "login": "Anmelden",
+        "logout": "Abmelden"
+      },
+      "menu": {
+        "progress": "Mein Fortschritt",
+        "tips": "Tipps",
+        "about": "Über",
+        "pmpTips": "PMP-Zertifizierung",
+        "pmbok7Tips": "Über PMBOK7"
+      },
+      "tooltips": {
+        "fullscreen": "Vollbild",
+        "language": "Sprache",
+        "home": "Startseite",
+        "menu": "Menü"
+      }
+    },
+    "main": {
+      "controls": {
+        "mode": "Modus:",
+        "examMode": "PMP-Prüfungssimulator",
+        "customMode": "Prüfung anpassen",
+        "versionLabel": "Version (nur für PMP-Prüfung):",
+        "customVersionLabel": "Prüfungsversion:",
+        "bothVersions": "Beide",
+        "v6": "v6",
+        "v7": "v7",
+        "areasLabel": "Bereiche (markieren):",
+        "selectAll": "Alle auswählen",
+        "deselectAll": "Alle abwählen",
+        "settingsLabel": "Prüfungseinstellungen:",
+        "countLabel": "Anzahl der Fragen:",
+        "allQuestions": "Alle",
+        "timeLabel": "Gesamtzeit (Minuten):",
+        "noTime": "Keine Zeitbegrenzung",
+        "startButton": "Quiz starten",
+        "aboutButton": "Über"
+      }
+    },
+    "footer": {
+      "copyright": "© Pablo Kriger 2026 (Alle Rechte vorbehalten)",
+      "privacy": "Datenschutzrichtlinie"
+    },
+    "modals": {
+      "exit": {
+        "title": "Möchten Sie beenden?",
+        "message": "Der aktuelle Quiz-Fortschritt geht verloren. Möchten Sie fortfahren?",
+        "no": "NEIN",
+        "yes": "JA"
+      },
+      "about": {
+        "title": "Über",
+        "close": "Schließen"
+      },
+      "politics": {
+        "title": "Datenschutzrichtlinie",
+        "choose": "Richtlinien in Ihrer Sprache anzeigen:",
+        "close": "Schließen"
+      }
+    }
+  }
+}
