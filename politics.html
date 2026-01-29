@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Política de Privacidad — PMP</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --muted:#64707d;
+    --accent:#0b6efd;
+    --radius:12px;
+  }
+  html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+  .wrap{max-width:980px;margin:28px auto;padding:20px;}
+  .lang-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+  .lang-btn{
+    display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;
+    background:var(--card);border:1px solid rgba(15,23,42,0.06);cursor:pointer;box-shadow:0 6px 18px rgba(12,24,40,0.04);
+    transition:transform .08s ease,box-shadow .12s ease;
+    font-weight:600;color:#111;font-size:14px;
+  }
+  .lang-btn:hover{transform:translateY(-3px)}
+  .lang-btn.active{outline:3px solid rgba(11,110,253,0.12);box-shadow:0 10px 30px rgba(11,110,253,0.08)}
+  .flag{width:22px;height:22px;border-radius:50%;object-fit:cover;display:inline-block;}
+  .card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:0 12px 30px rgba(12,24,40,0.06);max-height:72vh;overflow:auto;}
+  h1{margin:0 0 6px;font-size:20px}
+  h4{margin:0 0 14px;color:var(--muted);font-weight:500}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:12px}
+  .section{margin-bottom:12px;line-height:1.55;color:#1f2d3d}
+  .section strong{display:block;margin-bottom:6px;color:#0b6efd}
+  .footer-note{font-size:13px;color:var(--muted);margin-top:18px}
+  @media (max-width:520px){.wrap{padding:12px}.lang-btn{padding:8px 10px;font-size:13px}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="lang-row" aria-label="Seleccionar idioma">
+      <button class="lang-btn" data-lang="en" title="English (ENG)"><img class="flag" src="https://flagcdn.com/us.svg" alt="USA"> ENG</button>
+      <button class="lang-btn" data-lang="es" title="Español (ESP)"><img class="flag" src="https://flagcdn.com/es.svg" alt="ES"> ESP</button>
+      <button class="lang-btn" data-lang="pt" title="Português (PT)"><img class="flag" src="https://flagcdn.com/br.svg" alt="BR"> PT</button>
+      <button class="lang-btn" data-lang="de" title="Deutsch (DE)"><img class="flag" src="https://flagcdn.com/de.svg" alt="DE"> DE</button>
+    </div>
+
+    <div class="card" id="policyCard" role="main" aria-live="polite">
+      <h1 id="p-title">Cargando política...</h1>
+      <h4 id="p-vigencia"></h4>
+      <div class="meta" id="p-titular"></div>
+      <hr />
+      <div id="p-content"></div>
+      <div class="footer-note" id="p-foot"></div>
+    </div>
+  </div>
+
+<script type="module">
+(() => {
+  // RAW URL — AJUSTA si tu JSON tiene otro nombre o ruta
+  const RAW_JSON_URL = "https://raw.githubusercontent.com/pablokriger/PMP/main/politics.json";
+
+  const btns = Array.from(document.querySelectorAll('.lang-btn'));
+  const titleEl = document.getElementById('p-title');
+  const vigEl = document.getElementById('p-vigencia');
+  const titularEl = document.getElementById('p-titular');
+  const contentEl = document.getElementById('p-content');
+  const footEl = document.getElementById('p-foot');
+
+  let policyData = null;
+  const stored = localStorage.getItem('policyLang');
+  let currentLang = stored || 'es';
+
+  // Helper: safe-get text
+  const txt = (obj, key) => (obj && obj[key] !== undefined) ? obj[key] : '';
+
+  // Mark active button
+  function setActiveButton(lang){
+    btns.forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
+
+  // Render policy
+  function renderPolicy(lang){
+    if(!policyData || !policyData[lang]) {
+      titleEl.textContent = "Política no disponible";
+      vigEl.textContent = "";
+      titularEl.textContent = "";
+      contentEl.innerHTML = "<p style='color:#c33'>No se encontró la política en el idioma seleccionado.</p>";
+      footEl.textContent = "";
+      return;
+    }
+    const p = policyData[lang];
+    titleEl.textContent = txt(p,'titulo') || 'Política';
+    vigEl.textContent = txt(p,'vigencia') || '';
+    titularEl.textContent = txt(p,'titular') || '';
+    // Build sections 1..17 (if present)
+    const parts = [];
+    for(let i=1;i<=17;i++){
+      const k = String(i);
+      if(p[k]){
+        parts.push(`<div class="section"><strong>${i}.</strong><div>${escapeHtml(p[k])}</div></div>`);
+      }
+    }
+    contentEl.innerHTML = parts.join('');
+    footEl.textContent = ""; // could add extra foot if needed
+    setActiveButton(lang);
+    localStorage.setItem('policyLang', lang);
+  }
+
+  // Escape simple HTML to avoid accidental injection (keeps plain text)
+  function escapeHtml(str){
+    if(typeof str !== 'string') return '';
+    return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>");
+  }
+
+  // Load JSON
+  async function loadJson(){
+    try {
+      const res = await fetch(RAW_JSON_URL, {cache: "no-store"});
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      policyData = await res.json();
+      renderPolicy(currentLang);
+    } catch (err) {
+      console.error("Error loading policy JSON:", err);
+      titleEl.textContent = "Error al cargar política";
+      contentEl.innerHTML = `<p style="color:#c33">No se pudo cargar el archivo de políticas. Verifica RAW_JSON_URL o el nombre del archivo en el repo. (${err.message})</p>`;
+    }
+  }
+
+  // Attach events to buttons
+  btns.forEach(b => {
+    b.addEventListener('click', () => {
+      const lang = b.dataset.lang;
+      currentLang = lang;
+      renderPolicy(lang);
+      // smooth-scroll to top of card when switching
+      document.getElementById('policyCard').scrollTop = 0;
+    });
+  });
+
+  // Init
+  loadJson();
+
+})();
+</script>
+</body>
+</html>
