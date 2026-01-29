@@ -1,0 +1,782 @@
+{
+  "es": {
+    "header": {
+      "title": "Simulador de Examen PMP",
+      "subtitle": "Preparación profesional alineada al PMBOK 7 — práctica por dominios, examen completo y repaso.",
+      "user": {
+        "guest": "Invitado",
+        "login": "Iniciar sesión",
+        "logout": "Cerrar sesión"
+      },
+      "menu": {
+        "progress": "Mi progreso",
+        "tips": "Consejos",
+        "about": "Acerca de",
+        "pmpTips": "Certificación PMP",
+        "pmbok7Tips": "Sobre el PMBOK7"
+      },
+      "tooltips": {
+        "fullscreen": "Pantalla completa",
+        "exitFullscreen": "Salir de pantalla completa",
+        "language": "Idioma",
+        "home": "Inicio",
+        "menu": "Menú",
+        "clock": "Reloj",
+        "restartQuiz": "Reiniciar quiz",
+        "finishQuiz": "Finalizar cuestionario"
+      }
+    },
+    "main": {
+      "mobileLead": "Preparación profesional alineada al PMBOK 7 — práctica por dominios, examen completo y repaso.",
+      "controls": {
+        "mode": "Modalidad",
+        "examMode": "Simulador Examen PMP",
+        "customMode": "Personalizar examen",
+        "examNote": "Se simula un examen real de 180 preguntas en 250 minutos.",
+        "versionLabel": "Versión (solo para Exam PMP):",
+        "customVersionLabel": "Versión del examen:",
+        "areasLabel": "Áreas (marcar):",
+        "loadingAreas": "Cargando áreas...",
+        "selectAll": "Seleccionar todo",
+        "deselectAll": "Deseleccionar todo",
+        "settingsLabel": "Configuración del examen:",
+        "countLabel": "Cantidad de preguntas:",
+        "allQuestions": "Todas",
+        "timeLabel": "Tiempo total (minutos):",
+        "noTime": "Sin límite de tiempo",
+        "startButton": "Comenzar Quiz",
+        "aboutButton": "Acerca de",
+        "v6": "v6",
+        "v7": "v7",
+        "bothVersions": "Ambas",
+        "loadingQuestions": "Cargando preguntas..."
+      },
+      "authRequired": {
+        "title": "🔐 Acceso Requerido",
+        "message1": "Para acceder a las preguntas del simulador PMP, debes iniciar sesión con tu cuenta de Google.",
+        "message2": "Esto nos permite ofrecerte una experiencia personalizada y guardar tu progreso.",
+        "loginButton": "Iniciar sesión con Google"
+      }
+    },
+    "quiz": {
+      "questionOf": "Pregunta {current} de {total}",
+      "timers": {
+        "initialTotal": "Total inicial",
+        "remaining": "Restante",
+        "questionElapsed": "Tiempo de pregunta"
+      },
+      "finishButton": "Finalizar cuestionario",
+      "navButtons": {
+        "prev": "Anterior",
+        "next": "Siguiente"
+      },
+      "versionText": "Versión: {version}",
+      "areaText": "Área: {area}"
+    },
+    "results": {
+      "title": "Resultados y estadísticas",
+      "performance": "Rendimiento",
+      "charts": "Gráficos",
+      "attemptStats": "Estadísticas del intento",
+      "history": "Historial",
+      "personalHistory": "Tu Historial Personal",
+      "historyEmpty": "Inicia sesión para ver tu historial personalizado",
+      "generalPerformance": "Desempeño general",
+      "accuracyByArea": "Exactitud por área",
+      "noTimeLimit": "Sin límite",
+      "score": "Puntaje",
+      "correctOf": "Correctas",
+      "totalQuestions": "Preguntas totales",
+      "answered": "Respondidas",
+      "correct": "Correctas",
+      "finalPercentage": "Porcentaje final",
+      "times": "Tiempos",
+      "timeUsed": "Tiempo empleado",
+      "timeRemaining": "Tiempo restante",
+      "averageTimePerAnsweredQuestion": "Tiempo promedio por pregunta respondida",
+      "byAreas": "Por áreas"
+    },
+    "modals": {
+      "exit": {
+        "title": "¿Desea salir?",
+        "message": "Se borrará el avance actual del quiz. ¿Desea continuar?",
+        "no": "NO",
+        "yes": "SI"
+      },
+      "finish": {
+        "title": "¿Está seguro de que desea finalizar el cuestionario?",
+        "no": "NO",
+        "yes": "SI"
+      },
+      "timeup": {
+        "title": "Tiempo finalizado",
+        "message": "El tiempo del examen ha finalizado. Presione Aceptar para ver las estadísticas.",
+        "accept": "Aceptar"
+      },
+      "validation": {
+        "title": "Entrada inválida",
+        "noQuestions": "No hay preguntas para las áreas/versión seleccionadas.",
+        "invalidCount": "Cantidad inválida de preguntas. Ingrese un número mayor a 0.",
+        "maxQuestions": "La cantidad máxima de preguntas es 2000.",
+        "invalidTime": "Tiempo inválido. Ingrese un número mayor a 0 minutos.",
+        "loginRequired": "Debes iniciar sesión para acceder a las preguntas.",
+        "loadingError": "Es posible que las preguntas se estén cargando o que no estén disponibles en tu idioma. Espere un momento o seleccione otro idioma.",
+        "resetLoginRequired": "Debes iniciar sesión para resetear el historial.",
+        "resetError": "Error al borrar el historial"
+      },
+      "about": {
+        "title": "Acerca de",
+        "appTitle": "PMP — Exam Prep",
+        "version": "Versión 1.3",
+        "copyright": "© Pablo Kriger 2026. Todos los derechos reservados.",
+        "disclaimer": "PMP® y PMBOK® son marcas registradas del Project Management Institute, Inc. Este simulador no está afiliado ni avalado por el PMI.",
+        "disclaimer2": "Al usar esta plataforma, acepta nuestra",
+        "close": "Cerrar"
+      },
+      "tips": {
+        "title": "Consejos PMP",
+        "selectCategory": "Selecciona una categoría para ver contenido",
+        "loadingTips": "Cargando consejos de rendimiento PMP...",
+        "loadingPmbok": "Cargando información de PMBOK7...",
+        "another": "Otro consejo",
+        "close": "Cerrar"
+      },
+      "progress": {
+        "title": "Mi Progreso",
+        "generalStats": "Estadísticas Generales",
+        "quizzesTaken": "Quiz realizados",
+        "correctQuestions": "Preguntas correctas",
+        "incorrectQuestions": "Preguntas incorrectas",
+        "unansweredQuestions": "Preguntas no respondidas",
+        "totalPerformance": "Rendimiento total",
+        "totalStudyTime": "Tiempo total de estudio",
+        "totalCorrect": "Correctas totales",
+        "totalScore": "Puntaje total",
+        "close": "Cerrar",
+        "reset": "Resetear historial"
+      },
+      "acceptance": {
+        "title": "Aviso Importante",
+        "message": "Al usar esta plataforma y sus servicios, usted da por entendido y acepta el uso de nuestras politicas de privacidad y terminos de uso.",
+        "continue": "Aceptar"
+      },
+      "langChange": {
+        "title": "Cambiar idioma",
+        "message": "Hay un quiz en progreso. Si cambia el idioma, el quiz se reiniciará. ¿Desea continuar?",
+        "no": "NO",
+        "yes": "SI"
+      },
+      "resetConfirm": {
+        "title": "¿Está seguro de que desea borrar todo su historial? Esta acción no se puede deshacer.",
+        "no": "NO",
+        "yes": "SI"
+      },
+      "resetSuccess": {
+        "title": "Historial borrado exitosamente",
+        "accept": "Aceptar"
+      }
+    },
+    "footer": {
+      "copyright": "© Pablo Kriger 2026 (Todos los Derechos Reservados)",
+      "privacy": "Política de Privacidad",
+      "fullText": "Al usar esta plataforma, acepta nuestra"
+    },
+    "loading": {
+      "loadingQuestions": "Cargando preguntas...",
+      "errorTitle": "Error cargando datos",
+      "errorMessage": "No se pudieron cargar las preguntas desde Firestore.",
+      "errorDetails": "Error:"
+    },
+    "languages": {
+      "en": "ENG",
+      "es": "ESP",
+      "pt": "PT",
+      "de": "DE"
+    }
+  },
+  "en": {
+    "header": {
+      "title": "PMP Exam Simulator",
+      "subtitle": "Professional preparation aligned with PMBOK 7 — practice by domains, full exam, and review.",
+      "user": {
+        "guest": "Guest",
+        "login": "Log in",
+        "logout": "Log out"
+      },
+      "menu": {
+        "progress": "My Progress",
+        "tips": "Tips",
+        "about": "About",
+        "pmpTips": "PMP Certification",
+        "pmbok7Tips": "About PMBOK7"
+      },
+      "tooltips": {
+        "fullscreen": "Fullscreen",
+        "exitFullscreen": "Exit fullscreen",
+        "language": "Language",
+        "home": "Home",
+        "menu": "Menu",
+        "clock": "Clock",
+        "restartQuiz": "Restart quiz",
+        "finishQuiz": "Finish quiz"
+      }
+    },
+    "main": {
+      "mobileLead": "Professional preparation aligned with PMBOK 7 — practice by domains, full exam, and review.",
+      "controls": {
+        "mode": "Mode",
+        "examMode": "PMP Exam Simulator",
+        "customMode": "Customize exam",
+        "examNote": "A real exam of 180 questions in 250 minutes is simulated.",
+        "versionLabel": "Version (only for Exam PMP):",
+        "customVersionLabel": "Exam version:",
+        "areasLabel": "Areas (mark):",
+        "loadingAreas": "Loading areas...",
+        "selectAll": "Select all",
+        "deselectAll": "Deselect all",
+        "settingsLabel": "Exam settings:",
+        "countLabel": "Number of questions:",
+        "allQuestions": "All",
+        "timeLabel": "Total time (minutes):",
+        "noTime": "No time limit",
+        "startButton": "Start Quiz",
+        "aboutButton": "About",
+        "v6": "v6",
+        "v7": "v7",
+        "bothVersions": "Both",
+        "loadingQuestions": "Loading questions..."
+      },
+      "authRequired": {
+        "title": "🔐 Access Required",
+        "message1": "To access the PMP simulator questions, you must log in with your Google account.",
+        "message2": "This allows us to offer you a personalized experience and save your progress.",
+        "loginButton": "Log in with Google"
+      }
+    },
+    "quiz": {
+      "questionOf": "Question {current} of {total}",
+      "timers": {
+        "initialTotal": "Initial total",
+        "remaining": "Remaining",
+        "questionElapsed": "Question elapsed"
+      },
+      "finishButton": "Finish quiz",
+      "navButtons": {
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "versionText": "Version: {version}",
+      "areaText": "Area: {area}"
+    },
+    "results": {
+      "title": "Results and statistics",
+      "performance": "Performance",
+      "charts": "Charts",
+      "attemptStats": "Attempt statistics",
+      "history": "History",
+      "personalHistory": "Your Personal History",
+      "historyEmpty": "Log in to see your personalized history",
+      "generalPerformance": "General performance",
+      "accuracyByArea": "Accuracy by area",
+      "noTimeLimit": "No limit",
+      "score": "Score",
+      "correctOf": "Correct",
+      "totalQuestions": "Total questions",
+      "answered": "Answered",
+      "correct": "Correct",
+      "finalPercentage": "Final percentage",
+      "times": "Times",
+      "timeUsed": "Time used",
+      "timeRemaining": "Time remaining",
+      "averageTimePerAnsweredQuestion": "Average time per answered question",
+      "byAreas": "By areas"
+    },
+    "modals": {
+      "exit": {
+        "title": "Do you want to exit?",
+        "message": "The current quiz progress will be deleted. Do you want to continue?",
+        "no": "NO",
+        "yes": "YES"
+      },
+      "finish": {
+        "title": "Are you sure you want to finish the quiz?",
+        "no": "NO",
+        "yes": "YES"
+      },
+      "timeup": {
+        "title": "Time is up",
+        "message": "The exam time has ended. Press Accept to see the statistics.",
+        "accept": "Accept"
+      },
+      "validation": {
+        "title": "Invalid input",
+        "noQuestions": "No questions for the selected areas/version.",
+        "invalidCount": "Invalid number of questions. Enter a number greater than 0.",
+        "maxQuestions": "Maximum number of questions is 2000.",
+        "invalidTime": "Invalid time. Enter a number greater than 0 minutes.",
+        "loginRequired": "You must log in to access the questions.",
+        "loadingError": "Questions may be loading or not available in your language. Wait a moment or select another language.",
+        "resetLoginRequired": "You must log in to reset history.",
+        "resetError": "Error deleting history"
+      },
+      "about": {
+        "title": "About",
+        "appTitle": "PMP — Exam Prep",
+        "version": "Version 1.3",
+        "copyright": "© Pablo Kriger 2026. All rights reserved.",
+        "disclaimer": "PMP® and PMBOK® are registered trademarks of the Project Management Institute, Inc. This simulator is not affiliated with or endorsed by PMI.",
+        "disclaimer2": "By using this platform, you accept our",
+        "close": "Close"
+      },
+      "tips": {
+        "title": "PMP Tips",
+        "selectCategory": "Select a category to view content",
+        "loadingTips": "Loading PMP performance tips...",
+        "loadingPmbok": "Loading PMBOK7 information...",
+        "another": "Another tip",
+        "close": "Close"
+      },
+      "progress": {
+        "title": "My Progress",
+        "generalStats": "General Statistics",
+        "quizzesTaken": "Quizzes taken",
+        "correctQuestions": "Correct questions",
+        "incorrectQuestions": "Incorrect questions",
+        "unansweredQuestions": "Unanswered questions",
+        "totalPerformance": "Total performance",
+        "totalStudyTime": "Total study time",
+        "totalCorrect": "Total correct",
+        "totalScore": "Total score",
+        "close": "Close",
+        "reset": "Reset history"
+      },
+      "acceptance": {
+        "title": "Important Notice",
+        "message": "By using this platform and its services, you acknowledge and accept the use of our privacy policies and terms of use.",
+        "continue": "Accept"
+      },
+      "langChange": {
+        "title": "Change language",
+        "message": "There is a quiz in progress. If you change the language, the quiz will restart. Do you want to continue?",
+        "no": "NO",
+        "yes": "YES"
+      },
+      "resetConfirm": {
+        "title": "Are you sure you want to delete all your history? This action cannot be undone.",
+        "no": "NO",
+        "yes": "YES"
+      },
+      "resetSuccess": {
+        "title": "History deleted successfully",
+        "accept": "Accept"
+      }
+    },
+    "footer": {
+      "copyright": "© Pablo Kriger 2026 (All Rights Reserved)",
+      "privacy": "Privacy Policy",
+      "fullText": "By using this platform, you accept our"
+    },
+    "loading": {
+      "loadingQuestions": "Loading questions...",
+      "errorTitle": "Error loading data",
+      "errorMessage": "Could not load questions from Firestore.",
+      "errorDetails": "Error:"
+    },
+    "languages": {
+      "en": "ENG",
+      "es": "ESP",
+      "pt": "PT",
+      "de": "DE"
+    }
+  },
+  "pt": {
+    "header": {
+      "title": "Simulador de Exame PMP",
+      "subtitle": "Preparação profissional alinhada com PMBOK 7 — prática por domínios, exame completo e revisão.",
+      "user": {
+        "guest": "Convidado",
+        "login": "Iniciar sessão",
+        "logout": "Terminar sessão"
+      },
+      "menu": {
+        "progress": "Meu Progresso",
+        "tips": "Dicas",
+        "about": "Sobre",
+        "pmpTips": "Certificação PMP",
+        "pmbok7Tips": "Sobre PMBOK7"
+      },
+      "tooltips": {
+        "fullscreen": "Tela cheia",
+        "exitFullscreen": "Sair da tela cheia",
+        "language": "Idioma",
+        "home": "Início",
+        "menu": "Menu",
+        "clock": "Relógio",
+        "restartQuiz": "Reiniciar quiz",
+        "finishQuiz": "Finalizar questionário"
+      }
+    },
+    "main": {
+      "mobileLead": "Preparação profissional alinhada com PMBOK 7 — prática por domínios, exame completo e revisão.",
+      "controls": {
+        "mode": "Modalidade",
+        "examMode": "Simulador de Exame PMP",
+        "customMode": "Personalizar exame",
+        "examNote": "Simula um exame real de 180 perguntas em 250 minutos.",
+        "versionLabel": "Versão (apenas para Exame PMP):",
+        "customVersionLabel": "Versão do exame:",
+        "areasLabel": "Áreas (marcar):",
+        "loadingAreas": "Carregando áreas...",
+        "selectAll": "Selecionar tudo",
+        "deselectAll": "Desmarcar tudo",
+        "settingsLabel": "Configurações do exame:",
+        "countLabel": "Número de perguntas:",
+        "allQuestions": "Todas",
+        "timeLabel": "Tempo total (minutos):",
+        "noTime": "Sem limite de tempo",
+        "startButton": "Iniciar Quiz",
+        "aboutButton": "Sobre",
+        "v6": "v6",
+        "v7": "v7",
+        "bothVersions": "Ambas",
+        "loadingQuestions": "Carregando perguntas..."
+      },
+      "authRequired": {
+        "title": "🔐 Acesso Necessário",
+        "message1": "Para aceder às perguntas do simulador PMP, deve iniciar sessão com a sua conta Google.",
+        "message2": "Isto permite-nos oferecer uma experiência personalizada e guardar o seu progresso.",
+        "loginButton": "Iniciar sessão com Google"
+      }
+    },
+    "quiz": {
+      "questionOf": "Pergunta {current} de {total}",
+      "timers": {
+        "initialTotal": "Total inicial",
+        "remaining": "Restante",
+        "questionElapsed": "Tempo da pergunta"
+      },
+      "finishButton": "Finalizar questionário",
+      "navButtons": {
+        "prev": "Anterior",
+        "next": "Próximo"
+      },
+      "versionText": "Versão: {version}",
+      "areaText": "Área: {area}"
+    },
+    "results": {
+      "title": "Resultados e estatísticas",
+      "performance": "Desempenho",
+      "charts": "Gráficos",
+      "attemptStats": "Estatísticas da tentativa",
+      "history": "Histórico",
+      "personalHistory": "Seu Histórico Pessoal",
+      "historyEmpty": "Inicie sessão para ver o seu histórico personalizado",
+      "generalPerformance": "Desempenho geral",
+      "accuracyByArea": "Precisão por área",
+      "noTimeLimit": "Sem limite",
+      "score": "Pontuação",
+      "correctOf": "Corretas",
+      "totalQuestions": "Perguntas totais",
+      "answered": "Respondidas",
+      "correct": "Corretas",
+      "finalPercentage": "Percentagem final",
+      "times": "Tempos",
+      "timeUsed": "Tempo utilizado",
+      "timeRemaining": "Tempo restante",
+      "averageTimePerAnsweredQuestion": "Tempo médio por pergunta respondida",
+      "byAreas": "Por áreas"
+    },
+    "modals": {
+      "exit": {
+        "title": "Deseja sair?",
+        "message": "O progresso atual do quiz será apagado. Deseja continuar?",
+        "no": "NÃO",
+        "yes": "SIM"
+      },
+      "finish": {
+        "title": "Tem certeza que deseja finalizar o questionário?",
+        "no": "NÃO",
+        "yes": "SIM"
+      },
+      "timeup": {
+        "title": "Tempo esgotado",
+        "message": "O tempo do exame terminou. Pressione Aceitar para ver as estatísticas.",
+        "accept": "Aceitar"
+      },
+      "validation": {
+        "title": "Entrada inválida",
+        "noQuestions": "Não há perguntas para as áreas/versão selecionadas.",
+        "invalidCount": "Número inválido de perguntas. Digite um número maior que 0.",
+        "maxQuestions": "O número máximo de perguntas é 2000.",
+        "invalidTime": "Tempo inválido. Digite um número maior que 0 minutos.",
+        "loginRequired": "Deve iniciar sessão para aceder às perguntas.",
+        "loadingError": "As perguntas podem estar a carregar ou não estar disponíveis no seu idioma. Aguarde um momento ou selecione outro idioma.",
+        "resetLoginRequired": "Deve iniciar sessão para redefinir o histórico.",
+        "resetError": "Erro ao apagar o histórico"
+      },
+      "about": {
+        "title": "Sobre",
+        "appTitle": "PMP — Exam Prep",
+        "version": "Versão 1.3",
+        "copyright": "© Pablo Kriger 2026. Todos os direitos reservados.",
+        "disclaimer": "PMP® e PMBOK® são marcas registadas do Project Management Institute, Inc. Este simulador não é afiliado nem endossado pelo PMI.",
+        "disclaimer2": "Ao usar esta plataforma, aceita a nossa",
+        "close": "Fechar"
+      },
+      "tips": {
+        "title": "Dicas PMP",
+        "selectCategory": "Selecione uma categoria para visualizar conteúdo",
+        "loadingTips": "Carregando dicas de desempenho PMP...",
+        "loadingPmbok": "Carregando informações PMBOK7...",
+        "another": "Outra dica",
+        "close": "Fechar"
+      },
+      "progress": {
+        "title": "Meu Progresso",
+        "generalStats": "Estatísticas Gerais",
+        "quizzesTaken": "Quizzes realizados",
+        "correctQuestions": "Perguntas corretas",
+        "incorrectQuestions": "Perguntas incorretas",
+        "unansweredQuestions": "Perguntas não respondidas",
+        "totalPerformance": "Desempenho total",
+        "totalStudyTime": "Tempo total de estudo",
+        "totalCorrect": "Total de corretas",
+        "totalScore": "Pontuação total",
+        "close": "Fechar",
+        "reset": "Redefinir histórico"
+      },
+      "acceptance": {
+        "title": "Aviso Importante",
+        "message": "Ao usar esta plataforma e seus serviços, você reconhece e aceita o uso de nossas políticas de privacidade e termos de uso.",
+        "continue": "Aceitar"
+      },
+      "langChange": {
+        "title": "Mudar idioma",
+        "message": "Há um quiz em andamento. Se mudar o idioma, o quiz será reiniciado. Deseja continuar?",
+        "no": "NÃO",
+        "yes": "SIM"
+      },
+      "resetConfirm": {
+        "title": "Tem certeza que deseja apagar todo o seu histórico? Esta ação não pode ser desfeita.",
+        "no": "NÃO",
+        "yes": "SIM"
+      },
+      "resetSuccess": {
+        "title": "Histórico apagado com sucesso",
+        "accept": "Aceitar"
+      }
+    },
+    "footer": {
+      "copyright": "© Pablo Kriger 2026 (Todos os Direitos Reservados)",
+      "privacy": "Política de Privacidade",
+      "fullText": "Ao usar esta plataforma, aceita a nossa"
+    },
+    "loading": {
+      "loadingQuestions": "Carregando perguntas...",
+      "errorTitle": "Erro ao carregar dados",
+      "errorMessage": "Não foi possível carregar perguntas do Firestore.",
+      "errorDetails": "Erro:"
+    },
+    "languages": {
+      "en": "ENG",
+      "es": "ESP",
+      "pt": "PT",
+      "de": "DE"
+    }
+  },
+  "de": {
+    "header": {
+      "title": "PMP-Prüfungssimulator",
+      "subtitle": "Professionelle Vorbereitung nach PMBOK 7 — Übung nach Domänen, vollständige Prüfung und Wiederholung.",
+      "user": {
+        "guest": "Gast",
+        "login": "Anmelden",
+        "logout": "Abmelden"
+      },
+      "menu": {
+        "progress": "Mein Fortschritt",
+        "tips": "Tipps",
+        "about": "Über",
+        "pmpTips": "PMP-Zertifizierung",
+        "pmbok7Tips": "Über PMBOK7"
+      },
+      "tooltips": {
+        "fullscreen": "Vollbild",
+        "exitFullscreen": "Vollbild verlassen",
+        "language": "Sprache",
+        "home": "Startseite",
+        "menu": "Menü",
+        "clock": "Uhr",
+        "restartQuiz": "Quiz neu starten",
+        "finishQuiz": "Quiz beenden"
+      }
+    },
+    "main": {
+      "mobileLead": "Professionelle Vorbereitung nach PMBOK 7 — Übung nach Domänen, vollständige Prüfung und Wiederholung.",
+      "controls": {
+        "mode": "Modus",
+        "examMode": "PMP-Prüfungssimulator",
+        "customMode": "Prüfung anpassen",
+        "examNote": "Es wird eine echte Prüfung mit 180 Fragen in 250 Minuten simuliert.",
+        "versionLabel": "Version (nur für PMP-Prüfung):",
+        "customVersionLabel": "Prüfungsversion:",
+        "areasLabel": "Bereiche (markieren):",
+        "loadingAreas": "Bereiche werden geladen...",
+        "selectAll": "Alle auswählen",
+        "deselectAll": "Alle abwählen",
+        "settingsLabel": "Prüfungseinstellungen:",
+        "countLabel": "Anzahl der Fragen:",
+        "allQuestions": "Alle",
+        "timeLabel": "Gesamtzeit (Minuten):",
+        "noTime": "Keine Zeitbegrenzung",
+        "startButton": "Quiz starten",
+        "aboutButton": "Über",
+        "v6": "v6",
+        "v7": "v7",
+        "bothVersions": "Beide",
+        "loadingQuestions": "Fragen werden geladen..."
+      },
+      "authRequired": {
+        "title": "🔐 Zugang erforderlich",
+        "message1": "Um auf die Fragen des PMP-Simulators zuzugreifen, müssen Sie sich mit Ihrem Google-Konto anmelden.",
+        "message2": "Dies ermöglicht uns, Ihnen eine personalisierte Erfahrung zu bieten und Ihren Fortschritt zu speichern.",
+        "loginButton": "Mit Google anmelden"
+      }
+    },
+    "quiz": {
+      "questionOf": "Frage {current} von {total}",
+      "timers": {
+        "initialTotal": "Anfangsgesamt",
+        "remaining": "Verbleibend",
+        "questionElapsed": "Fragezeit"
+      },
+      "finishButton": "Quiz beenden",
+      "navButtons": {
+        "prev": "Zurück",
+        "next": "Weiter"
+      },
+      "versionText": "Version: {version}",
+      "areaText": "Bereich: {area}"
+    },
+    "results": {
+      "title": "Ergebnisse und Statistiken",
+      "performance": "Leistung",
+      "charts": "Diagramme",
+      "attemptStats": "Versuchsstatistiken",
+      "history": "Verlauf",
+      "personalHistory": "Ihr persönlicher Verlauf",
+      "historyEmpty": "Melden Sie sich an, um Ihren personalisierten Verlauf zu sehen",
+      "generalPerformance": "Allgemeine Leistung",
+      "accuracyByArea": "Genauigkeit nach Bereich",
+      "noTimeLimit": "Keine Begrenzung",
+      "score": "Punktzahl",
+      "correctOf": "Richtig",
+      "totalQuestions": "Gesamtfragen",
+      "answered": "Beantwortet",
+      "correct": "Richtig",
+      "finalPercentage": "Endprozentsatz",
+      "times": "Zeiten",
+      "timeUsed": "Verwendete Zeit",
+      "timeRemaining": "Verbleibende Zeit",
+      "averageTimePerAnsweredQuestion": "Durchschnittszeit pro beantwortete Frage",
+      "byAreas": "Nach Bereichen"
+    },
+    "modals": {
+      "exit": {
+        "title": "Möchten Sie beenden?",
+        "message": "Der aktuelle Quiz-Fortschritt wird gelöscht. Möchten Sie fortfahren?",
+        "no": "NEIN",
+        "yes": "JA"
+      },
+      "finish": {
+        "title": "Sind Sie sicher, dass Sie das Quiz beenden möchten?",
+        "no": "NEIN",
+        "yes": "JA"
+      },
+      "timeup": {
+        "title": "Zeit abgelaufen",
+        "message": "Die Prüfungszeit ist abgelaufen. Drücken Sie Akzeptieren, um die Statistiken zu sehen.",
+        "accept": "Akzeptieren"
+      },
+      "validation": {
+        "title": "Ungültige Eingabe",
+        "noQuestions": "Keine Fragen für die ausgewählten Bereiche/Versionen.",
+        "invalidCount": "Ungültige Anzahl von Fragen. Geben Sie eine Zahl größer als 0 ein.",
+        "maxQuestions": "Maximale Anzahl von Fragen ist 2000.",
+        "invalidTime": "Ungültige Zeit. Geben Sie eine Zahl größer als 0 Minuten ein.",
+        "loginRequired": "Sie müssen sich anmelden, um auf die Fragen zuzugreifen.",
+        "loadingError": "Fragen werden möglicherweise geladen oder sind in Ihrer Sprache nicht verfügbar. Warten Sie einen Moment oder wählen Sie eine andere Sprache.",
+        "resetLoginRequired": "Sie müssen sich anmelden, um den Verlauf zurückzusetzen.",
+        "resetError": "Fehler beim Löschen des Verlaufs"
+      },
+      "about": {
+        "title": "Über",
+        "appTitle": "PMP — Exam Prep",
+        "version": "Version 1.3",
+        "copyright": "© Pablo Kriger 2026. Alle Rechte vorbehalten.",
+        "disclaimer": "PMP® und PMBOK® sind eingetragene Marken des Project Management Institute, Inc. Dieser Simulator ist nicht mit PMI verbunden oder von PMI genehmigt.",
+        "disclaimer2": "Durch die Nutzung dieser Plattform akzeptieren Sie unsere",
+        "close": "Schließen"
+      },
+      "tips": {
+        "title": "PMP-Tipps",
+        "selectCategory": "Wählen Sie eine Kategorie, um Inhalte anzuzeigen",
+        "loadingTips": "Lade PMP-Leistungstipps...",
+        "loadingPmbok": "Lade PMBOK7-Informationen...",
+        "another": "Weiterer Tipp",
+        "close": "Schließen"
+      },
+      "progress": {
+        "title": "Mein Fortschritt",
+        "generalStats": "Allgemeine Statistiken",
+        "quizzesTaken": "Durchgeführte Quizzes",
+        "correctQuestions": "Richtige Fragen",
+        "incorrectQuestions": "Falsche Fragen",
+        "unansweredQuestions": "Unbeantwortete Fragen",
+        "totalPerformance": "Gesamtleistung",
+        "totalStudyTime": "Gesamtlernzeit",
+        "totalCorrect": "Gesamt richtig",
+        "totalScore": "Gesamtpunktzahl",
+        "close": "Schließen",
+        "reset": "Verlauf zurücksetzen"
+      },
+      "acceptance": {
+        "title": "Wichtiger Hinweis",
+        "message": "Durch die Nutzung dieser Plattform und ihrer Dienste erkennen Sie die Nutzung unserer Datenschutzrichtlinien und Nutzungsbedingungen an und akzeptieren diese.",
+        "continue": "Akzeptieren"
+      },
+      "langChange": {
+        "title": "Sprache ändern",
+        "message": "Es läuft ein Quiz. Wenn Sie die Sprache ändern, wird das Quiz neu gestartet. Möchten Sie fortfahren?",
+        "no": "NEIN",
+        "yes": "JA"
+      },
+      "resetConfirm": {
+        "title": "Sind Sie sicher, dass Sie Ihren gesamten Verlauf löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+        "no": "NEIN",
+        "yes": "JA"
+      },
+      "resetSuccess": {
+        "title": "Verlauf erfolgreich gelöscht",
+        "accept": "Akzeptieren"
+      }
+    },
+    "footer": {
+      "copyright": "© Pablo Kriger 2026 (Alle Rechte vorbehalten)",
+      "privacy": "Datenschutzrichtlinie",
+      "fullText": "Durch die Nutzung dieser Plattform akzeptieren Sie unsere"
+    },
+    "loading": {
+      "loadingQuestions": "Fragen werden geladen...",
+      "errorTitle": "Fehler beim Laden der Daten",
+      "errorMessage": "Fragen konnten nicht von Firestore geladen werden.",
+      "errorDetails": "Fehler:"
+    },
+    "languages": {
+      "en": "ENG",
+      "es": "ESP",
+      "pt": "PT",
+      "de": "DE"
+    }
+  }
+}
