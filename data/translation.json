@@ -2,7 +2,7 @@
   "es": {
     "header": {
       "title": "Simulador de Examen PMP",
-      "subtitle": "Preparación profesional alineada al PMBOK 7 — práctica por dominios, examen completo y repaso.",
+      "subtitle": "Preparación profesional alineada al PMBOK 8 — práctica por dominios, examen completo y repaso.",
       "user": {
         "guest": "Invitado",
         "login": "Iniciar sesión",
@@ -13,7 +13,7 @@
         "tips": "Consejos",
         "about": "Acerca de",
         "pmpTips": "Certificación PMP",
-        "pmbok7Tips": "Sobre el PMBOK7"
+        "PMBOK8Tips": "Sobre el PMBOK8"
       },
       "tooltips": {
         "fullscreen": "Pantalla completa",
@@ -27,7 +27,7 @@
       }
     },
     "main": {
-      "mobileLead": "Preparación profesional alineada al PMBOK 7 — práctica por dominios, examen completo y repaso.",
+      "mobileLead": "Preparación profesional alineada al PMBOK 8 — práctica por dominios, examen completo y repaso.",
       "controls": {
         "mode": "Modalidad",
         "examMode": "Simulador Examen PMP",
@@ -138,7 +138,7 @@
         "title": "Consejos PMP",
         "selectCategory": "Selecciona una categoría para ver contenido",
         "loadingTips": "Cargando consejos de rendimiento PMP...",
-        "loadingPmbok": "Cargando información de PMBOK7...",
+        "loadingPmbok": "Cargando información de PMBOK8...",
         "another": "Otro consejo",
         "close": "Cerrar"
       },
@@ -198,7 +198,7 @@
   "en": {
     "header": {
       "title": "PMP Exam Simulator",
-      "subtitle": "Professional preparation aligned with PMBOK 7 — practice by domains, full exam, and review.",
+      "subtitle": "Professional preparation aligned with PMBOK 8 — practice by domains, full exam, and review.",
       "user": {
         "guest": "Guest",
         "login": "Log in",
@@ -209,7 +209,7 @@
         "tips": "Tips",
         "about": "About",
         "pmpTips": "PMP Certification",
-        "pmbok7Tips": "About PMBOK7"
+        "PMBOK8Tips": "About PMBOK8"
       },
       "tooltips": {
         "fullscreen": "Fullscreen",
@@ -223,7 +223,7 @@
       }
     },
     "main": {
-      "mobileLead": "Professional preparation aligned with PMBOK 7 — practice by domains, full exam, and review.",
+      "mobileLead": "Professional preparation aligned with PMBOK 8 — practice by domains, full exam, and review.",
       "controls": {
         "mode": "Mode",
         "examMode": "PMP Exam Simulator",
@@ -334,7 +334,7 @@
         "title": "PMP Tips",
         "selectCategory": "Select a category to view content",
         "loadingTips": "Loading PMP performance tips...",
-        "loadingPmbok": "Loading PMBOK7 information...",
+        "loadingPmbok": "Loading PMBOK8 information...",
         "another": "Another tip",
         "close": "Close"
       },
@@ -394,7 +394,7 @@
   "pt": {
     "header": {
       "title": "Simulador de Exame PMP",
-      "subtitle": "Preparação profissional alinhada com PMBOK 7 — prática por domínios, exame completo e revisão.",
+      "subtitle": "Preparação profissional alinhada com PMBOK 8 — prática por domínios, exame completo e revisão.",
       "user": {
         "guest": "Convidado",
         "login": "Iniciar sessão",
@@ -405,7 +405,7 @@
         "tips": "Dicas",
         "about": "Sobre",
         "pmpTips": "Certificação PMP",
-        "pmbok7Tips": "Sobre PMBOK7"
+        "PMBOK8Tips": "Sobre PMBOK8"
       },
       "tooltips": {
         "fullscreen": "Tela cheia",
@@ -419,7 +419,7 @@
       }
     },
     "main": {
-      "mobileLead": "Preparação profissional alinhada com PMBOK 7 — prática por domínios, exame completo e revisão.",
+      "mobileLead": "Preparação profissional alinhada com PMBOK 8 — prática por domínios, exame completo e revisão.",
       "controls": {
         "mode": "Modalidade",
         "examMode": "Simulador de Exame PMP",
@@ -530,7 +530,7 @@
         "title": "Dicas PMP",
         "selectCategory": "Selecione uma categoria para visualizar conteúdo",
         "loadingTips": "Carregando dicas de desempenho PMP...",
-        "loadingPmbok": "Carregando informações PMBOK7...",
+        "loadingPmbok": "Carregando informações PMBOK8...",
         "another": "Outra dica",
         "close": "Fechar"
       },
@@ -590,7 +590,7 @@
   "de": {
     "header": {
       "title": "PMP-Prüfungssimulator",
-      "subtitle": "Professionelle Vorbereitung nach PMBOK 7 — Übung nach Domänen, vollständige Prüfung und Wiederholung.",
+      "subtitle": "Professionelle Vorbereitung nach PMBOK 8 — Übung nach Domänen, vollständige Prüfung und Wiederholung.",
       "user": {
         "guest": "Gast",
         "login": "Anmelden",
@@ -601,7 +601,7 @@
         "tips": "Tipps",
         "about": "Über",
         "pmpTips": "PMP-Zertifizierung",
-        "pmbok7Tips": "Über PMBOK7"
+        "PMBOK8Tips": "Über PMBOK8"
       },
       "tooltips": {
         "fullscreen": "Vollbild",
@@ -615,7 +615,7 @@
       }
     },
     "main": {
-      "mobileLead": "Professionelle Vorbereitung nach PMBOK 7 — Übung nach Domänen, vollständige Prüfung und Wiederholung.",
+      "mobileLead": "Professionelle Vorbereitung nach PMBOK 8 — Übung nach Domänen, vollständige Prüfung und Wiederholung.",
       "controls": {
         "mode": "Modus",
         "examMode": "PMP-Prüfungssimulator",
@@ -726,7 +726,7 @@
         "title": "PMP-Tipps",
         "selectCategory": "Wählen Sie eine Kategorie, um Inhalte anzuzeigen",
         "loadingTips": "Lade PMP-Leistungstipps...",
-        "loadingPmbok": "Lade PMBOK7-Informationen...",
+        "loadingPmbok": "Lade PMBOK8-Informationen...",
         "another": "Weiterer Tipp",
         "close": "Schließen"
       },
