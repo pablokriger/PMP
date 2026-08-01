@@ -648,7 +648,7 @@ footer a:hover {
             <button class="menu-link" id="consejosMenuBtn">Consejos</button>
             <div id="consejosSubmenu" style="display: none;">
               <button class="menu-link tips-option" data-tip-type="consejos_PMP">Certificación PMP</button>
-              <button class="menu-link tips-option" data-tip-type="pmbok7_caracteristicas">Sobre el PMBOK7</button>
+              <button class="menu-link tips-option" data-tip-type="pmbok8_caracteristicas">Sobre el PMBOK8</button>
             </div>
           </div>
           <hr>
@@ -818,7 +818,7 @@ footer a:hover {
     <div class="pmp-tabs">
       <!-- CAMBIO 2: Botones con ID para traducción -->
       <button class="pmp-tab active" data-tab="consejos_PMP" id="pmp-tab-consejos">Certificación PMP</button>
-      <button class="pmp-tab" data-tab="pmbok7_caracteristicas" id="pmp-tab-pmbok7">Sobre el PMBOK7</button>
+      <button class="pmp-tab" data-tab="pmbok8_caracteristicas" id="pmp-tab-pmbok8">Sobre el PMBOK8</button>
     </div>
     <div class="pmp-content" id="pmp-content">Selecciona una categoría para ver contenido</div>
     <div class="pmp-actions"><button id="pmp-another" class="secondary">Otro consejo</button><button id="pmp-close" class="primary">Cerrar</button></div>
@@ -962,9 +962,9 @@ footer a:hover {
 <script>
 // ==================== VARIABLES GLOBALES ====================
 let allQuestions = [];
-let tipsData = { consejos_PMP: [], pmbok7_caracteristicas: [] };
+let tipsData = { consejos_PMP: [], pmbok8_caracteristicas: [] };
 let currentTipsIndex = -1;
-let currentPmbok7Index = -1;
+let currentPmbok8Index = -1;
 let questions=[],current=0,score=0,history={},totalTimerSeconds=0,initialTotalSeconds=0,examTimerInterval=null,questionElapsedSeconds=0,questionTimerInterval=null,answered=false,noTimeLimit=false,sessionElapsedSeconds=0,sessionElapsedInterval=null,pieChart=null,barChart=null,isFullscreen=false;
 
 // ==================== SISTEMA DE IDIOMAS PERSISTENTE ====================
@@ -1043,7 +1043,7 @@ async function loadTranslationData() {
                         "tips": "Consejos",
                         "about": "Acerca de",
                         "pmpTips": "Certificación PMP",
-                        "pmbok7Tips": "Sobre el PMBOK7"
+                        "pmbok8Tips": "Sobre el PMBOK8"
                     },
                     "tooltips": {
                         "fullscreen": "Pantalla completa",
@@ -1243,8 +1243,8 @@ function setLanguage(lang) {
             if (tipsOptions.length >= 1 && t.header.menu?.pmpTips) {
                 tipsOptions[0].textContent = t.header.menu.pmpTips;
             }
-            if (tipsOptions.length >= 2 && t.header.menu?.pmbok7Tips) {
-                tipsOptions[1].textContent = t.header.menu.pmbok7Tips;
+            if (tipsOptions.length >= 2 && t.header.menu?.pmbok8Tips) {
+                tipsOptions[1].textContent = t.header.menu.pmbok8Tips;
             }
             
             // Actualizar pestañas del modal de consejos
@@ -1253,9 +1253,9 @@ function setLanguage(lang) {
                 pmpTabConsejos.textContent = t.header.menu.pmpTips;
             }
             
-            const pmpTabPmbok7 = document.getElementById('pmp-tab-pmbok7');
-            if (pmpTabPmbok7 && t.header.menu?.pmbok7Tips) {
-                pmpTabPmbok7.textContent = t.header.menu.pmbok7Tips;
+            const pmpTabPmbok8 = document.getElementById('pmp-tab-pmbok8');
+            if (pmpTabPmbok8 && t.header.menu?.pmbok8Tips) {
+                pmpTabPmbok8.textContent = t.header.menu.pmbok8Tips;
             }
         }
         
@@ -2121,7 +2121,7 @@ function initAuth() {
             
             // Limpiar datos de preguntas y consejos
             allQuestions = [];
-            tipsData = { consejos_PMP: [], pmbok7_caracteristicas: [] };
+            tipsData = { consejos_PMP: [], pmbok8_caracteristicas: [] };
             
             // Actualizar interfaz para estado no autenticado
             updateStartButtonForUnauthenticated();
@@ -2438,7 +2438,7 @@ async function loadTipsData() {
         console.error('Error cargando consejos:', error);
         tipsData = { 
             consejos_PMP: ['Error cargando consejos de rendimiento PMP'], 
-            pmbok7_caracteristicas: ['Error cargando información PMBOK7'] 
+            pmbok8_caracteristicas: ['Error cargando información PMBOK8'] 
         };
     }
 }
@@ -2456,17 +2456,17 @@ function showRandomTip(category) {
         } while (newIndex === currentTipsIndex && tipsData.consejos_PMP.length > 1);
         currentTipsIndex = newIndex;
         contentEl.textContent = tipsData.consejos_PMP[currentTipsIndex];
-    } else if (category === 'pmbok7_caracteristicas') {
-        if (tipsData.pmbok7_caracteristicas.length === 0) {
-            contentEl.textContent = 'Cargando información de PMBOK7...';
+    } else if (category === 'pmbok8_caracteristicas') {
+        if (tipsData.pmbok8_caracteristicas.length === 0) {
+            contentEl.textContent = 'Cargando información de PMBOK8...';
             return;
         }
         let newIndex;
         do {
-            newIndex = Math.floor(Math.random() * tipsData.pmbok7_caracteristicas.length);
-        } while (newIndex === currentPmbok7Index && tipsData.pmbok7_caracteristicas.length > 1);
-        currentPmbok7Index = newIndex;
-        contentEl.textContent = tipsData.pmbok7_caracteristicas[currentPmbok7Index];
+            newIndex = Math.floor(Math.random() * tipsData.pmbok8_caracteristicas.length);
+        } while (newIndex === currentPmbok8Index && tipsData.pmbok8_caracteristicas.length > 1);
+        currentPmbok8Index = newIndex;
+        contentEl.textContent = tipsData.pmbok8_caracteristicas[currentPmbok8Index];
     } else {
         contentEl.textContent = 'Selecciona una categoría para ver contenido';
     }
